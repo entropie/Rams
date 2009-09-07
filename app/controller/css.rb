@@ -3,14 +3,9 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
-class PageController < AMSController
-  map     :/
+class CSSController < Ramaze::Controller # def ctrl
+  map     "/css"
 
-  layout  "/layout"
-
-  def index
-    logged_in?.to_s
-  end
 end
 
 
