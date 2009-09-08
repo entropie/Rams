@@ -18,6 +18,14 @@ end
 
 
 require "dbhelper"
+
+task :deploy => [:umigrate, :migrate, :db_fill] do
+end
+
+task :db_fill do
+  ruby "script/db_migration_devel.rb"
+end
+
 task :migrate do
   Rams::Database.migrate
 end
