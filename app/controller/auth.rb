@@ -16,7 +16,7 @@ class AuthController < AMSController
     if check_auth(username, password)
       session[:logged_in] = true
       session[:username] = username
-      redirect "/"
+      redirect PageController.r(:/)
     else
       flash[:error] = "Benutzerkennung falsch."
     end
@@ -25,7 +25,7 @@ class AuthController < AMSController
   
   def logout
     session[:username] = nil
-    redirect AMSController.r(:login)
+    redirect AuthController.r(:login)
   end
   
 end

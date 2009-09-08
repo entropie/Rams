@@ -8,16 +8,10 @@ task :clean do
   Find.find(File.join(Dir.pwd)) do |file|
     if File.basename(file) == ".DS_Store"
       File.unlink file 
-      p file
+      puts file
     end
   end
 end
-
-
-task :warble do
-  sh "jruby -S warble"
-end
-
 
 
 =begin
