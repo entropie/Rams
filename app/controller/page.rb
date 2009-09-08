@@ -15,7 +15,7 @@ class PageController < AMSController
 
   def a
     p request.xhr?
-    "a"
+    User.to_s
   end
 
   def b

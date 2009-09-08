@@ -3,6 +3,9 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+
+require "lib/ams"
+
 task :clean do
   require "find"
   Find.find(File.join(Dir.pwd)) do |file|
@@ -10,6 +13,26 @@ task :clean do
       File.unlink file 
       puts file
     end
+  end
+end
+
+
+require "dbhelper"
+task :migrate do
+  Rams::Database.migrate
+end
+
+task :umigrate do
+  Rams::Database.migrate(:down)
+end
+
+
+task :pptables do
+  Rams::Database.definitions.each do |tbl|
+    puts
+    puts tbl.name
+    puts
+    tbl.print
   end
 end
 

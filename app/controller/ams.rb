@@ -5,11 +5,11 @@
 
 class AMSController < Ramaze::Controller
   engine :Haml
-  #layout "/layout",        [ :lala]
-  #layout("simple_layout")
+
   set_layout_except 'layout' => [:login, :logout]
   set_layout        'simple_layout' => [:login, :logout]
-  #layout :layout
+
+  include Rams::Database::Tables
   
   # before(:index, :id){
   #   login_required

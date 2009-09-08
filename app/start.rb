@@ -7,10 +7,7 @@ require 'rubygems'
 
 
 require '../../Extern/ramaze/lib/ramaze'
-
-gem 'sequel', "2.6.0"
-gem 'haml'
-require 'sass'
+require '../lib/ams'
 
 module GLog
   def self.<<(str, type = :debug)
