@@ -15,6 +15,11 @@ class AMSController < Ramaze::Controller
   #   login_required
   # }
 
+  def Icon(name, title, size = 16, color = :orange)
+    file = "/img/ics/#{name}_#{color}_#{size}.png"
+    "<img src='%s' title='%s' alt='%s' height='%s' width='%s'/>" % [file, title, title, size, size]
+  end
+  
   def session_user
     session[:username]
   end

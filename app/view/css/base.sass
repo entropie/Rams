@@ -3,7 +3,7 @@
 !clr_dirty_white = #F9F7ED
 !clr_straight_orange = #D15600
 !clr_fresh_blue = #4096EE
-
+!clr_light_green = #CDEB8B
 a
   &:link
     :color navy
@@ -63,13 +63,23 @@ body
 
 #top
   :background-color = !clr_dirty_white
-  :height 66px
+  :height 100px
   :font-size 1.2em
 
 #toplinks
-  :position absolute
-  :top 30px
-  :left 256px
+  :margin-left 20px
+  // :position absolute
+  :margin-top 10px
+  // :left 256px
+  img
+    :margin-bottom -8px
+    :margin-right 5px
+  a
+    :text-decoration none
+    &:link, &:visited
+      :color #36393D
+    &:hover
+      :background-color transparent
   
 #login
   :background-color #

@@ -6,6 +6,11 @@
 
 require "lib/ams"
 
+task :start do
+  sh "cd app && ruby start.rb"
+end
+
+
 task :clean do
   require "find"
   Find.find(File.join(Dir.pwd)) do |file|

@@ -17,17 +17,26 @@
     %script{:type => "text/javascript"}      
   %body
     %div{:id => :top, :class => "width8"}
-      %div{:class => "column width1 first"}
-        %div{:class => "userlink"}
-          %a{:href => "#{AuthController.r(:logout)}", :title => "Abmelden"}= session_user
-      %div{:class => "column width4"}
+      %div{:class => "column width4 first"}
+        // %div{:class => "userlink"}
+        //   %a{:href => "#{AuthController.r(:logout)}", :title => "Abmelden"}= session_user
         %div{:id => :toplinks}
-          %a{:href => "#{PageController.r(:index)}", :rel => :history, :title => "Dashboard", :class => "alink"} Dashboard          
-          %a{:href => "#{PageController.r(:a)}", :rel => :history, :title => "Kontakte", :class => "alink"} Kontakte
-          %a{:href => "#{PageController.r(:b)}", :rel => :history, :title => "Produkte", :class => "alink"} Produkte
-          %a{:href => "#{PageController.r(:gg)}", :rel => :history, :title => "Orte", :class => "alink"} Orte
-          
-
+          %div{:class => "column first width1"}
+            %a{:href => "#{PageController.r(:index)}", :rel => :history, :title => "Dashboard", :class => "alink"}
+              = Icon(:clipboard, "foo", 32, :green)            
+              Dashboard 
+          %div{:class => "column width1"}
+            %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
+              = Icon(:hers, "foo", 32, :green)
+              Kontakte
+          %div{:class => "column first width1"}
+            %a{:href => "#{ProductsController.r(:index)}", :rel => :history, :title => "Produkte", :class => "alink"}
+              = Icon(:atomic, "foo", 32, :green) 
+              Produkte
+          %div{:class => "column width1"}
+            %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
+              = Icon(:radio, "foo", 32, :green)
+              Orte
     %div{:class => "column first width1"}
 
     %div{:class => "column width6"}
