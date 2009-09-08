@@ -10,8 +10,8 @@ include Rams::Database::Tables
 
 # User
 User.create(
-            :email => "amictro@gmail.com",
-            :passwd => User.pwcrypt("dtest")
+            :email => "mictro@gmail.com",
+            :passwd => User.pwcrypt("test")
 )
 
 =begin
