@@ -20,7 +20,7 @@ class AuthController < AMSController
     else
       flash[:error] = "Benutzerkennung falsch."
     end
-    redirect PageController.r(:/)
+    redirect AuthController.r(:login)
   end
   
   def logout
