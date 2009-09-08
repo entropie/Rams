@@ -6,11 +6,23 @@
 class PageController < AMSController
   map     :/
 
-  layout  "/layout"
+  layout("layout") {|path, wish| !request.xhr? }
+  #layout "layout"
 
   def index
-    logged_in?.to_s
+    "asd"
   end
+
+  def a
+    p request.xhr?
+    "a"
+  end
+
+  def b
+    p request.xhr?
+    "b"
+  end
+  
 end
 
 

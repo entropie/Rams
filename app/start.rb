@@ -24,10 +24,17 @@ end
 extend GLog
 
 
-controller = %w"page".map{ |lib|
+controller = %w"ams page css auth".map{ |lib|
   File.join("controller", lib)
 }
+#libs = %w"lib".map{|lib| lib }
+libs = []
 
+(controller + libs).each{|lib| require lib}
+
+Ramaze.start(:host => "localhost",
+             :port => 8080
+              )
 
 # require 'controller/css'
 # require 'controller/paste'

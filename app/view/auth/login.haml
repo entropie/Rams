@@ -1,7 +1,7 @@
 %div{:id => :top, :class => "silver", :id => :login}
   %div{:style => "padding:20px", :class => :center}
     %h1{:class => "center"} AMS Authentifizierung
-    %form{:method => :post, :action => "#{ R(AMSController, :login)}", :class => :loginform}
+    %form{:method => :post, :action => "#{AuthController.r(:login)}", :class => :loginform}
       %fieldset{:class => "width2"}
         %legend{:class => "column width2"}
           Zugang zu diesem Service ist nur mit eine gültigen Nutzerkennung und Passwortkombination möglich.

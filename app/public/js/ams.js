@@ -3,7 +3,6 @@
 function mk_history_link() {
 
     var target = $(this);
-    alert(target);
     $.ajax({
         url: target.attr("href"),
         success: function(result) {

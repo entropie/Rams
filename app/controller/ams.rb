@@ -4,37 +4,19 @@
 #
 
 class AMSController < Ramaze::Controller
-  map    "/auth"
-  layout "/simple_layout"
+  engine :Haml
+  #layout "/layout",        [ :lala]
+  #layout("simple_layout")
+  set_layout_except 'layout' => [:login, :logout]
+  set_layout        'simple_layout' => [:login, :logout]
+  #layout :layout
   
-
-  def index
-    redirect R(AMSController, :login)
-  end
-  
-  def logout
-    session[:username] = nil
-    redirect R(AMSController, :login)
-  end
-
+  # before(:index, :id){
+  #   login_required
+  # }
 
   def session_user
     session[:username]
-  end
-  
-  def login
-    return false unless request.post?
-    @title = "Authentifizierung"
-    username = request[:login].strip
-    password = request[:password].strip
-    if check_auth(username, password)
-      session[:logged_in] = true
-      session[:username] = username
-      redirect "/"
-    else
-      flash[:error] = "Benutzerkennung falsch."
-    end
-    redirect_referrer      
   end
   
   def login_required

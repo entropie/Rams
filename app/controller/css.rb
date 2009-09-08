@@ -5,9 +5,13 @@
 
 class CSSController < Ramaze::Controller # def ctrl
   map     "/css"
+  provide :css, :Sass
+  engine :Sass
 
+  def base
+    "asd"
+  end
 end
-
 
 =begin
 Local Variables:
