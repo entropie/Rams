@@ -13,29 +13,30 @@
       google.load("jquery", "1.3.2");
     %script
     %script{:type => "text/javascript", :src => "/js/jquery.curvycorners.min.js"}=""
+    %script{:type => "text/javascript", :src => "/js/jquery.history.js"}=""
     %script{:type => "text/javascript", :src => "/js/ams.js"}=""    
     %script{:type => "text/javascript"}      
   %body
-    %div{:id => :top, :class => "width4 stroke"}
+    %div{:id => :top, :class => "width8"}
       %div{:class => "column width1 first"}
-        %div
-          consectetur  elit, sed do eiusmod tempor
-      %div{:class => "column width2"}
-        %div
-          %a{:href => "#{PageController.r(:a)}", :title => "Kontakte", :class => "alink"} Kontakte
-          %a{:href => "#{PageController.r(:b)}", :title => "Produkte", :class => "alink"} Produkte
-          %a{:href => "#{PageController.r(:gg)}", :title => "Orte", :class => "alink"} Orte          
-        %div
-          %ul{:id => :history_inc}
-          
-      %div{:class => "column width1"}
         %div{:class => "userlink"}
           %a{:href => "#{AMSController.r(:logout)}", :title => "Abmelden"}= session_user
+      %div{:class => "column width4"}
+        %div{:id => :toplinks}
+          %a{:href => "#{PageController.r(:index)}", :rel => :history, :title => "Dashboard", :class => "alink"} Dashboard          
+          %a{:href => "#{PageController.r(:a)}", :rel => :history, :title => "Kontakte", :class => "alink"} Kontakte
+          %a{:href => "#{PageController.r(:b)}", :rel => :history, :title => "Produkte", :class => "alink"} Produkte
+          %a{:href => "#{PageController.r(:gg)}", :rel => :history, :title => "Orte", :class => "alink"} Orte
+          
 
-    %div{:id => :mid, :class => "width4 stroke"}
+    %div{:class => "column first width1"}
+
+    %div{:class => "column width6"}
+      %ul{:id => :history_inc}
+              
+    %div{:id => :mid, :class => "column first width6"}
       %div{:class => "column width1 first"}
-        %div consectetur  elit, sed do eiusmod tempor
-      %div{:class => "column width3"}
+
+      %div{:class => "column width4"}
         %div{:id => :content}
           = @content
-

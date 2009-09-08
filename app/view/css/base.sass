@@ -1,8 +1,8 @@
 !clr_light_silver = #eeeeee
-
+!clr_my_black = #111111
 !clr_dirty_white = #F9F7ED
 !clr_straight_orange = #D15600
-
+!clr_fresh_blue = #4096EE
 
 a
   &:link
@@ -12,15 +12,44 @@ a
   &:hover
     :background-color silver
 
-
+html, body
+  :position relative
+    
+#content
+  :margin-top 20px
+#footer
+  
 #history_inc
-  a
-    &:link
-      :color blue
-    &:visited
-      :color grey
+  :font-size 0.8em
+  :margin 0px
+  :padding 0px
+  :border-left 10px solid
+  :border-color black
+  li
+    :border 1px solid
+    :border-left 0px
+    :border-color = !clr_light_silver - 50
+    :margin 0px
+    :background-color = !clr_light_silver
+    :padding 3px 10px 3px 10px
+    &:first-child
+      :border-left 1px solid
+      :border-color = !clr_light_silver - 50
+      :background-color = !clr_dirty_white
+      :font-weight bolder
+      :color = !clr_fresh_blue
     &:hover
-      :background-color silver
+      :color = !clr_straight_orange      
+      :background-color = !clr_light_silver + 30
+    &:before
+      :content "\21E8 \2002"
+  a
+    :text-decoration none
+    &:link, &:visited
+      :color #3F4C6B
+    &:hover
+      :color = !clr_straight_orange
+      :background-color transparent
 
 h1
   :color = !clr_straight_orange
@@ -35,6 +64,12 @@ body
 #top
   :background-color = !clr_dirty_white
   :height 66px
+  :font-size 1.2em
+
+#toplinks
+  :position absolute
+  :top 30px
+  :left 256px
   
 #login
   :background-color #

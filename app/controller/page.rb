@@ -10,7 +10,7 @@ class PageController < AMSController
   #layout "layout"
 
   def index
-    "asd"
+    "asda ddddddddddd"
   end
 
   def a
@@ -21,6 +21,10 @@ class PageController < AMSController
   def b
     p request.xhr?
     "b"
+  end
+  def gg
+    p request.xhr?
+    "gg"
   end
   
 end
