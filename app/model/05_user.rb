@@ -10,20 +10,17 @@ module Rams
 
     class User < Table(:user)
 
-      # many_to_one :user_state
-      # many_to_one :address
-      # many_to_one :privilege
-      # many_to_one :user_role
-      
-
       set_schema do
         primary_key :id
-
         varchar  :email, :unique => true, :size => 255
         varchar  :passwd, :size => 32
         integer  :parent
       end
 
+      def addresses
+        [Address[:user_id => id]]
+      end
+      
       def self.pwcrypt(pw)
         Digest::MD5.
           hexdigest(pw||
@@ -32,8 +29,9 @@ module Rams
                     )
       end
 
-      def profile_link(str = nil)
-        "<a href='/user/profile/#{id}'>#{str || id}</a>"
+      def profile_link(str = nil, opts = {})
+        o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
+        "<a #{o} title='#{User[id].email}s Profil' href='/user/profile/#{id}'>#{str || id}</a>"
       end
       
     end

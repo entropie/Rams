@@ -6,6 +6,10 @@
 class UserController < AMSController
   map "/user"
 
+  def profile(id)
+    @user = User[id]
+  end
+  
   def index
     "user"
   end
@@ -17,7 +21,10 @@ class UserController < AMSController
     pw = User.pwcrypt(ps['pw1'])
     if request.post?
       u = User.create(:email => ps['email'], :passwd => pw)
-      "1"
+      if ua = request["user_loc"]
+        addr = Address.create(ua.merge(:user_id => u.id))
+      end
+      "0"
     end
   end
   

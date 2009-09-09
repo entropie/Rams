@@ -10,7 +10,7 @@
       - @user.each do |user|
         %tr
           %td= Icon("hers", "Profil")
-          %td= user.profile_link
+          %td= user.profile_link(nil, :class => "alink")
           %td= user.email
         
 %div{:class => "column width1 trabant trabant1 corner"}
