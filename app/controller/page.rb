@@ -18,14 +18,12 @@ class PageController < AMSController
   end
 
   def gsidebar(*args)
-    #if request.xhr?
     cls = self.class.controller_at("/#{args.first}")
     cm = if cls.kind_of?(Array)
            "/sidebar"
          else
            "#{cls.mapping}/sidebar"
          end
-    p cm
     redirect cm
   end
 

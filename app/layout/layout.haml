@@ -27,7 +27,7 @@
             %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
               = Icon(:hers, "foo", 32, :green)
               Kontakte
-          %div{:class => "column first width1"}
+          %div{:class => "column first width1", :style => "margin-left: 50px"}
             %a{:href => "#{ProductsController.r(:index)}", :rel => :history, :title => "Produkte", :class => "alink"}
               = Icon(:atomic, "foo", 32, :green) 
               Produkte
@@ -35,16 +35,32 @@
             %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
               = Icon(:radio, "foo", 32, :green)
               Orte
-    %div{:class => "column width1 first", :style => "height:44px"}
-      %div{:class => "userlink"}
-        %a{:href => "#{AuthController.r(:logout)}", :title => "Abmelden"}= session_user
-      
+    %div{:class => "column width1 first"}
+      %div{:id => "search"}
+        %input{:type => :text, :name => :s}
+            
     %div{:class => "column width6", :style => "height:44px"}
       %ul{:id => :history_inc}
               
     %div{:id => :mid, :class => "column first width6"}
-      %div{:class => "column width1 first silver", :id => :sidebar}
-        a
+      %div{:class => "column width1 first", :id => :sidebar}
+        %div{:class => "", :id => :sidebar_content}
+          %h2 Selbst
+          %ul
+            %li
+              %a{:href => UserController.r(:create), :class => :alink} Profil
+            %li
+              %a{:href => UserController.r(:create), :class => :alink} Aufgaben
+          %h2 Werkzeuge
+          %ul
+            %li
+              %a{:href => UserController.r(:create), :class => :alink} Blättern
+            %li
+              %a{:href => UserController.r(:create), :class => :alink} Suchen
+            %li
+              %a{:href => UserController.r(:create), :class => :alink} Anlegen/ Bearbeiten
+
+
       %div{:class => "column width4"}
         %div{:id => :content}
           = @content

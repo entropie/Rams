@@ -14,7 +14,7 @@ function mk_history_link() {
         url: "/gsidebar" + target.attr("href"),
         success: function(result) {
 
-          $("#sidebar").html(result);
+          $("#sidebar_content").html(result);
           return false;
         }
       });
@@ -52,5 +52,16 @@ function mk_hsitory_links(ele){
 
 
 google.setOnLoadCallback(function() {
+    var settings = {
+      tl: { radius: 5 },
+      tr: { radius: 5 },
+      bl: { radius: 5 },
+      br: { radius: 5 },
+      antiAlias: true
+    };
+
   mk_hsitory_links($("#top"));
+  $("#sidebar").corner();
+  //$("#sidebar_content li").corner();
+
 });

@@ -1,9 +1,13 @@
 !clr_light_silver = #eeeeee
 !clr_my_black = #111111
+!clr_my_black1 = !clr_my_black + 100
 !clr_dirty_white = #F9F7ED
 !clr_straight_orange = #D15600
 !clr_fresh_blue = #4096EE
+!clr_dark_blue = #3F4C6B
 !clr_light_green = #CDEB8B
+!clr_dark_grey = #36393D
+!clr_dark_green = #6BBA70
 a
   &:link
     :color navy
@@ -14,10 +18,50 @@ a
 
 html, body
   :position relative
-    
+
+#search
+  :margin-top 8px
+  :text-align center
+  label
+    :color = !clr_dark_grey + 100
+  input
+    :margin-left 40%
+
+
+
+  
 #content
 #footer
+#sidebar
+  :margin-left 5px
+  :padding 10px
+  :border-right 4px solid silver
   
+#sidebar_content
+  h2
+    :text-align right
+    :font-size 1.4em
+    :color = !clr_dark_green
+    :letter-spacing 2px
+  a
+    :font-size 1.2em
+    :text-decoration none
+    &:hover
+      :background-color transparent
+      :font-weight bolder
+  :padding 5px
+  ul
+    li
+      :margin-right 10px
+      :list-style-type none
+      :margin-bottom 5px
+      :text-align right
+      :color = !clr_my_black1
+      &:after
+        :content "\261C"
+      a
+        :color = !clr_my_black1
+      
 #history_inc
   :font-size 0.8em
   :margin 0px
@@ -74,11 +118,22 @@ body
     :margin-bottom -8px
     :margin-right 5px
   a
+    :background-color = !clr_light_silver + 30
+    :margin-top 20px
+    :padding 15px
+    :list-style-type none
+    :text-align right
+    :color #fff
+    :text-align left
+    :-webkit-border-bottom-right-radius 20px
+    :-webkit-border-top-left-radius 20px
+    :-moz-border-radius-topleft 20px
+    :-moz-border-radius-bottomright 20px
     :text-decoration none
     &:link, &:visited
       :color #36393D
     &:hover
-      :background-color transparent
+      :background-color = !clr_light_silver - 30      
   
 #login
   :background-color #
