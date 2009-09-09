@@ -3,6 +3,7 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+
 class AMSController < Ramaze::Controller
   engine :Haml
 
@@ -15,6 +16,20 @@ class AMSController < Ramaze::Controller
   #   login_required
   # }
 
+  def self.inherited(cls)
+    (@constants ||= []) << cls
+  end
+
+  def self.controller
+    @constants
+  end
+
+  def self.controller_at(path)
+    self.controller.each do |c|
+      return c if c.mapping == path
+    end
+  end
+  
   def Icon(name, title, size = 16, color = :orange)
     file = "/img/ics/#{name}_#{color}_#{size}.png"
     "<img src='%s' title='%s' alt='%s' height='%s' width='%s'/>" % [file, title, title, size, size]
