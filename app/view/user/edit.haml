@@ -1,5 +1,5 @@
 %div{:class => "column width2 first"}
-  %form{:method => :post, :action => UserController.r(:create), :class => "rform"}
+  %form{:method => :post, :action => UserController.r(:create), :class => "rform", :onsubmit => "form_srlz($(this)); return false"}
     %fieldset{:class => :width2}
       %legend Benutzer Anlegen
       %label{:class => "width1 first"}
@@ -62,13 +62,14 @@
         Fax
         %input{:type => :text, :value => "", :name => :uid, :class => :text}
 
-%div{:class => "column width1 trabant trabant1"}
+%div{:class => "column width1 trabant trabant1 corner"}
   %div
     %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
   %div{:class => :hints}
-    %p
-      %sup 1
-      Alle E-Mails werden zu den weiteren angegeben E-Mail Adressen weitergeleitet.
-    %p
-      %sup 1
-      Alle E-Mails werden zu den weiteren angegeben E-Mail Adressen weitergeleitet. 
+    %ul
+      %li
+        %sup 1
+        Alle E-Mails werden zu den weiteren angegeben E-Mail Adressen weitergeleitet.
+      %li
+        %sup 2
+        Alle E-Mails werden zu den weiteren angegeben E-Mail Adressen weitergeleitet. 

@@ -13,28 +13,30 @@
       google.load("jquery", "1.3.2");
     %script{:type => "text/javascript", :src => "/js/jquery.curvycorners.min.js"}=""
     %script{:type => "text/javascript", :src => "/js/jquery.history.js"}=""
+    %script{:type => "text/javascript", :src => "/js/jquery.blockUI.js"}=""
     %script{:type => "text/javascript", :src => "/js/ams.js"}=""    
     %script{:type => "text/javascript"}      
   %body
     %div{:id => :top, :class => "width8"}
       %div{:class => "column width4 first"}
         %div{:id => :toplinks}
-          %div{:class => "column first width1"}
-            %a{:href => "#{PageController.r(:dashboard)}", :rel => :history, :title => "Dashboard", :class => "alink"}
-              = Icon(:clipboard, "foo", 32, :green)            
-              Dashboard 
-          %div{:class => "column width1"}
-            %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
-              = Icon(:hers, "foo", 32, :green)
-              Kontakte
-          %div{:class => "column first width1", :style => "margin-left: 50px"}
-            %a{:href => "#{ProductsController.r(:index)}", :rel => :history, :title => "Produkte", :class => "alink"}
-              = Icon(:atomic, "foo", 32, :green) 
-              Produkte
-          %div{:class => "column width1"}
-            %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
-              = Icon(:radio, "foo", 32, :green)
-              Orte
+          %ul
+            %li
+              %a{:href => "#{PageController.r(:dashboard)}", :rel => :history, :title => "Dashboard", :class => "alink"}
+                = Icon(:clipboard, "foo", 32, :green)            
+                Dashboard 
+            %li
+              %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
+                = Icon(:hers, "foo", 32, :green)
+                Kontakte
+            %li
+              %a{:href => "#{ProductsController.r(:index)}", :rel => :history, :title => "Produkte", :class => "alink"}
+                = Icon(:atomic, "foo", 32, :green) 
+                Produkte
+            %li
+              %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
+                = Icon(:radio, "foo", 32, :green)
+                Orte
     %div{:class => "column width1 first"}
       %div{:id => "search"}
         %input{:type => :text, :name => :s}

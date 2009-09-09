@@ -12,7 +12,6 @@ class UserController < AMSController
 
   def create
     ps = request[:user]
-
     return "0" if ps.values.any?{|v| v.strip.size.zero?}
     return "-1" if ps['pw1'] != ps['pw2']
     pw = User.pwcrypt(ps['pw1'])

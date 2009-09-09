@@ -9,6 +9,8 @@
 !clr_dark_grey = #36393D
 !clr_dark_green = #6BBA70
 !clr_mint = #C3D9FF
+!clr_funky_red = red
+  
 a
   &:link
     :color navy
@@ -21,7 +23,7 @@ html, body
   :position relative
 fieldset.imp
   input[type="submit"]
-    :background-color = !clr_fresh_blue
+    :color = !clr_funky_red
 input[type="submit"]
   :text-align center
   :width 50%
@@ -43,16 +45,20 @@ span.opt
   &:after
     :content ")"
 .trabant
-  > div
-    :padding 10px
+  * p
+    :padding 5px
   .hints
     :border-top 1px solid
     :border-color = !clr_mint - 50
     :margin-top 20px
-    p
+    ul
       :font-size 0.8em
       :color = !clr_dark_grey
-  
+      li
+        :list-style-type none
+
+legend
+  :color = !clr_straight_orange
 .trabant1
   :background-color = !clr_mint
 #content
@@ -60,7 +66,8 @@ span.opt
 #sidebar
   :margin-left 5px
   :padding 10px
-  :border-right 4px solid silver
+  :border-right 3px solid
+  :border-color = !clr_dirty_white
   
 #sidebar_content
   h2
@@ -83,6 +90,7 @@ span.opt
       :text-align right
       :color = !clr_my_black1
       &:after
+        :color = !clr_dark_green
         :content "\261C"
       a
         :color = !clr_my_black1
@@ -91,7 +99,6 @@ span.opt
   :font-size 0.8em
   :margin 0px
   :padding 0px
-  :border-left 10px solid
   :border-color black
   li
     :border 1px solid
@@ -131,14 +138,18 @@ body
 
 #top
   :background-color = !clr_dirty_white
-  :height 100px
+  :height 60px
   :font-size 1.2em
 
 #toplinks
   :margin-left 20px
-  // :position absolute
   :margin-top 10px
-  // :left 256px
+  ul
+    li
+      :display block
+      :float left
+      :margin-right 20px
+
   img
     :margin-bottom -8px
     :margin-right 5px

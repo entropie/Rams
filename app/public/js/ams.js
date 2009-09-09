@@ -8,7 +8,7 @@ function mk_history_link() {
       $("#content").html(result);
       history_append(target);
       mk_history_links($("#content"));
-
+      mk_corners($("#content"));
       load_sidebar(target.attr("href"));
       return false;
     }
@@ -37,6 +37,50 @@ function history_append(ele){
         });
 
     }
+}
+
+function clearForm(form) {
+  // iterate over all of the inputs for the form
+  // element that was passed in
+  $(':input', form).each(function() {
+ var type = this.type;
+ var tag = this.tagName.toLowerCase(); // normalize case
+ // it's ok to reset the value attr of text inputs,
+ // password inputs, and textareas
+ if (type == 'text' || type == 'password' || tag == 'textarea')
+   this.value = "";
+ // checkboxes and radios need to have their checked state cleared
+ // but should *not* have their 'value' changed
+ else if (type == 'checkbox' || type == 'radio')
+   this.checked = false;
+ // select elements need to have their 'selectedIndex' property set to -1
+ // (this works for both single and multiple select elements)
+ else if (tag == 'select')
+   this.selectedIndex = -1;
+  });
+};
+
+function form_srlz(frm){
+  var target = $(frm);
+  var vars = target.serialize();
+  $(target).block();
+  $.post(target.attr('action'), vars, function(data){
+    switch(data){
+      case "1\n":
+        clearForm($(target));
+      break;
+      default:
+    }
+    $(target).unblock();
+
+  });
+  return false;
+}
+
+function mk_corners(ele){
+    $(ele).find('.corner').each(function (){
+        $(this).corner();
+    });
 }
 
 function mk_history_links(ele){
