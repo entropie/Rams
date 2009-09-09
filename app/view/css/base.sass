@@ -8,6 +8,7 @@
 !clr_light_green = #CDEB8B
 !clr_dark_grey = #36393D
 !clr_dark_green = #6BBA70
+!clr_mint = #C3D9FF
 a
   &:link
     :color navy
@@ -18,7 +19,13 @@ a
 
 html, body
   :position relative
-
+fieldset.imp
+  input[type="submit"]
+    :background-color = !clr_fresh_blue
+input[type="submit"]
+  :text-align center
+  :width 50%
+  :margin 0px
 #search
   :margin-top 8px
   :text-align center
@@ -27,9 +34,27 @@ html, body
   input
     :margin-left 40%
 
-
-
+span.opt
+  :color = !clr_dark_grey
+  :font-weight normal
+  :font-size 0.7em
+  &:before
+    :content "("
+  &:after
+    :content ")"
+.trabant
+  > div
+    :padding 10px
+  .hints
+    :border-top 1px solid
+    :border-color = !clr_mint - 50
+    :margin-top 20px
+    p
+      :font-size 0.8em
+      :color = !clr_dark_grey
   
+.trabant1
+  :background-color = !clr_mint
 #content
 #footer
 #sidebar

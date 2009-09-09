@@ -7,17 +7,12 @@ function mk_history_link() {
     success: function(result) {
       $("#content").html(result);
       history_append(target);
+      mk_history_links($("#content"));
+
+      load_sidebar(target.attr("href"));
       return false;
     }
   });
-      $.ajax({
-        url: "/gsidebar" + target.attr("href"),
-        success: function(result) {
-
-          $("#sidebar_content").html(result);
-          return false;
-        }
-      });
 
   return false;
 }
@@ -44,24 +39,27 @@ function history_append(ele){
     }
 }
 
-function mk_hsitory_links(ele){
+function mk_history_links(ele){
     $(ele).find('.alink').each(function (){
         $(this).bind("click", mk_history_link);
     });
 }
 
+function load_sidebar(href){
+  $.ajax({
+    url: "/gsidebar" + href,
+    success: function(result) {
+      $("#sidebar_content").html(result);
+      mk_history_links($("#sidebar_content"));
+      return false;
+    }
+  });
+}
+
+
 
 google.setOnLoadCallback(function() {
-    var settings = {
-      tl: { radius: 5 },
-      tr: { radius: 5 },
-      bl: { radius: 5 },
-      br: { radius: 5 },
-      antiAlias: true
-    };
-
-  mk_hsitory_links($("#top"));
+  load_sidebar("/dashboard");
+  mk_history_links($("#top"));
   $("#sidebar").corner();
-  //$("#sidebar_content li").corner();
-
 });

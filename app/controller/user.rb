@@ -10,9 +10,38 @@ class UserController < AMSController
     "user"
   end
 
+  def create
+    ps = request[:user]
+
+    return "0" if ps.values.any?{|v| v.strip.size.zero?}
+    return "-1" if ps['pw1'] != ps['pw2']
+    pw = User.pwcrypt(ps['pw1'])
+    if request.post?
+      u = User.create(:email => ps['email'], :passwd => pw)
+      "1"
+    end
+  end
+  
+  def list
+    @user = User.all
+  end
+
+  def edit
+    "edit"
+  end
+
+  def search
+    "search"
+  end
+
+  def me
+    User[:email => session_user] || User[1].email
+  end
+
+  def tasks
+  end
+  
   def sidebar
-    p 1
-    "user sb"
   end
 end
 

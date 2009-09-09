@@ -1,0 +1,74 @@
+%div{:class => "column width2 first"}
+  %form{:method => :post, :action => UserController.r(:create), :class => "rform"}
+    %fieldset{:class => :width2}
+      %legend Benutzer Anlegen
+      %label{:class => "width1 first"}
+        Rang
+        %select{:name => :rang, :class => :text}
+          %option Benutzer
+      %label{:class => "width1"}
+        E-Mail
+        %input{:type => :text, :value => "", :name => "user[email]", :class => :text}
+    %fieldset
+      %legend Sicherheit
+      %label{:class => "width1 first"}
+        Passwort
+        %input{:type => :text, :value => "", :name => "user[pw1]", :class => :text}
+      %label{:class => "width1"}
+        Passwort Wiederholen
+        %input{:type => :text, :value => "", :name => "user[pw2]", :class => :text}
+    %fieldset{:class => :imp}
+      %legend Speichern
+      %label{:class => "width1 first"}
+        %input{:type => :submit, :value => "Speichern &amp; Neu", :name => :save}
+      %label{:class => "width1"}
+        %input{:type => :submit, :value => "Speichern", :name => :save}
+    %fieldset
+      %legend
+        Anschrift
+        %span.opt optional      
+      %label{:class => "width1 first"}
+        Name
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+      %label{:class => "width1"}
+        Vorname
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+      %label{:class => "width2 first"}
+        Strasse
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+      %label{:class => "width1 first"}
+        Plz.
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+      %label{:class => "width1"}
+        Ort
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+
+    %fieldset{:class => :width2}
+      %legend
+        Weitere Kontaktöglichkeiten
+        %span.opt optional
+      %label{:class => "width1 first"}
+        Tel. Mobil
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+      %label{:class => "width1"}
+        Weitere E-Mail Addressen
+        %sup 1
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+      %label{:class => "width1 first"}
+        Tel. Privat        
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+      %label{:class => "width1"}
+      %label{:class => "width1 first"}
+        Fax
+        %input{:type => :text, :value => "", :name => :uid, :class => :text}
+
+%div{:class => "column width1 trabant trabant1"}
+  %div
+    %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+  %div{:class => :hints}
+    %p
+      %sup 1
+      Alle E-Mails werden zu den weiteren angegeben E-Mail Adressen weitergeleitet.
+    %p
+      %sup 1
+      Alle E-Mails werden zu den weiteren angegeben E-Mail Adressen weitergeleitet. 

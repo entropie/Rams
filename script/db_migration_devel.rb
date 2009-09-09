@@ -13,6 +13,18 @@ User.create(
             :email => "mictro@gmail.com",
             :passwd => User.pwcrypt("test")
 )
+User.create(
+            :email => "foo@bar.com",
+            :passwd => User.pwcrypt("test")
+)
+User.create(
+            :email => "bar@foo.com",
+            :passwd => User.pwcrypt("test")
+)
+User.create(
+            :email => "foo@baz.com",
+            :passwd => User.pwcrypt("test")
+)
 
 =begin
 Local Variables:

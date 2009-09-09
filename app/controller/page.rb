@@ -19,7 +19,7 @@ class PageController < AMSController
 
   def gsidebar(*args)
     cls = self.class.controller_at("/#{args.first}")
-    cm = if cls.kind_of?(Array)
+    cm = if cls.kind_of?(Array) #or cls == PageController
            "/sidebar"
          else
            "#{cls.mapping}/sidebar"

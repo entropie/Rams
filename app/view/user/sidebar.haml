@@ -1,5 +1,14 @@
+%h2 Selbst
 %ul
   %li
-    %a{:href => UserController.r(:create), :class => :alink} Anlegen
-    %a{:href => UserController.r(:create), :class => :alink} Bar
-    %a{:href => UserController.r(:create), :class => :alink} Bums    
+    %a{:href => UserController.r(:me), :class => :alink, :title => "Benutzerprofil"} Profil
+    %li
+      %a{:href => UserController.r(:tasks), :class => :alink, :title => "Aufgaben"} Aufgaben
+%h2 Werkzeuge
+%ul
+  %li
+    %a{:href => UserController.r(:list), :class => :alink, :title => "Benutzer Durchblättern"} Blättern
+  %li
+    %a{:href => UserController.r(:search), :class => :alink, :title => "Benutzer Suchen"} Suchen
+  %li
+    %a{:href => UserController.r(:edit), :class => :alink, :title => "Benutzer Editieren"} Anlegen/ Bearbeiten

@@ -31,6 +31,11 @@ module Rams
                     sort_by{ rand }.last(8).join
                     )
       end
+
+      def profile_link(str = nil)
+        "<a href='/user/profile/#{id}'>#{str || id}</a>"
+      end
+      
     end
   end
 end

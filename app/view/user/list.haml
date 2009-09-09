@@ -1,0 +1,22 @@
+%div{:class => "column width2 first"}
+  %table
+    %caption Benutzerliste
+    %thead
+      %tr
+        %th{:style => "width:0px"}
+        %th{:style => "width:0px"} ID
+        %th E-Mail
+    %tbody
+      - @user.each do |user|
+        %tr
+          %td= Icon("hers", "Profil")
+          %td= user.profile_link
+          %td= user.email
+        
+%div{:class => "column width1 trabant trabant1"}
+  %div
+    %p
+      Lorem ipsum dolor sit amet,
+      %a{:href => "/a", :class => "alink", :title => "Just A Test"} consectetur
+      adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    %p Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.

@@ -45,22 +45,7 @@
     %div{:id => :mid, :class => "column first width6"}
       %div{:class => "column width1 first", :id => :sidebar}
         %div{:class => "", :id => :sidebar_content}
-          %h2 Selbst
-          %ul
-            %li
-              %a{:href => UserController.r(:create), :class => :alink} Profil
-            %li
-              %a{:href => UserController.r(:create), :class => :alink} Aufgaben
-          %h2 Werkzeuge
-          %ul
-            %li
-              %a{:href => UserController.r(:create), :class => :alink} Blättern
-            %li
-              %a{:href => UserController.r(:create), :class => :alink} Suchen
-            %li
-              %a{:href => UserController.r(:create), :class => :alink} Anlegen/ Bearbeiten
 
-
-      %div{:class => "column width4"}
+      %div{:class => "column width3"}
         %div{:id => :content}
           = @content
