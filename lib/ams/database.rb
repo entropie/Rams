@@ -16,8 +16,16 @@ module Rams
         ret
       end
 
+      def self.tables
+        self.constants.map{|c| self.const_get(c)}
+      end
+
     end
 
+    def self.tables
+      Tables.tables
+    end
+    
     def self.migrate(w = :up)
       definitions.each do |defi|
         if defi.table_exists? and w == :down

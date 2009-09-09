@@ -16,16 +16,19 @@ class AMSController < Ramaze::Controller
   #   login_required
   # }
 
+  ControllerList = []
+  
   def self.inherited(cls)
-    (@constants ||= []) << cls
+    log cls
+    ControllerList << cls
   end
 
-  def self.controller
-    @constants
+  def self.controllerr
+    ControllerList
   end
 
   def self.controller_at(path)
-    self.controller.each do |c|
+    controllerr.each do |c|
       return c if c.mapping == path
     end
   end

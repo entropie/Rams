@@ -6,6 +6,12 @@
 
 require "lib/ams"
 
+
+task :a do
+  p Rams::Database::tables
+end
+
+
 task :start do
   sh "cd app && ruby start.rb"
 end

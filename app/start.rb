@@ -29,6 +29,10 @@ libs = []
 
 (controller + libs).each{|lib| require lib}
 
+# p AMSController.controller
+#p AMSController.controller_at "/"
+# p AMSController.controller_at "/"
+
 Ramaze.start(:host => "localhost",
              :port => 8080
               )

@@ -9,6 +9,10 @@ class LocationController < AMSController
   def index
     "location"
   end
+
+  def sidebar
+    "location sb"
+  end
 end
 
 

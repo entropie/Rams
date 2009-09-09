@@ -9,6 +9,11 @@ class UserController < AMSController
   def index
     "user"
   end
+
+  def sidebar
+    p 1
+    "user sb"
+  end
 end
 
 

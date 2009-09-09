@@ -18,11 +18,9 @@
   %body
     %div{:id => :top, :class => "width8"}
       %div{:class => "column width4 first"}
-        // %div{:class => "userlink"}
-        //   %a{:href => "#{AuthController.r(:logout)}", :title => "Abmelden"}= session_user
         %div{:id => :toplinks}
           %div{:class => "column first width1"}
-            %a{:href => "#{PageController.r(:index)}", :rel => :history, :title => "Dashboard", :class => "alink"}
+            %a{:href => "#{PageController.r(:dashboard)}", :rel => :history, :title => "Dashboard", :class => "alink"}
               = Icon(:clipboard, "foo", 32, :green)            
               Dashboard 
           %div{:class => "column width1"}
@@ -37,14 +35,16 @@
             %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
               = Icon(:radio, "foo", 32, :green)
               Orte
-    %div{:class => "column first width1"}
-
-    %div{:class => "column width6"}
+    %div{:class => "column width1 first", :style => "height:44px"}
+      %div{:class => "userlink"}
+        %a{:href => "#{AuthController.r(:logout)}", :title => "Abmelden"}= session_user
+      
+    %div{:class => "column width6", :style => "height:44px"}
       %ul{:id => :history_inc}
               
     %div{:id => :mid, :class => "column first width6"}
-      %div{:class => "column width1 first"}
-
+      %div{:class => "column width1 first silver", :id => :sidebar}
+        a
       %div{:class => "column width4"}
         %div{:id => :content}
           = @content

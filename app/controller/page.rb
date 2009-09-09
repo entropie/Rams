@@ -6,15 +6,34 @@
 class PageController < AMSController
   map     :/
 
-  layout("layout") {|path, wish| !request.xhr? }
-  #layout "layout"
+  set_layout("layout" => [:index]) {|path, wish| not request.xhr? }
+  helper :partial
 
   def index
     "asda ddddddddddd"
   end
 
+  def dashboard
+    "dashboard"
+  end
+
+  def gsidebar(*args)
+    #if request.xhr?
+    cls = self.class.controller_at("/#{args.first}")
+    cm = if cls.kind_of?(Array)
+           "/sidebar"
+         else
+           "#{cls.mapping}/sidebar"
+         end
+    p cm
+    redirect cm
+  end
+
+  def sidebar
+    "dashboard sb"
+  end
+
   def a
-    p request.xhr?
     User.to_s
   end
 

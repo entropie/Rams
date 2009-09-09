@@ -9,6 +9,11 @@ class ProductsController < AMSController
   def index
     "products"
   end
+
+  def sidebar
+    "produts sb"
+  end
+  
 end
 
 
