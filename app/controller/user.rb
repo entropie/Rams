@@ -14,7 +14,7 @@ class UserController < AMSController
   end
   
   def index
-    "user"
+    redirect UserController.r(:list)
   end
 
   def a
@@ -45,7 +45,7 @@ class UserController < AMSController
   # FIXME: Add Page-Counter to view
   def list
     au = User.all
-    start  = request.params["start"].to_i
+    start  = request.params["start"].to_i || 0
     limit = request.params["limit"] || UserListingLength
     @user = au[start .. (start+limit)-1] # FIXME: Do it with sequel!
   end

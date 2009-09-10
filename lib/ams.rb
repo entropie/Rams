@@ -52,8 +52,7 @@ end
 
 Rams::Database.load_definitions
 
-
-puts "%s starts up" % Rams.version
+puts "%s starts up" % Rams.version if __FILE__ == $0
 
 =begin
 Local Variables:
