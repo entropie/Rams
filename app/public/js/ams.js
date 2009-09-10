@@ -61,14 +61,20 @@ function clearForm(form) {
   });
 };
 
-function form_srlz(frm){
+function form_srlz(frm, history){
   var target = $(frm);
   var vars = target.serialize();
+  var uid = $(target).find("#uid").attr("value");
+  var text = $(target).find("option[value='"+uid+"']").text();
   $.get(target.attr('action'), vars, function(data){
     $(target).block();
     $("#content").html(data);
     mk_history_links($("#content"));
     mk_corners($("#content"));
+    var a = "<a href='" + target.attr("action") + "?" + vars + "' title='" + $(target).find(".hist_msg").attr("value") + " " + text + "'>Benutzer Editieren</a>";
+    if(history)
+      history_append($(a));
+
     load_sidebar(target.attr("href"));
     $(target).unblock();
   });
