@@ -22,18 +22,48 @@ a.add_address(Address.create(
                              :tel_mobile => "0666",
                              :tel_priv   => "0666 1"
                              ))
-User.create(
+a=User.create(
             :email => "foo@bar.com",
             :passwd => User.pwcrypt("test")
-)
-User.create(
+              )
+a.add_address(Address.create(
+                             :name => "Bort1",
+                             :surename => "End",
+                             :street   => "Nightmare On Elm Street",
+                             :plz      => "00666",
+                             :loc      => "Hell",
+                             :tel_mobile => "0666",
+                             :tel_priv   => "0666 1"
+                             ))
+
+a=User.create(
             :email => "bar@foo.com",
             :passwd => User.pwcrypt("test")
-)
-User.create(
+              )
+a.add_address(Address.create(
+                             :name => "Bart",
+                             :surename => "End",
+                             :street   => "Nightmare On Elm Street",
+                             :plz      => "00666",
+                             :loc      => "Hell",
+                             :tel_mobile => "0666",
+                             :tel_priv   => "0666 1"
+                             ))
+
+a=User.create(
             :email => "foo@baz.com",
             :passwd => User.pwcrypt("test")
-)
+              )
+a.add_address(Address.create(
+                             :name => "Bum",
+                             :surename => "End",
+                             :street   => "Nightmare On Elm Street",
+                             :plz      => "00666",
+                             :loc      => "Hell",
+                             :tel_mobile => "0666",
+                             :tel_priv   => "0666 1"
+                             ))
+
 
 =begin
 Local Variables:
