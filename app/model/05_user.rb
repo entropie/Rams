@@ -51,6 +51,12 @@ module Rams
         "<a #{o} title='#{User[id].email}s Profil' href='/user/profile/#{id}'>#{str || id}</a>"
       end
 
+      def name_link(xhr = true)
+        add = xhr ? " alink" : ''
+        ia = "<img src='/img/uuser.gif' width='12' height='12' alt='Benutzerbild' />%s" % [name]
+        "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>" % [id, ia]
+      end
+      
       def send_msg(to, topic, body)
         to = User.find(:email => to)
         p topic
