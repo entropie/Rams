@@ -5,6 +5,10 @@
     %ul
       %li= "#{@user.name} &lt;<a href='/user/profile/#{@user.id}' class='alink' title='Benutzerprofil'>#{@user.name}&gt;</a>"
   = render_file "view/address/address_for.haml", :user => @user
-
+%div{:class => "column width1"}
+  %div{:class => "tasks corner"}
+    %ul
+      %li
+        %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "#{@user.name}s Profil Aktualisieren"} Benutzer Editieren
 
 
