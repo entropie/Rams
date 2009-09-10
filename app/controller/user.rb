@@ -28,11 +28,8 @@ class UserController < AMSController
     if request.post?
       u = User.create(:email => ps['email'], :passwd => pw)
       if ua = request["user_loc"]
-        pp ua
         ua.delete("user_id")
-        pp ua
         u.add_address(addr=Address.create(ua))
-        p addr
       end
       return "0"
     end
