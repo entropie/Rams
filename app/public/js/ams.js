@@ -80,14 +80,15 @@ function form_srlz(frm, history){
   });
 }
 
-function ue_form_srlz(frm){
+function ue_form_srlz(frm, clear){
   var target = $(frm);
   var vars = target.serialize();
   $(target).block();
   $.post(target.attr('action'), vars, function(data){
     switch(data){
       case "0\n":
-        clearForm($(target));
+        if(clear)
+          clearForm($(target));
         $.growl("Speichern", "Komplett");
       break;
       case "1\n":
