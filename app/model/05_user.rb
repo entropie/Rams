@@ -10,12 +10,16 @@ module Rams
 
     class User < Table(:user)
 
-      set_schema do
-        primary_key :id
-        varchar  :email, :unique => true, :size => 255
-        varchar  :passwd, :size => 32
-        integer  :parent
-      end
+      one_to_many :addresses
+      
+      Shema = proc{
+        DB.create_table :user do
+          primary_key :id
+          varchar     :email, :unique => true, :size => 255
+          varchar     :passwd, :size => 32
+          integer     :parent
+        end
+      }
 
       def addresses
         [Address[:user_id => id]]

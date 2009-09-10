@@ -8,24 +8,24 @@ module Rams
 
     class Address < Table(:address)
 
-      has_many :users
+      many_to_one :users
 
-      set_schema do
-        primary_key :id
-        foreign_key :user_id
-        varchar  :name
-        varchar  :surename
-        varchar  :street
-        varchar  :plz
-        varchar  :loc
+      Shema = proc{
+        DB.create_table :address do
+          primary_key  :id
+          foreign_key  :user_id
+          varchar  :name
+          varchar  :surename
+          varchar  :street
+          varchar  :plz
+          varchar  :loc
 
-        varchar  :tel_mobile
-        varchar  :aemail
-        varchar  :tel_priv
-        varchar  :fax
-      end
-
-      
+          varchar  :tel_mobile
+          varchar  :aemail
+          varchar  :tel_priv
+          varchar  :fax
+        end
+      }
     end
   end
 end

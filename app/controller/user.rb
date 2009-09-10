@@ -17,18 +17,26 @@ class UserController < AMSController
     "user"
   end
 
+  # # 0 allright
+  # * 1 zuwenig ausgefüllt
+  # * 2 pw != pw1
   def create
     ps = request[:user]
-    return "0" if ps.values.any?{|v| v.strip.size.zero?}
-    return "-1" if ps['pw1'] != ps['pw2']
+    return "1" if ps.values.any?{|v| v.strip.size.zero?}
+    return "2" if ps['pw1'] != ps['pw2']
     pw = User.pwcrypt(ps['pw1'])
     if request.post?
       u = User.create(:email => ps['email'], :passwd => pw)
       if ua = request["user_loc"]
-        addr = Address.create(ua.merge(:user_id => u.id))
+        pp ua
+        ua.delete("user_id")
+        pp ua
+        u.add_address(addr=Address.create(ua))
+        p addr
       end
-      "0"
+      return "0"
     end
+    "1"
   end
 
   # FIXME: Add Page-Counter to view
@@ -48,7 +56,7 @@ class UserController < AMSController
   end
 
   def me
-    User[:email => session_user] || User[1].email
+    @user = User[:email => session_user] || User[1]
   end
 
   def tasks
@@ -62,7 +70,7 @@ class UserController < AMSController
     start = request.params["start"].to_i
     start = start.send(w, UserController::UserListingLength)
     str = (w == :+) ? "Vorwärts" : "Zurück"
-    if start < 0 or start >= User.size
+    if start < 0 or start >= User.count
       "<span class='dark_text'>%s</span>" % str
     else
       "<a href='%s' class='nohist alink plink'>%s</a>" % [UserController.r(:list, :start => start), str]

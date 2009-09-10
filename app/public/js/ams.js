@@ -67,13 +67,21 @@ function form_srlz(frm){
   $(target).block();
   $.post(target.attr('action'), vars, function(data){
     switch(data){
-      case "1\n":
+      case "0\n":
         clearForm($(target));
+        $.growl("Speichern", "Komplett");
       break;
+      case "1\n":
+        $.growl("Speichern", "Unzureichend ausgefülltes Fomular");
+        break;
+      case "2\n":
+        $.growl("Speichern", "Passwort nicht Identisch");
+        break;
       default:
+        // FIXME: Error msg sucks
+        $.growl("Speichern", "Unerklärlicher Fehler");
     }
     $(target).unblock();
-
   });
   return false;
 }

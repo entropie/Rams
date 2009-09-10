@@ -10,9 +10,11 @@ module Rams
     LoadedDefintions = []
     module Tables
 
+
       def self.Table(*a)
         ret = ::Sequel::Model(a.first)
-        #ret.extend(TableExt)
+        #ret.extend(TableName)
+        #ret.name = a.first
         ret
       end
 
@@ -28,15 +30,16 @@ module Rams
     
     def self.migrate(w = :up)
       definitions.each do |defi|
-        if defi.table_exists? and w == :down
-          defi.drop_table
+        name = defi.instance_variable_get("@simple_table")[1..-2]
+        log "migrating: #{w}  %s" % name
+        #   p DB.table_exists?(name)
+        if w == :down
+          DB.drop_table name
         elsif w == :up
-          begin
-            defi.create_table
-            p defi
-          rescue
-            p $!
-          end
+          p 1
+          defi::Shema.call
+        else
+          p 123
         end
       end
     end

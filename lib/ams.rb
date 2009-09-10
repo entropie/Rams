@@ -19,18 +19,26 @@ module Rams
   Dir["#{Source}/lib/ruby/*.rb"].each {|file| require file  }
 
   require "rubygems"
-  #gem 'sequel', "2.6.0"
-  require "sequel"
+#  gem 'sequel', "2.6.0"
+  
+  require "sequel" #, "3.4.0"
+
   gem 'haml'
 
   require 'sass'  
   
   require "contrib"
   require "database"
+  require "logger"
+  require "pp"
 
-
-  DB = Sequel.mysql 'rams_devel', :user => 'root', :password => '', :host => "localhost"
-  
+  DB = Sequel.mysql('rams_devel',
+                    :user => 'root',
+                    :password => '',
+                    :logger => Logger.new( STDOUT ),
+                    :host => "localhost",
+                    :socket => "/tmp/mysql.sock")
+  p DB
   def self.version
     str = "Ramp-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]
