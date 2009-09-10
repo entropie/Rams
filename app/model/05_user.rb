@@ -21,6 +21,15 @@ module Rams
         end
       }
 
+      def name
+        if addresses.empty?
+          email
+        else
+          adr = addresses.first
+          "%s %s" % [adr.name, adr.surename] rescue email
+        end
+      end
+      
       def addresses
         [Address[:user_id => id]]
       end

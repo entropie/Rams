@@ -9,10 +9,19 @@ include Rams::Database::Tables
 
 
 # User
-User.create(
+a=User.create(
             :email => "mictro@gmail.com",
             :passwd => User.pwcrypt("test")
-)
+              )
+a.add_address(Address.create(
+                             :name => "Michael",
+                             :surename => "Ende",
+                             :street   => "Nightmare On Elm Street",
+                             :plz      => "00666",
+                             :loc      => "Hell",
+                             :tel_mobile => "0666",
+                             :tel_priv   => "0666 1"
+                             ))
 User.create(
             :email => "foo@bar.com",
             :passwd => User.pwcrypt("test")

@@ -9,14 +9,17 @@ class UserController < AMSController
   
   map "/user"
 
-  def profile(id)
-    @user = User[id]
+  def profile(id = nil)
+    @user = User[id] || User[1] # FIXME: For Testing
   end
   
   def index
     "user"
   end
 
+  def a
+    "asddsads"
+  end
   # # 0 allright
   # * 1 zuwenig ausgefüllt
   # * 2 pw != pw1
@@ -56,7 +59,7 @@ class UserController < AMSController
   end
 
   def me
-    @user = User[:email => session_user] || User[1]
+    redirect UserController.r(:profile)
   end
 
   def tasks
