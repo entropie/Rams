@@ -17,6 +17,21 @@ class UserController < AMSController
     redirect UserController.r(:list)
   end
 
+  def update
+    ps = request[:user]
+    return "1" if ps.values.any?{|v| v.strip.size.zero?}
+    if request.post?
+      u = User.find(:email => ps['email'])
+      ps.delete("pw1"); ps.delete("pw2")
+      u.update(ps)
+      if ua = request["user_loc"]      
+        u.addresses.first.update(ua)
+      end
+      return "0"      
+    end
+    "1"
+  end
+  
   # # 0 allright
   # * 1 zuwenig ausgefüllt
   # * 2 pw != pw1
