@@ -32,14 +32,17 @@ module Rams
       definitions.each do |defi|
         name = defi.instance_variable_get("@simple_table")[1..-2]
         log "migrating: #{w}  %s" % name
-        #   p DB.table_exists?(name)
-        if w == :down
-          DB.drop_table name
-        elsif w == :up
-          p 1
-          defi::Shema.call
-        else
-          p 123
+        begin
+          if w == :down
+            DB.drop_table name
+          elsif w == :up
+            p 1
+            defi::Shema.call
+          else
+            p 123
+          end
+        rescue
+          p $!
         end
       end
     end

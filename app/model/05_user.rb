@@ -11,6 +11,7 @@ module Rams
     class User < Table(:user)
 
       one_to_many :addresses
+      one_to_many :messages      
       
       Shema = proc{
         DB.create_table :user do
