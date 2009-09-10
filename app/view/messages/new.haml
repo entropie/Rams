@@ -1,0 +1,22 @@
+%form{:action => MessageController.r(:create), :onsubmit => "form_srlz($(this), false); return false"}
+  %fieldset
+    %legend Nachricht Verfassen
+    %div{:class => "column width1 first multilinex2"}
+      %label{:class => "width1 first"}
+        Empfänger
+        %input{:type => :text, :value => 'mictro@gmail.com', :name => "msg[to]", :class => :text}
+    %div{:class => "column width2"}
+      %label{:class => "width1 first"}
+        .userbox{:class => :corner}
+          %div
+            %img{:src => "/img/uuser.gif", :class => "uimg"}
+    %div
+      %label{:class => "width1 first"}
+        Betreff
+        %input{:type => :text, :value => 'bar', :name => "msg[topic]", :class => :text}
+      %label{:class => "first multilinex6 unitx5"}
+        Nachricht
+        %textarea{:name => "msg[body]", :class => :text}
+    %div{:class => "column width2 first"}
+      %label{:class => "width1 first"}
+        %input{:type => :submit, :value => 'Senden', :class => :submit}

@@ -6,19 +6,30 @@
 module Rams
   module Database::Tables
 
-    class Messages < Table(:messages)
+    class Message < Table(:messages)
       many_to_one :users
 
       Shema = proc{
-        DB.create_table :user do
+        DB.create_table :messages do
           primary_key :id
           foreign_key :user_id
-          varchar     :created_at
+          foreign_key :from_id
+          
+          datetime    :created_at
           varchar     :topic, :size => 255
           text        :body
           int         :in_respond_to
+          int         :read, :default => 0
         end
       }
+
+      def from
+        User[from_id]
+      end
+      
+      def after_create
+        update(:created_at => Time.now)
+      end
     end
   end
 end

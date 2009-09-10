@@ -6,8 +6,18 @@
 class MessageController < AMSController
   map "/messages"
   def messages_for(uid)
-    "asd"
+    @messages = session_user.messages
   end
+
+  def new
+  end
+
+  def create
+    msg = request.params["msg"]
+    session_user.send_msg(msg["to"], msg["topic"], msg['body'])
+    redirect MessageController.r(:messages_for, session_user.id)
+  end
+  
 end
 
 

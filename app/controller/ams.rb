@@ -39,7 +39,8 @@ class AMSController < Ramaze::Controller
   end
   
   def session_user
-    session[:username]
+    #session[:username]
+    User.find(:email => "mictro@gmail.com")
   end
   
   def login_required

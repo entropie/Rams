@@ -50,6 +50,14 @@ module Rams
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
         "<a #{o} title='#{User[id].email}s Profil' href='/user/profile/#{id}'>#{str || id}</a>"
       end
+
+      def send_msg(to, topic, body)
+        to = User.find(:email => to)
+        p topic
+        to.add_message(Message.create(:from_id => id, :body => body, :topic => topic))
+        to.save
+        "k"
+      end
       
     end
   end
