@@ -4,6 +4,9 @@
 #
 
 class UserController < AMSController
+
+  UserListingLength = 3
+  
   map "/user"
 
   def profile(id)
@@ -27,9 +30,13 @@ class UserController < AMSController
       "0"
     end
   end
-  
+
+  # FIXME: Add Page-Counter to view
   def list
-    @user = User.all
+    au = User.all
+    start  = request.params["start"].to_i
+    limit = request.params["limit"] || UserListingLength
+    @user = au[start .. (start+limit)-1] # FIXME: Do it with sequel!
   end
 
   def edit
@@ -49,6 +56,19 @@ class UserController < AMSController
   
   def sidebar
   end
+
+  private
+  def make_browse_link(w = :+, limit = UserListingLength)
+    start = request.params["start"].to_i
+    start = start.send(w, UserController::UserListingLength)
+    str = (w == :+) ? "Vorwärts" : "Zurück"
+    if start < 0 or start >= User.size
+      "<span class='dark_text'>%s</span>" % str
+    else
+      "<a href='%s' class='nohist alink plink'>%s</a>" % [UserController.r(:list, :start => start), str]
+    end
+  end
+
 end
 
 
