@@ -19,7 +19,7 @@ function mk_history_link() {
   return false;
 }
 
-historysize = 6;
+historysize = 5;
 function history_append(ele){
     var target = $('#history_inc');
     var href = $(ele).attr("href");
@@ -29,13 +29,13 @@ function history_append(ele){
     target.prepend(html);
 
     $(target).find("a:first").bind("click", mk_history_link);
-    if($(target).find("li").length > historysize){
-        $(target).find("li:gt(" + historysize + ")").fadeOut();
+    if($(target).find("li").length >= historysize){
+        $(target).find("li:gt(" + historysize + ")").hide();
     }
 
     if(dups.length > 0){
         $(dups).each(function() {
-            $(this).parent().fadeOut();
+            $(this).parent().hide();
         });
 
     }
