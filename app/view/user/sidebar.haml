@@ -1,9 +1,11 @@
 %h2 Selbst
 %ul
   %li
+    %a{:href => MessageController.r(:messages_for, @user.id), :class => :alink, :title => "Nachrichten"} Nachrichten
+  %li
     %a{:href => UserController.r(:me), :class => :alink, :title => "Mein Benutzerprofil"} Profil
-    %li
-      %a{:href => UserController.r(:tasks), :class => :alink, :title => "Aufgaben"} Aufgaben
+  %li
+    %a{:href => UserController.r(:tasks), :class => :alink, :title => "Aufgaben"} Aufgaben
 %h2 Werkzeuge
 %ul
   %li
