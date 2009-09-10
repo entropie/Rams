@@ -1,0 +1,19 @@
+- ua = @user.addresses.first
+- unless ua.nil?
+  %div{:class => "column width2 first"}
+    %p{:class => "column width1 first desc"}
+      Vollständiger Name
+    %p{:class => "column width1 no-indent"}
+      = @user.name
+    %p{:class => "column width1 first desc no-indent"}
+      Hauptanschrift
+    %p{:class => "column width1 no-indent"}
+      = "#{ua.street}, #{ua.plz}, #{ua.loc}"
+    %p{:class => "column width1 first desc no-indent"}
+      Tel. Mobile
+    %p{:class => "column width1 no-indent"}
+      = ua.tel_mobile
+    %p{:class => "column width1 first desc no-indent"}
+      Tel. Privat
+    %p{:class => "column width1 no-indent"}
+      = ua.tel_priv
