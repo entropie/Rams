@@ -10,6 +10,9 @@
 !clr_dark_green = #6BBA70
 !clr_mint = #C3D9FF
 !clr_funky_red = red
+
+.dark_text
+  :color = !clr_dark_grey
   
 a
   &:link
@@ -57,10 +60,19 @@ span.opt
       li
         :list-style-type none
 
+a.plink
+  :font-size 1.2em
+  :text-decoration none
+  :background-color transparent
 legend
   :color = !clr_straight_orange
 .trabant1
   :background-color = !clr_mint
+  a, a:visited, a:active
+    :color = !clr_dark_grey
+.tright
+  :text-align right
+
 #content
 #footer
 #sidebar
@@ -154,7 +166,7 @@ body
     :margin-bottom -8px
     :margin-right 5px
   a
-    :background-color = !clr_light_silver - 30
+    :background-color = !clr_dirty_white + 17
     :margin-top 20px
     :padding 15px
     :list-style-type none
@@ -169,7 +181,7 @@ body
     &:link, &:visited
       :color #36393D
     &:hover
-      :background-color = !clr_light_silver + 23      
+      :background-color = !clr_dirty_white - 7
   
 #login
   :background-color #
