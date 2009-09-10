@@ -34,7 +34,8 @@ libs = []
 # p AMSController.controller_at "/"
 
 Ramaze.start(:host => "localhost",
-             :port => 8080
+             :port => 8081,
+             :adapter => :mongrel
               )
 
 # require 'controller/css'
