@@ -1,5 +1,7 @@
 %div{:class => "column width2 first"}
-  %form{:method => :post, :action => UserController.r(:create), :class => "rform", :onsubmit => "ue_form_srlz($(this)); return false"}
+  - action = request.params["is_edit"] ? UserController.r(:update) : UserController.r(:create)
+  - js_appe = request.params["is_edit"] ? 'false' : 'true'
+  %form{:method => :post, :action => action, :class => "rform", :onsubmit => "ue_form_srlz($(this), #{js_appe}); return false"}
     %fieldset{:class => :width2}
       %legend= request.params["is_edit"] ? "Benutzer Aktualisieren" : "Benutzer Anlegen" 
       %label{:class => "width1 first"}
