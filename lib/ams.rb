@@ -38,7 +38,6 @@ module Rams
                     :logger => Logger.new( STDOUT ),
                     :host => "localhost",
                     :socket => "/tmp/mysql.sock")
-  p DB
   def self.version
     str = "Ramp-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]
@@ -53,6 +52,7 @@ end
 Rams::Database.load_definitions
 
 puts "%s starts up" % Rams.version if __FILE__ == $0
+
 
 =begin
 Local Variables:

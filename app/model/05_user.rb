@@ -33,6 +33,9 @@ module Rams
       def addresses
         [Address[:user_id => id]]
       end
+
+      def pw1; passwd; end
+      def pw2; passwd end
       
       def self.pwcrypt(pw)
         Digest::MD5.

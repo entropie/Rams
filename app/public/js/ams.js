@@ -64,6 +64,19 @@ function clearForm(form) {
 function form_srlz(frm){
   var target = $(frm);
   var vars = target.serialize();
+  $.get(target.attr('action'), vars, function(data){
+    $(target).block();
+    $("#content").html(data);
+    mk_history_links($("#content"));
+    mk_corners($("#content"));
+    load_sidebar(target.attr("href"));
+    $(target).unblock();
+  });
+}
+
+function ue_form_srlz(frm){
+  var target = $(frm);
+  var vars = target.serialize();
   $(target).block();
   $.post(target.attr('action'), vars, function(data){
     switch(data){

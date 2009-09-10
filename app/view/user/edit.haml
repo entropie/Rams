@@ -1,5 +1,5 @@
 %div{:class => "column width2 first"}
-  %form{:method => :post, :action => UserController.r(:create), :class => "rform", :onsubmit => "form_srlz($(this)); return false"}
+  %form{:method => :post, :action => UserController.r(:create), :class => "rform", :onsubmit => "ue_form_srlz($(this)); return false"}
     %fieldset{:class => :width2}
       %legend Benutzer Anlegen
       %label{:class => "width1 first"}
@@ -8,40 +8,53 @@
           %option Benutzer
       %label{:class => "width1"}
         E-Mail
-        %input{:type => :text, :value => "", :name => "user[email]", :class => :text}
+        %input{:type => :text, :value => value_for(:user, :email), :name => "user[email]", :class => :text}
+      %label{:class => "width1 first"}
+        // Rang
+        // %select{:name => :rang, :class => :text}
+        //   %option Benutzer
+      %label{:class => "width1"}
+        Benutzer ID
+        %input{:type => :text, :value => value_for(:user, :id), :name => "user[id]", :class => :text, :disabled => :disabled}
     %fieldset
       %legend Sicherheit
       %label{:class => "width1 first"}
         Passwort
-        %input{:type => :text, :value => "", :name => "user[pw1]", :class => :text}
+        %input{:type => :text, :value => value_for(:user, :pw1), :name => "user[pw1]", :class => :text}
       %label{:class => "width1"}
         Passwort Wiederholen
-        %input{:type => :text, :value => "", :name => "user[pw2]", :class => :text}
+        %input{:type => :text, :value => value_for(:user, :pw2), :name => "user[pw2]", :class => :text}
     %fieldset{:class => :imp}
-      %legend Speichern
-      %label{:class => "width1 first"}
-        %input{:type => :submit, :value => "Speichern &amp; Neu", :name => :save}
-      %label{:class => "width1"}
-        %input{:type => :submit, :value => "Speichern", :name => :save}
+      - if request.params["is_edit"]
+        %legend Aktualisieren
+        %label{:class => "width1 first"}
+        %label{:class => "width1"}
+          %input{:type => :submit, :value => "Aktualisieren", :name => :save}
+      - else
+        %legend Speichern
+        %label{:class => "width1 first"}
+          %input{:type => :submit, :value => "Speichern &amp; Neu", :name => :save}
+        %label{:class => "width1"}
+          %input{:type => :submit, :value => "Speichern", :name => :save}
     %fieldset
       %legend
         Anschrift
         %span.opt optional      
       %label{:class => "width1 first"}
         Name
-        %input{:type => :text, :value => "", :name => "user_loc[surename]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :surename), :name => "user_loc[surename]", :class => :text}
       %label{:class => "width1"}
         Vorname
-        %input{:type => :text, :value => "", :name => "user_loc[name]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :name), :name => "user_loc[name]", :class => :text}
       %label{:class => "width2 first"}
         Strasse
-        %input{:type => :text, :value => "", :name => "user_loc[street]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :street), :name => "user_loc[street]", :class => :text}
       %label{:class => "width1 first"}
         Plz.
-        %input{:type => :text, :value => "", :name => "user_loc[plz]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :plz), :name => "user_loc[plz]", :class => :text}
       %label{:class => "width1"}
         Ort
-        %input{:type => :text, :value => "", :name => "user_loc[loc]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :loc), :name => "user_loc[loc]", :class => :text}
 
     %fieldset{:class => :width2}
       %legend
@@ -49,20 +62,31 @@
         %span.opt optional
       %label{:class => "width1 first"}
         Tel. Mobil
-        %input{:type => :text, :value => "", :name => "user_loc[tel_mobile]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :tel_mobile), :name => "user_loc[tel_mobile]", :class => :text}
       %label{:class => "width1"}
         Weitere E-Mail Addressen
         %sup 1
-        %input{:type => :text, :value => "", :name => "user_loc[aemail]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :aemail), :name => "user_loc[aemail]", :class => :text}
       %label{:class => "width1 first"}
         Tel. Privat        
-        %input{:type => :text, :value => "", :name => "user_loc[tel_priv]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :tel_priv), :name => "user_loc[tel_priv]", :class => :text}
       %label{:class => "width1"}
       %label{:class => "width1 first"}
         Fax
-        %input{:type => :text, :value => "", :name => "user_loc[fax]", :class => :text}
+        %input{:type => :text, :value => value_for(:user_loc, :fax), :name => "user_loc[fax]", :class => :text}
 
 %div{:class => "column width1 trabant trabant1 corner"}
+  %p{:style => "margin:5px"}
+    %form{:action => UserController.r(:edit), :method => :get, :onsubmit => "form_srlz($(this)); return false", :id=> "usform"}
+      %fieldset
+        %legend Editieren
+        %p
+          %input{:type => :hidden, :name => :is_edit, :value => "1"}
+          %select{:name => :id, :style => "margin-left:auto; margin-right:auto", :onchange => "form_srlz($('#usform')); return false"}
+            - @user.each do |user|
+              - sm = @current_user.id == user.id ? " selected='selected'" : ""
+              = "<option value='#{user.id}'#{sm}>#{user.email}</option>"
+    
   %div{:class => :hints}
     %ul
       %li

@@ -17,9 +17,6 @@ class UserController < AMSController
     redirect UserController.r(:list)
   end
 
-  def a
-    "asddsads"
-  end
   # # 0 allright
   # * 1 zuwenig ausgefüllt
   # * 2 pw != pw1
@@ -51,7 +48,24 @@ class UserController < AMSController
   end
 
   def edit
-    "edit"
+    @user = User.sort_by{|u| u.email}
+    p @current_user = User[request.params["id"].to_i]
+  end
+
+  def value_for(f, v)
+    if request.params['is_edit']
+      user = User[request.params["id"].to_i]
+      case f.to_s
+      when "user"
+        user.send(v.to_s)
+      when "user_loc"
+        begin
+          user.addresses.first.send(v.to_s)
+        rescue
+          ""
+        end
+      end
+    end
   end
 
   def search
