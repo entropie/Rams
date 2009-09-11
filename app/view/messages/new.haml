@@ -5,16 +5,13 @@
       %label{:class => "width1 first"}
         Empfänger
         %input{:type => :text, :value => 'mictro@gmail.com', :name => "msg[to]", :class => :text}
-    %div{:class => "column width2"}
-      %label{:class => "width1 first"}
-        .userbox{:class => :corner}
-          %div
-            %img{:src => "/img/uuser.gif", :class => "uimg"}
-    %div
+    %div{:class => "column width1 multilinex2"}
       %label{:class => "width1 first"}
         Betreff
         %input{:type => :text, :value => 'bar', :name => "msg[topic]", :class => :text}
-      %label{:class => "first multilinex6 unitx5"}
+    %div#ub= render_file "view/user/box.haml", :user => session_user
+    %div{:class => "first column width2"}
+      %label{:class => "first multilinex6 unitx6"}
         Nachricht
         %textarea{:name => "msg[body]", :class => :text}
     %div{:class => "column width2 first"}
