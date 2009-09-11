@@ -1,0 +1,6 @@
+%div{:class => "column width1"}
+  %div{:class => "sb corner"}
+    %h2 Inbox
+    %ul
+      - @messages.each do |msg|
+        %li= "<a href='#{MessageController.r(msg.id)}' class='alink' title='Nachricht: #{msg.topic}'>#{msg.topic}</a> von #{msg.from.name_link}"

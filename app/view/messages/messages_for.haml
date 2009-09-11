@@ -1,6 +1,3 @@
-%div{:class => "column width1 first"}
-  %ul
-    - @messages.each do |msg|
-      %li= "<b>#{msg.topic}</b> von #{msg.from.name}"
-%div{:class => "column width1 first"}
-
+%div{:id => :messages}
+  %div{:class => "column width2 first"}
+  = render_view :inbox, :messages => @messages

@@ -5,7 +5,18 @@
 
 class MessageController < AMSController
   map "/messages"
+
+  helper :partial
+  
+  def index(id = nil)
+    @messages = Message.all
+    @msg = Message[id.to_i]
+  end
+  
   def messages_for(uid)
+    @messages = session_user.messages
+  end
+  def inbox(uid = nil)
     @messages = session_user.messages
   end
 

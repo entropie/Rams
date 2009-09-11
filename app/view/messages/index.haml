@@ -1,0 +1,12 @@
+%div{:id => :messages}
+  %div{:class => "column width2 first"}
+    %div{:class => "column width1 first"}
+      %h3= @msg.topic
+    %div{:class => "column width1"}
+      .dark= "von " + @msg.from.name_link
+    %div{:class => "column width2 first"}
+      %div= @msg.body
+    %div{:class => "column width1 first"}
+    %div{:class => "column width1"}      
+      %p= @msg.created_at
+  = render_view :inbox, :messages => @messages

@@ -59,7 +59,6 @@ module Rams
       
       def send_msg(to, topic, body)
         to = User.find(:email => to)
-        p topic
         to.add_message(Message.create(:from_id => id, :body => body, :topic => topic))
         to.save
         "k"

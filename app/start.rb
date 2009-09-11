@@ -27,6 +27,10 @@ controller = %w"ams page css user address messages auth location products".map{ 
 #libs = %w"lib".map{|lib| lib }
 libs = []
 
+class Innate::Session
+
+  public :cookie
+end
 (controller + libs).each{|lib| require lib}
 
 # p AMSController.controller
