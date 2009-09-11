@@ -30,12 +30,12 @@ function history_append(ele){
 
     $(target).find("a:first").bind("click", mk_history_link);
     if($(target).find("li").length >= historysize){
-        $(target).find("li:gt(" + historysize + ")").hide();
+        $(target).find("li:gt(" + historysize + ")").remove();
     }
 
     if(dups.length > 0){
         $(dups).each(function() {
-            $(this).parent().hide();
+            $(this).parent().remove();
         });
 
     }
