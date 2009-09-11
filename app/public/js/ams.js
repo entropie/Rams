@@ -1,3 +1,26 @@
+function fill_ubox_content(id) {
+    $.ajax({
+      url: "/user/box/" + id,
+      success: function(result){
+        $("#ub").html(result);
+        $(".userbox").corner();
+        mk_history_links(('#ub'));
+      }
+    });
+}
+
+function fill_ubox(target){
+  $(target).autocomplete("/user/lookup", {
+    width: 260,
+    selectFirst: false
+  });
+  $(target).result(function(ev, item) {
+    var email = item[0];
+    var id = item[1];
+    fill_ubox_content(id);
+  });
+}
+
 
 // history
 function mk_history_link() {
@@ -11,21 +34,12 @@ function mk_history_link() {
         history_append(target);
       mk_history_links($("#content"));
       mk_corners($("#content"));
-      $("#userlookup").autocomplete("/user/lookup", {
-	width: 260,
-	selectFirst: false
-      });
-      $("#userlookup").result(function(ev, item) {
-        var email = item[0];
-        var id = item[1];
-          $.ajax({
-            url: "/user/box/" + id,
-            success: function(result){
-              $("#ub").html(result);
-              $(".userbox").corner();
-            }
-            });
-          });
+      if($("#userlookup").length > 0){
+        var ucontent = $("#userlookup").attr("value");
+        if(ucontent.length > 0)
+          fill_ubox_content($("#lookup_uid").attr("value"));
+        fill_ubox($("#userlookup"));
+      }
       load_sidebar(target.attr("href"));
       return false;
     }

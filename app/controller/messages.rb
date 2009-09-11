@@ -16,11 +16,15 @@ class MessageController < AMSController
   def messages_for(uid)
     @messages = session_user.messages
   end
+  
   def inbox(uid = nil)
     @messages = session_user.messages
   end
 
-  def new
+  def new(id = nil)
+    if id
+      @user = User[id.to_i]
+    end
   end
 
   def create

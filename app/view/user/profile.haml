@@ -5,6 +5,8 @@
     %ul
       %li
         %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "Aktualisieren: #{@user.name}"} Benutzer Editieren
+      %li
+        %a{:class => "alink", :href => MessageController.r(:new, @user.id), :title => "Nachticht an #{@user.name}"} Nachricht Schreiben
 
 
 
