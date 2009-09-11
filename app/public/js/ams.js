@@ -11,6 +11,21 @@ function mk_history_link() {
         history_append(target);
       mk_history_links($("#content"));
       mk_corners($("#content"));
+      $("#userlookup").autocomplete("/user/lookup", {
+	width: 260,
+	selectFirst: false
+      });
+      $("#userlookup").result(function(ev, item) {
+        var email = item[0];
+        var id = item[1];
+          $.ajax({
+            url: "/user/box/" + id,
+            success: function(result){
+              $("#ub").html(result);
+              $(".userbox").corner();
+            }
+            });
+          });
       load_sidebar(target.attr("href"));
       return false;
     }

@@ -17,6 +17,21 @@ class UserController < AMSController
     redirect UserController.r(:list)
   end
 
+  def box(id = nil)
+    if id
+      id = id.to_i
+      @user = User[id]
+    end
+  end
+  
+  def lookup
+    q, timestamp = request[:q], request[:timestamp]
+    emails = User.filter(:email.like("%#{q}%")).map{|u|
+      [u.email, u.id].join("|")
+    }
+    emails.join("\n")
+  end
+  
   def update
     ps = request[:user]
     return "1" if ps.values.any?{|v| v.strip.size.zero?}
