@@ -32,7 +32,7 @@ class AMSController < Ramaze::Controller
       return c if c.mapping == path
     end
   end
-  
+
   def Icon(name, title, size = 16, color = :orange)
     file = "/img/ics/#{name}_#{color}_#{size}.png"
     "<img src='%s' title='%s' alt='%s' height='%s' width='%s'/>" % [file, title, title, size, size]

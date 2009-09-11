@@ -3,6 +3,7 @@
 !clr_my_black1 = !clr_my_black + 100
 !clr_dirty_white = #F9F7ED
 !clr_straight_orange = #D15600
+!clr_smoof_orange = #ffab27
 !clr_fresh_blue = #4096EE
 !clr_dark_blue = #3F4C6B
 !clr_light_green = #CDEB8B
@@ -10,10 +11,19 @@
 !clr_dark_green = #6BBA70
 !clr_mint = #C3D9FF
 !clr_funky_red = red
+!clr_magenta = #a300d9
 
+// baseline foo
+div
+  :padding 0px
+  
 .dark_text
   :color = !clr_dark_grey
-  
+
+.textbody
+
+.cheader
+  :color = !clr_magenta
 a
   &:link
     :color navy
@@ -23,7 +33,9 @@ a
     :background-color silver
 a.name_link
   :text-decoration none
-  :color navy
+  :color #4159aa
+  &:hover
+    :background-color transparent
 
     
 html, body
@@ -36,7 +48,7 @@ input[type="submit"]
   :width 50%
   :margin 0px
 #search
-  :margin-top 8px
+  :margin-top 23px
   :text-align center
   label
     :color = !clr_dark_grey + 100
@@ -65,21 +77,34 @@ span.opt
         :list-style-type none
 
 #messages
+  .dark_text
+    :float right
   .sb
     :background-color = !clr_light_green
     :padding-left 10px
     :padding-top 10px
+    :padding-bottom 30px    
   ul
     :margin 0px
+    :padding 0px
     li
       :margin-left 5px
       :list-style-type none
+      :font-size 0.8em
+      :margin 0px
+      &:hover
+        :background-color = !clr_light_green - 8
+  a
+    :text-decoration none
+    &:hover
+      :background-color transparent
     
         
 .userbox
   :position relative
   :background-color #EEEEEE
-  :margin-bottom 10px
+  :padding-bottom 20px
+  :height 60px
   ul
     :margin 0px
     :padding-top 5px
@@ -104,6 +129,7 @@ legend
   :text-align right
 
 #content
+  :margin-top 38px
   .desc
     :color = !clr_straight_orange
 #footer
@@ -111,6 +137,11 @@ legend
 .tasks
   :background-color = !clr_mint
   :color = !clr_mint
+  :margin-top 30px
+  ul
+    :padding 20px
+    :padding-bottom 30px
+    :margin 0px
   
 .mycenter
   :margin-left auto
@@ -121,6 +152,7 @@ legend
   :padding 10px
   :border-right 3px solid
   :border-color = !clr_dirty_white
+  :margin-top 15px
   
 #sidebar_content
   h2
@@ -149,8 +181,8 @@ legend
         :color = !clr_my_black1
       
 #history_inc
+  :margin-top 15px
   :font-size 0.8em
-  :margin 0px
   :padding 0px
   :border-color black
   :overflow hidden

@@ -34,6 +34,10 @@ class Time
     strftime("%Y") + iso_cweek.to_s
   end
 
+  def to_s
+    strftime("%d %b. %y")
+  end
+  
   def nts
     strftime("%Y%m%d")
   end

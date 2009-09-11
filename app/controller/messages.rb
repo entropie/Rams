@@ -9,7 +9,7 @@ class MessageController < AMSController
   helper :partial
   
   def index(id = nil)
-    @messages = Message.all
+    @messages = session_user.messages
     @msg = Message[id.to_i]
   end
   

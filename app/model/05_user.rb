@@ -53,7 +53,7 @@ module Rams
 
       def name_link(xhr = true, img = true)
         add = xhr ? " alink" : ''
-        ia = "<img src='/img/uuser.gif' width='12' height='12' alt='Benutzerbild' />%s" % [name]
+        ia = "<img src='/img/uuser.gif' width='14' height='14' alt='Benutzerbild' /> %s" % [name]
         "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>" % [id, (img ? ia : name)]
       end
       
