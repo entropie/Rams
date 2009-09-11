@@ -21,6 +21,7 @@ div
   :color = !clr_dark_grey
 
 .textbody
+  :margin-top 10px
 
 .cheader
   :color = !clr_magenta
@@ -83,7 +84,13 @@ span.opt
     :background-color = !clr_light_green
     :padding-left 10px
     :padding-top 10px
-    :padding-bottom 30px    
+    :padding-bottom 30px
+    h2
+      :font-size 1.2em
+      :text-align center
+      :margin-bottom 5px
+      :margin-top 0px
+      :color = !clr_dark_green
   ul
     :margin 0px
     :padding 0px
@@ -102,9 +109,11 @@ span.opt
         
 .userbox
   :position relative
-  :background-color #EEEEEE
+  :background-color = !clr_light_silver
   :padding-bottom 20px
-  :height 60px
+  :min-height 67px
+  .sub
+    :display none
   ul
     :margin 0px
     :padding-top 5px
@@ -113,8 +122,14 @@ span.opt
       :padding-left 80px
   .uimg
     :top 13px
-    :left 20px
+    :left 15px
     :position absolute
+    :border 3px solid
+    :border-color = !clr_light_silver + 30
+    &:hover
+      :border-color = !clr_light_silver - 30
+
+
 a.plink
   :font-size 1.2em
   :text-decoration none
@@ -225,12 +240,13 @@ body
 
 #top
   :background-color = !clr_dirty_white
-  :height 60px
+  :height 45px
   :font-size 1.2em
+  :margin-bottom 20px
 
 #toplinks
   :margin-left 20px
-  :margin-top 10px
+  :margin-top 3px
   ul
     li
       :display block
@@ -242,7 +258,7 @@ body
     :margin-right 5px
   a
     :background-color = !clr_dirty_white + 17
-    :margin-top 20px
+    :margin-top 10px
     :padding 15px
     :list-style-type none
     :text-align right

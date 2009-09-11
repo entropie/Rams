@@ -9,16 +9,16 @@ class MessageController < AMSController
   helper :partial
   
   def index(id = nil)
-    @messages = session_user.messages
+    @messages = session_user.messages.reverse
     @msg = Message[id.to_i]
   end
   
   def messages_for(uid)
-    @messages = session_user.messages
+    @messages = session_user.messages.reverse
   end
   
   def inbox(uid = nil)
-    @messages = session_user.messages
+    @messages = session_user.messages.reverse
   end
 
   def new(id = nil)

@@ -1,10 +1,16 @@
+function setup_userbox(ub){
+  var img = $(ub).parent().find(".uimg");
+  console.log(img.attr("src"));
+}
 function fill_ubox_content(id) {
     $.ajax({
       url: "/user/box/" + id,
       success: function(result){
         $("#ub").html(result);
-        $(".userbox").corner();
+        $("#ub .userbox").corner();
         mk_history_links(('#ub'));
+        $("#ub .userbox").highlightFade();
+        setup_userbox($('#ub .userbox .sub'));
       }
     });
 }
