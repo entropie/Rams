@@ -5,7 +5,8 @@
     %div{:class => "column width2 first textbody"}
       %div{:class => :textbody}= @msg.body_markup
       .dark_text{}= " " + @msg.from.name_link + ", " + @msg.created_at.to_s
-    %div{:class => "column width2 first"}      
-      %div{:class => "", :style => "padding:0px"}
-        %hr{:class => "togglehr"}
+    %div{:class => "column width2 first"}
+      %hr
+      %label{:class => "first multilinex2 width2"}
+        %textarea{:style => ""}
   = render_view :inbox, :messages => @messages
