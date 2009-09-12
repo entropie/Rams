@@ -64,18 +64,6 @@ span.opt
     :content "("
   &:after
     :content ")"
-.trabant
-  * p
-    :padding 5px
-  .hints
-    :border-top 1px solid
-    :border-color = !clr_mint - 50
-    :margin-top 20px
-    ul
-      :font-size 0.8em
-      :color = !clr_dark_grey
-      li
-        :list-style-type none
 
 #messages
   .dark_text
@@ -106,10 +94,6 @@ span.opt
     &:hover
       :background-color transparent
     
-.togglehr
-  &:hover
-    :background-color red
-    :height 4px
 .userbox
   :position relative
   :background-color = !clr_light_silver
@@ -141,6 +125,23 @@ a.plink
   :background-color transparent
 legend
   :color = !clr_straight_orange
+
+.trabant
+  legend
+    :text-align center
+    :padding-left 20px
+    :padding-top 10px
+  * p
+    :padding 5px
+  .hints
+    :border-top 1px solid
+    :border-color = !clr_mint - 50
+    ul
+      :font-size 0.8em
+      :color = !clr_dark_grey
+      li
+        :list-style-type none
+
 .trabant1
   :background-color = !clr_mint
   a, a:visited, a:active

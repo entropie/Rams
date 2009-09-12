@@ -11,14 +11,25 @@ class MessageController < AMSController
   def index(id = nil)
     @messages = session_user.messages.reverse
     @msg = Message[id.to_i]
+    if @msg
+      @msg.update(:read => 1)
+    end
+  end
+
+  def sent
+    @messages = session_user.messages.select{|msg| msg.read == 1}
+    @messages.reverse! if @messages
+    @messages ||= []
   end
   
   def messages_for(uid)
     @messages = session_user.messages.reverse
+    @sent_messages = @messages
   end
   
   def inbox(uid = nil)
     @messages = session_user.messages.reverse
+    @messages.reject!{|msg| msg.read == 1}
   end
 
   def new(id = nil)

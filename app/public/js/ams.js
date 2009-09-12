@@ -174,12 +174,6 @@ function load_sidebar(href){
 
 var profiles =
   {
-    window800:
-    {
-      height:800,
-      width:800,
-      status:1
-    },
     window600:
     {
       height:600,
@@ -187,19 +181,6 @@ var profiles =
       status:1,
       resizable:1,
       scrollbars:1
-    },
-    windowCenter:
-    {
-      height:300,
-      width:400,
-      center:1
-    },
-    windowNotNew:
-    {
-      height:300,
-      width:400,
-      center:1,
-      createnew:0
     }
   };
 
