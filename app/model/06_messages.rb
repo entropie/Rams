@@ -30,6 +30,10 @@ module Rams
       def after_create
         update(:created_at => Time.now)
       end
+
+      def body_markup
+        RedCloth.new(body).to_html
+      end
     end
   end
 end

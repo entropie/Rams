@@ -19,9 +19,9 @@ module Rams
   Dir["#{Source}/lib/ruby/*.rb"].each {|file| require file  }
 
   require "rubygems"
-#  gem 'sequel', "2.6.0"
-  
-  require "sequel" #, "3.4.0"
+  require "sequel"
+
+  require "redcloth"
 
   gem 'haml'
 

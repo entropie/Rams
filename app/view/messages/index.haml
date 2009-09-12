@@ -3,9 +3,9 @@
     %div{:class => "column width2 first"}
       %h3{:class => :cheader}= @msg.topic
     %div{:class => "column width2 first textbody"}
-      %p{:class => :textbody}= @msg.body
+      %div{:class => :textbody}= @msg.body_markup
       .dark_text{}= " " + @msg.from.name_link + ", " + @msg.created_at.to_s
     %div{:class => "column width2 first"}      
       %div{:class => "", :style => "padding:0px"}
-        %hr
+        %hr{:class => "togglehr"}
   = render_view :inbox, :messages => @messages

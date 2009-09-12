@@ -1,6 +1,18 @@
+function ub_click(){
+  $(this).unbind("click");
+  $(this).bind("click", ub_uclick);
+  $(this).parent().find(".sub").slideDown();
+}
+function ub_uclick(){
+  $(this).parent().find(".sub").slideUp();
+  $(this).unbind("click");
+  $(this).bind("click", ub_click);
+}
+
 function setup_userbox(ub){
-  var img = $(ub).parent().find(".uimg");
-  console.log(img.attr("src"));
+  var img = $(ub).find(".uimg");
+  var nub = $(ub);
+  img.bind("click", ub_click);
 }
 function fill_ubox_content(id) {
     $.ajax({
@@ -10,7 +22,7 @@ function fill_ubox_content(id) {
         $("#ub .userbox").corner();
         mk_history_links(('#ub'));
         $("#ub .userbox").highlightFade();
-        setup_userbox($('#ub .userbox .sub'));
+        setup_userbox($('#ub .userbox'));
       }
     });
 }
@@ -46,6 +58,8 @@ function mk_history_link() {
           fill_ubox_content($("#lookup_uid").attr("value"));
         fill_ubox($("#userlookup"));
       }
+      setup_userbox($('#content'));
+      $("#content .popupwindow").popupwindow(profiles);
       load_sidebar(target.attr("href"));
       return false;
     }
@@ -158,10 +172,44 @@ function load_sidebar(href){
   });
 }
 
+var profiles =
+  {
+    window800:
+    {
+      height:800,
+      width:800,
+      status:1
+    },
+    window600:
+    {
+      height:600,
+      width:600,
+      status:1,
+      resizable:1,
+      scrollbars:1
+    },
+    windowCenter:
+    {
+      height:300,
+      width:400,
+      center:1
+    },
+    windowNotNew:
+    {
+      height:300,
+      width:400,
+      center:1,
+      createnew:0
+    }
+  };
+
+
 
 
 google.setOnLoadCallback(function() {
   load_sidebar("/dashboard");
   mk_history_links($("#top"));
   $("#sidebar").corner();
+  $(".popupwindow").popupwindow(profiles);
+
 });
