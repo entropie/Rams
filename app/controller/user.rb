@@ -71,45 +71,12 @@ class UserController < AMSController
     end
     str << "</li>"
   end
+  private :dir_listing
 
 
   def browse
     @tree = filetree
   end
-
-  # def browse(path = nil)
-  #   root = File.expand_path(".")
-  #   dir = request[:dir] || path || "."
-  #   p dir
-  #   dir.gsub!(/%20/, ' ')
-  #   lis = ["<ul>"]
-  #   begin
-  #     path = dir
-  #     Dir.chdir(File.expand_path(path)) do
-  #       if Dir.pwd[0,root.length] == root then
-  #         files = Dir.glob("*")
-  #         files.each{ |x|
-  #           next unless File.directory?(x)
-  #           p x
-  #           data = browse(dir+"/"+x)
-  #           p dir+x
-  #           lis << "<li class=\"\"><a href=\"#\" rel=\"#{dir}#{x}/\">#{x}</a>#{data}</li>";
-  #         }
-  #         files.each{ |x|
-  #           next unless File.file?(x)
-  #           ext = File.extname(x)[1..-1]
-  #           lis << "<li class=\"\"><a href=\"#\" rel=\"#{dir}#{x}\">#{x}</a></li>"
-  #         }
-  #       else
-  #         lis << "<li>You are way out of your league</li>"
-  #       end
-  #     end
-  #   rescue 
-  #     lis << "<li>#{$!}</li>"
-  #   end
-  #   lis << "</ul>"
-  #   @lis = lis
-  # end
 
 
   def upload(uid)
@@ -118,6 +85,7 @@ class UserController < AMSController
     @user = User[uid.to_i]
     FileUtils.copy(tempfile.path, @user.public_dir+"avatar.jpg")
   end
+
 
   def lookup
     q, timestamp = request[:q], request[:timestamp]
@@ -161,14 +129,17 @@ class UserController < AMSController
     "1"
   end
 
+
   # FIXME: Add Page-Counter to view
   def list
     au = User.all
     start  = request.params["start"].to_i || 0
     limit = request.params["limit"] || UserListingLength
     @user = au[start .. (start+limit)-1] # FIXME: Do it with sequel!
+    @uparted = @user.partition{|u| u.id % 2 == 0 }
   end
 
+  
   def edit
     @user = User.sort_by{|u| u.email}
     @current_user = User[request.params["id"].to_i]

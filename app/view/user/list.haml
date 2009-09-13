@@ -1,17 +1,7 @@
-%div{:class => "column width2 first"}
-  %table
-    %caption Benutzerliste
-    %thead
-      %tr
-        %th{:style => "width:0px"}
-        %th{:style => "width:0px"} ID
-        %th E-Mail
-    %tbody
-      - @user.each do |user|
-        %tr
-          %td= Icon("hers", "Profil")
-          %td= user.profile_link(nil, :class => "alink")
-          %td= user.email
+- @uparted.each do |user|
+  %div{:class => "column width1 #{@uparted.index(user) == 0 ? ' first' : ''}"}
+    - user.each do |user| 
+      = render_view :box, :user => user
         
 %div{:class => "column width1"}
   %div
