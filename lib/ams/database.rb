@@ -36,10 +36,8 @@ module Rams
           if w == :down
             DB.drop_table name
           elsif w == :up
-            p 1
             defi::Shema.call
           else
-            p 123
           end
         rescue
           p $!

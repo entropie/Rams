@@ -1,3 +1,12 @@
 %div{:id => :messages}
-  %div{:class => "column width1 first"}
-  = render_view :inbox, :messages => @messages
+  %div{:class => "column width2 first"}
+    asd
+    
+  %div{:class => "column width1"}  
+    %div{:class => "column width1 first"}
+      - if @messages.size > 0
+        = render_view :inbox,  :messages => @messages
+    %div{:class => "column width1 first#{@messages.size > 0 ? ' boxchild' : ''}"}      
+      = render_view :read,   :messages => @read_messages  
+    %div{:class => "column width1 first boxchild"}      
+      = render_view :outbox, :messages => @sent_messages

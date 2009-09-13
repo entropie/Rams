@@ -1,6 +1,7 @@
 %div{:id => :messages}
-  %div{:class => "column width1 first"}
-    b
-  = render_view :inbox, :messages => @messages
+  %div{:class => "column width2 first"}
+    asd
+  %div{:class => "column width1"}    
+    = render_view :outbox, :messages => @messages, :ob => true
 
 

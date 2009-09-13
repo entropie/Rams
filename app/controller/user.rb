@@ -23,6 +23,13 @@ class UserController < AMSController
       @user = User[id]
     end
   end
+
+  def upload(uid)
+    tempfile = request.params["userfile"][:tempfile]
+    name = request.params["userfile"][:filename]    
+    @user = User[uid.to_i]
+    FileUtils.copy(tempfile.path, @user.public_dir+"avatar.jpg")
+  end
   
   def lookup
     q, timestamp = request[:q], request[:timestamp]
@@ -76,7 +83,7 @@ class UserController < AMSController
 
   def edit
     @user = User.sort_by{|u| u.email}
-    p @current_user = User[request.params["id"].to_i]
+    @current_user = User[request.params["id"].to_i]
   end
 
   def value_for(f, v)
@@ -110,6 +117,7 @@ class UserController < AMSController
   end
 
   private
+
   def make_browse_link(w = :+, limit = UserListingLength)
     start = request.params["start"].to_i
     start = start.send(w, UserController::UserListingLength)

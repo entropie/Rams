@@ -33,11 +33,6 @@ class AMSController < Ramaze::Controller
     end
   end
 
-  def Icon(name, title, size = 16, color = :orange)
-    file = "/img/ics/#{name}_#{color}_#{size}.png"
-    "<img src='%s' title='%s' alt='%s' height='%s' width='%s'/>" % [file, title, title, size, size]
-  end
-  
   def session_user
     #session[:username]
     User.find(:email => "mictro@gmail.com")
@@ -49,6 +44,11 @@ class AMSController < Ramaze::Controller
   end
 
   private
+
+  def Icon(name, title, size = 16, color = :orange)
+    file = "/img/ics/#{name}_#{color}_#{size}.png"
+    "<img src='%s' title='%s' alt='%s' height='%s' width='%s'/>" % [file, title, title, size, size]
+  end
 
   def logged_in?
     check_auth(session[:username].to_s, session[:password].to_s)

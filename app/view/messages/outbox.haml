@@ -1,1 +1,5 @@
-= render_view(:inbox, :messages => @messages, :ob => true)
+%div{:class => "sb corner"}
+  %h2 Gesendet
+  %ul
+    - @messages.each do |msg|
+      %li= "<a href='#{MessageController.r(msg.id)}' class='alink' title='Nachricht: #{msg.topic}'><img src='/img/starred-small.png' width='14' height='14' class='starred' /> #{msg.topic}</a> an #{msg.to.name_link}"

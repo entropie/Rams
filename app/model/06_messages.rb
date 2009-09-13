@@ -26,6 +26,9 @@ module Rams
       def from
         User[from_id]
       end
+      def to
+        User[user_id]
+      end
       
       def after_create
         update(:created_at => Time.now)
@@ -34,6 +37,7 @@ module Rams
       def body_markup
         RedCloth.new(body).to_html
       end
+
     end
   end
 end

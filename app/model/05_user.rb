@@ -22,6 +22,12 @@ module Rams
         end
       }
 
+      def public_dir
+        ud = Rams::Opts[:data_dir] + "/user/#{id}/"
+        FileUtils.mkdir_p(ud)
+        ud
+      end
+      
       def name
         if addresses.empty?
           email
@@ -46,20 +52,32 @@ module Rams
                     )
       end
 
+
+      def has_userpic?
+        fname = "public/data/user/#{id}/"+"avatar.jpg"
+        File.exists?(fname)
+      end
+
+      def userpic
+        fname = "/data/user/#{id}/"+"avatar.jpg"
+        return "/img/uuser.gif" unless has_userpic?
+        fname
+      end
+      
       def profile_link(str = nil, opts = {})
         o = opts.map{|a,b| "#{a}='#{b}'"}.join(" ")
         "<a #{o} title='#{User[id].email}s Profil' href='/user/profile/#{id}'>#{str || id}</a>"
       end
 
-      def name_link(xhr = true, img = true)
+      def name_link(xhr = true, img = true, w = 14, h = 14)
         add = xhr ? " alink" : ''
-        ia = "<img src='/img/uuser.gif' width='14' height='14' alt='Benutzerbild' /> %s" % [name]
+        ia = "<img src='#{userpic}' width='#{w}' height='#{h}' alt='Benutzerbild' /> %s" % [name]
         "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>" % [id, (img ? ia : name)]
       end
       
-      def send_msg(to, topic, body)
+      def send_msg(suser, to, topic, body)
         to = User.find(:email => to)
-        to.add_message(Message.create(:from_id => id, :body => body, :topic => topic))
+        to.add_message(Message.create(:from_id => suser.id, :body => body, :topic => topic))
         to.save
         "k"
       end

@@ -1,6 +1,6 @@
 %div{:class => "column width1"}
   .userbox{:class => :corner}
-    %img{:src => "/img/uuser.gif", :class => "uimg"}
+    %img{:src => "#{@user.userpic}", :height=> 48, :width => 48, :class => "uimg"}
     %ul{:style => "margin:0px"}
       %li= @user.name_link(true, false)
     %div{:class => :sub, :style=> "clear:both"}
