@@ -1,0 +1,7 @@
+%div{:class => "column width2 first"}
+  %h2= "Daten von #{@user.name}"
+  #userdata_browser=  render_partial :browse, :dir => @user.public_dir
+    
+= render_view :box, :user => @user
+= render_view :toolbar
+

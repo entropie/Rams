@@ -3,19 +3,26 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+require 'remarkably/engines/html'
+
 class UserController < AMSController
 
+  include Remarkably::Common
+  
   UserListingLength = 3
   
   map "/user"
 
+  
   def profile(id = nil)
     @user = User[id] || User[1] # FIXME: For Testing
   end
   
+
   def index
     redirect UserController.r(:list)
   end
+
 
   def box(id = nil)
     if id
@@ -24,13 +31,94 @@ class UserController < AMSController
     end
   end
 
+  
+  def data(id)
+    @user = User[id.to_i]
+  end
+
+
+  SOURCE_PATH = Rams::Source + "/app/public/data/user/1"
+  
+  def filetree
+    str = "<ul class='filetree treeview treeview-black'>"
+    Dir.chdir(SOURCE_PATH + "/..") do
+      Dir['{1}'].map{|d| str << dir_listing(d) }
+    end
+    str + "</ul>"
+  end
+  
+  
+  def dir_listing(dir)
+    str = '<li>'
+    str << "<span class='folder'>#{dir}</span>"
+    Dir.chdir(dir) do
+      str << "<ul style='display:none'>"
+
+      str << "<a href='##{File.expand_path('.').sub(SOURCE_PATH, '')}'></a>"
+      
+      Dir['*'].sort.each do |d|
+        if File.directory?(d)
+          str << dir_listing(d)
+        else
+          file = File.expand_path(d).sub(SOURCE_PATH, '')
+          url = UserController.r(:file, :path => "#{File.expand_path('.').sub(SOURCE_PATH, '')}/#{d}")
+          str << "<li><span class='file'>"
+          str << "<a class='alink' href='#{url}'>#{d}</a>"
+          str << "</span></li>"
+        end
+      end
+      str << "</ul>"
+    end
+    str << "</li>"
+  end
+
+
+  def browse
+    @tree = filetree
+  end
+
+  # def browse(path = nil)
+  #   root = File.expand_path(".")
+  #   dir = request[:dir] || path || "."
+  #   p dir
+  #   dir.gsub!(/%20/, ' ')
+  #   lis = ["<ul>"]
+  #   begin
+  #     path = dir
+  #     Dir.chdir(File.expand_path(path)) do
+  #       if Dir.pwd[0,root.length] == root then
+  #         files = Dir.glob("*")
+  #         files.each{ |x|
+  #           next unless File.directory?(x)
+  #           p x
+  #           data = browse(dir+"/"+x)
+  #           p dir+x
+  #           lis << "<li class=\"\"><a href=\"#\" rel=\"#{dir}#{x}/\">#{x}</a>#{data}</li>";
+  #         }
+  #         files.each{ |x|
+  #           next unless File.file?(x)
+  #           ext = File.extname(x)[1..-1]
+  #           lis << "<li class=\"\"><a href=\"#\" rel=\"#{dir}#{x}\">#{x}</a></li>"
+  #         }
+  #       else
+  #         lis << "<li>You are way out of your league</li>"
+  #       end
+  #     end
+  #   rescue 
+  #     lis << "<li>#{$!}</li>"
+  #   end
+  #   lis << "</ul>"
+  #   @lis = lis
+  # end
+
+
   def upload(uid)
     tempfile = request.params["userfile"][:tempfile]
     name = request.params["userfile"][:filename]    
     @user = User[uid.to_i]
     FileUtils.copy(tempfile.path, @user.public_dir+"avatar.jpg")
   end
-  
+
   def lookup
     q, timestamp = request[:q], request[:timestamp]
     emails = User.filter(:email.like("%#{q}%")).map{|u|
@@ -38,7 +126,7 @@ class UserController < AMSController
     }
     emails.join("\n")
   end
-  
+
   def update
     ps = request[:user]
     return "1" if ps.values.any?{|v| v.strip.size.zero?}
@@ -53,7 +141,7 @@ class UserController < AMSController
     end
     "1"
   end
-  
+
   # # 0 allright
   # * 1 zuwenig ausgefüllt
   # * 2 pw != pw1
@@ -112,7 +200,7 @@ class UserController < AMSController
 
   def tasks
   end
-  
+
   def sidebar
   end
 

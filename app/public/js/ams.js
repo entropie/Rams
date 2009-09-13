@@ -58,6 +58,19 @@ function common_setup_for(ele){
 
   if($("#userpic").length)
     userpic_upload();
+
+  if((".treeview").length){
+    $(".treeview").treeview({
+		animated: "fast",
+		collapsed: true,
+		unique: true,
+		persist: "cookie",
+		toggle: function() {
+			window.console && console.log("%o was toggled", this);
+		}
+
+});
+  }
 }
 // history
 function mk_history_link() {

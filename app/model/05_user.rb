@@ -53,8 +53,12 @@ module Rams
       end
 
 
+      def public_dir
+        fname = "public/data/user/#{id}/"
+      end
+      
       def has_userpic?
-        fname = "public/data/user/#{id}/"+"avatar.jpg"
+        fname = public_dir + "avatar.jpg"
         File.exists?(fname)
       end
 

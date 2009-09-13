@@ -1,0 +1,12 @@
+%div{:class => "column width1"}
+  %div{:class => "tasks corner"}
+    %ul
+      %li
+        %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "Aktualisieren: #{@user.name}"} Benutzer Editieren
+      %li
+        %a{:class => "alink", :href => MessageController.r(:new, @user.id), :title => "Nachricht an #{@user.name}"} Nachricht Schreiben
+      %li
+        %a{:class => "alink", :href => UserController.r(:data, @user.id), :title => "Dateien von #{@user.name}"} Dateien
+    %ul
+      %li
+        %a{:id => "userpic", :rel => "#{@user.id}", :class => "", :href => UserController.r(:upload, :type => :userpic, :uid => @user.id), :title => "Bild Hochladen"} Benutzer-Bild Hochladen

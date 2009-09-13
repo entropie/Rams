@@ -24,9 +24,9 @@ class MessageController < AMSController
   end
   
   def messages_for(uid)
-    @messages = session_user.messages.select{|msg| msg.read == 0}    
-    @sent_messages = Message.filter(:from_id => session_user.id)
-    @read_messages = session_user.messages.select{|msg| msg.read == 1}    
+    @messages = session_user.messages.select{|msg| msg.read == 0}.first 5
+    @sent_messages = Message.filter(:from_id => session_user.id).reverse_order(:id).limit 5
+    @read_messages = session_user.messages.select{|msg| msg.read == 1}.first 5
   end
   
   def new(id = nil)
