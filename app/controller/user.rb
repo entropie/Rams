@@ -187,6 +187,7 @@ class UserController < AMSController
     uc = User.count
     str = (w == :+) ? "Vorwärts" : "Zurück"
     if start < 0 or start >= uc
+
       "<span class='dark_text'>%s</span>" % str
     else
       "<a href='%s' title='Blättern: Start: #{start} ' class='alink plink'>%s</a>" % [UserController.r(:list, :start, start), str]
