@@ -22,7 +22,7 @@ a.add_address(Address.create(
                              :tel_mobile => "0666",
                              :tel_priv   => "0666 1"
                              ))
-a.send_msg("mictro@gmail.com", "Betreff Bla", "Body Bla")
+a.send_msg(User.first, "mictro@gmail.com", "Betreff Bla", "Body Bla")
 
 
 a=User.create(

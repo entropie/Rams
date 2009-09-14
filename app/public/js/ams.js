@@ -63,6 +63,19 @@ function userpic_upload(){
   });
 }
 
+function setup_starred(){
+  $("img.starred").hover(function(){
+    $(this).attr("src", "/img/starred-small-g.png");
+  }, function(){
+    $(this).attr("src", "/img/starred-small.png");
+  });
+  $("img.unstarred").hover(function(){
+    $(this).attr("src", "/img/starred-small.png");
+  }, function(){
+    $(this).attr("src", "/img/starred-small-g.png");
+  });
+}
+
 function common_setup_for(ele){
   mk_history_links($(ele));
   mk_corners($(ele));
@@ -71,6 +84,11 @@ function common_setup_for(ele){
 
   if($("#userpic").length)
     userpic_upload();
+
+  if($("img.starred").length || $("img.unstarred").length)
+    setup_starred();
+
+
 
   if((".treeview").length){
     $(".treeview").treeview({

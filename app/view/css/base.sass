@@ -12,9 +12,45 @@
 !clr_mint = #C3D9FF
 !clr_funky_red = red
 !clr_magenta = #a300d9
-
+!clr_silver = #aaaaaa
+  
 #udbrowser
 
+#addtodo
+  :background-color = !clr_mint
+  :margin-top 20px
+  :margin-right -50px
+  :margin-left 20px
+  :padding 10px
+#todos
+  .todo_head
+    :padding-bottom 30px
+    :padding-top 10px
+    :clear both
+  .cat
+    :color silver
+    :letter-spacing 5px
+    :background-color = !clr_light_green
+    :text-align right
+    :margin-top 10px
+    :font-size 1.2em
+    :color = !clr_dark_green
+  .icon
+    :margin-top 5px
+    :float left
+  .body
+    :position relative
+    :padding-bottom 5px
+    :margin-left 20px
+    :padding-left 5px
+    &:hover
+      :background-color = !clr_dirty_white
+    .at
+      :position absolute
+      :top 0px
+      :right -50px
+      :color = !clr_dark_green
+  
 #message_reply
   fieldset
   

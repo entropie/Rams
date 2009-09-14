@@ -17,7 +17,7 @@ class MessageController < AMSController
     end
   end
 
-  if id
+  def id
     @user = User[id.to_i]
   end
 

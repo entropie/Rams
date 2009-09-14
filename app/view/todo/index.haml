@@ -1,0 +1,11 @@
+%div{:class => "column width1 first"}
+  %h2 Aufgaben
+%div{:class => "column width2", :style => "text-align:right"}  
+  %form{:id => "addtodo", :class => "corner", :action => TodoController.r(:create), :method => :post, :onsubmit => "form_srlz($(this), false); return false;"}
+    %input{:type => :submit, :name => :body, :value => "Neu!", :class => "", :style => "width:60px;float:right"}
+    %input{:type => :text, :name => :body, :value => "", :class => "unitx3"}
+%div{:class => "column width3 first boxchild"}
+  %div{:id => :todos}
+    - @todos.each do |todo|
+      = render_view :todo, :todo => todo
+  
