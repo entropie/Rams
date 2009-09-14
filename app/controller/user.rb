@@ -20,7 +20,7 @@ class UserController < AMSController
   
 
   def index
-    redirect UserController.r(:list)
+    redirect UserController.r(:list, :start, 0)
   end
 
 
@@ -134,11 +134,12 @@ class UserController < AMSController
 
 
   # FIXME: Add Page-Counter to view
-  def list
+  def list(garbage, start)
     au = User.all
-    start  = request.params["start"].to_i || 0
-    limit = request.params["limit"] || UserListingLength
-    @user = au[start .. (start+limit)-1] # FIXME: Do it with sequel!
+    @start  = start.to_i || 0
+    @limit = request.params["limit"] || UserListingLength
+    p start, limit
+    @user = au[@start .. (@start+@limit)-1] # FIXME: Do it with sequel!
     @uparted = @user.partition{|u| u.id % 2 == 0 }
   end
 
@@ -180,14 +181,15 @@ class UserController < AMSController
 
   private
 
-  def make_browse_link(w = :+, limit = UserListingLength)
-    start = request.params["start"].to_i
+  def make_browse_link(w = :+, start = 0, limit = UserListingLength)
+    start = start.to_i
     start = start.send(w, UserController::UserListingLength)
+    uc = User.count
     str = (w == :+) ? "Vorwärts" : "Zurück"
-    if start < 0 or start >= User.count
+    if start < 0 or start >= uc
       "<span class='dark_text'>%s</span>" % str
     else
-      "<a href='%s' class='nohist alink plink'>%s</a>" % [UserController.r(:list, :start => start), str]
+      "<a href='%s' title='Blättern: Start: #{start} ' class='alink plink'>%s</a>" % [UserController.r(:list, :start, start), str]
     end
   end
 

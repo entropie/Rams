@@ -183,12 +183,13 @@ function fill_content(url, target) {
 
 }
 
-
+var History = new Array();
 // history
 function mk_history_link() {
   var target = $(this);
   document.location.hash = "#" + target.attr("href");
-  fill_content(target.attr("href"), target);
+  history_append(target);
+  History[target.attr("href")] = target;
   return false;
 }
 
@@ -298,14 +299,29 @@ var profiles =
     }
   };
 
+function pageload(hash) {
+  // hash doesn't contain the first # character.
+  if(hash) {
+    if($.browser.msie) {
+      hash = encodeURIComponent(hash);
+    }
+    var ele = History[document.location.hash.substr(1)];
+    fill_content(document.location.hash.substr(1), false);
+    if(ele) history_append(ele);
+  } else {
+    $("#content").empty();
+  }
+}
+
+
 google.setOnLoadCallback(function() {
   $("body").hide();
-  if (document.location.hash != '') {
-    fill_content(document.location.hash.substr(1), false);
-  }
+  $.historyInit(pageload, "jquery_history.html");
   load_sidebar("/dashboard");
   mk_history_links($("#top"));
   $("#sidebar").corner();
   $(".popupwindow").popupwindow(profiles);
   $("body").slideDown();
+
+
 });
