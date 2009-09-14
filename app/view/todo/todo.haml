@@ -5,5 +5,5 @@
   %div{:class => "column width2"}
     %span.icon= @todo.icon  
     %div{:class => "body"}
-      %div=@todo.body_markup
+      %div{:class => "inplaceedit", :name => :body, :rel => TodoController.r(:catedit, :mid => @todo.id, :nname => :body)}=@todo.body_markup
       %div{:class => "at"}=@todo.created_at.to_s

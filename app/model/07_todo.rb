@@ -32,9 +32,9 @@ module Rams
 
       def cat
         if categorie
-          "<span class='acat'>#{categorie}</span>"
+          "<span id='categorie' rel='/todo/catedit?mid=#{id}' class='inplaceedit acat'>#{categorie}</span>"
         else
-          "<span class='ncat'>none</span>"
+          "<span id='categorie' rel='/todo/catedit?mid=#{id}' class='inplaceedit ncat'>none</span>"
         end
       end
       

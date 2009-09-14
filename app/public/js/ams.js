@@ -76,6 +76,15 @@ function setup_starred(){
   });
 }
 
+function inplace_edit_setup(){
+  $(".inplaceedit").each(function(){
+    var target = $(this).attr("rel");
+    console.log(target);
+    $(this).editable(target, {
+      id : "name"
+    });
+  });
+}
 function common_setup_for(ele){
   mk_history_links($(ele));
   mk_corners($(ele));
@@ -85,10 +94,11 @@ function common_setup_for(ele){
   if($("#userpic").length)
     userpic_upload();
 
+  if($(".inplaceedit").length)
+    inplace_edit_setup();
+
   if($("img.starred").length || $("img.unstarred").length)
     setup_starred();
-
-
 
   if((".treeview").length){
     $(".treeview").treeview({

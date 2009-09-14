@@ -15,7 +15,17 @@ class TodoController < AMSController
   def sidebar
     redirect UserController.r(:sidebar)
   end
-  
+
+  def catedit
+    name = request[:name]
+    name = request[:nname] if name.size == 0 and request[:nname].size > 0
+    mid = request[:mid].to_i
+    todo = session_user.todo.find{|t| t.id == mid }
+    uhash = {:modified_at => Time.now}
+    p uhash.merge!(name.to_sym => request[:value])
+    todo.update(uhash)
+    request[:value]
+  end
 
   def create
     todo = Todo.create(:body => request[:body])
