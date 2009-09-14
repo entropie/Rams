@@ -9,8 +9,13 @@ class PageController < AMSController
   set_layout("layout" => [:index]) {|path, wish| not request.xhr? }
   helper :partial
 
+
+  def todo
+    "asd"
+  end
+  
   def index
-    "asda ddddddddddd"
+    p @todos = session_user.todo
   end
 
   def dashboard

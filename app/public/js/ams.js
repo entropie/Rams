@@ -161,6 +161,7 @@ function common_setup_for(ele){
 }
 
 function fill_content(url, target) {
+  $("#spinner").show();
   $.ajax({
     url: url,
     success: function(result) {
@@ -175,6 +176,7 @@ function fill_content(url, target) {
         fill_ubox($("#userlookup"));
       }
       load_sidebar(url);
+      $("#spinner").hide();
       return false;
     }
   });

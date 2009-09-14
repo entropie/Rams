@@ -9,7 +9,7 @@ class UserController < AMSController
 
   include Remarkably::Common
   
-  UserListingLength = 3
+  UserListingLength = 6
   
   map "/user"
 
@@ -83,6 +83,9 @@ class UserController < AMSController
     tempfile = request.params["userfile"][:tempfile]
     name = request.params["userfile"][:filename]    
     @user = User[uid.to_i]
+    p @user.public_dir
+    p Dir.pwd
+    FileUtils.mkdir_p(@user.public_dir)
     FileUtils.copy(tempfile.path, @user.public_dir+"avatar.jpg")
   end
 
