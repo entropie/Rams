@@ -5,6 +5,7 @@ function message_answer(ele, mid){
     target.hide();
     target.load( "/messages/reply/" + mid, function(){
       target.slideDown();
+      target.find("textarea").focus();
     });
   });
 }
@@ -76,12 +77,45 @@ function setup_starred(){
   });
 }
 
+
+function todo_cat_edit_onchange(ele){
+  var value = '';
+  var form = $(ele).parent();
+  var url = '';
+  $("select option:selected").each(function () {
+    value = $(this).attr("value");
+    if(value == "__new__"){
+      value = window.prompt("Neue Kategorie");
+    } else {
+      value = $(this).attr("value");
+    }
+    console.log(value);
+    url = form.attr("action") + ";name=category;value="+escape(value);
+    form.parent().load(url, function(){
+      todo_catedit_setup($(this).parent());
+      $.growl("AMS", "Gespeichert");
+      $(this).highlightFade();
+    });
+  });
+
+}
+
+function todo_catedit_setup(ele){
+  target = ele ? $(".todo_catedit", ele) : $(".todo_catedit");
+  target.click(function(){
+    $(this).parent().load($(this).attr("rel"));
+  });
+}
+
 function inplace_edit_setup(){
   $(".inplaceedit").each(function(){
     var target = $(this).attr("rel");
-    console.log(target);
     $(this).editable(target, {
-      id : "name"
+      id : "name",
+      callback : function(){
+        $.growl("AMS", "Gespeichert");
+        $(this).highlightFade();
+      }
     });
   });
 }
@@ -96,6 +130,8 @@ function common_setup_for(ele){
 
   if($(".inplaceedit").length)
     inplace_edit_setup();
+  if($(".todo_catedit").length)
+    todo_catedit_setup(false);
 
   if($("img.starred").length || $("img.unstarred").length)
     setup_starred();
@@ -191,18 +227,8 @@ function form_srlz(frm, history){
   var vars = target.serialize();
   var uid = $(target).find("#uid").attr("value");
   var text = $(target).find("option[value='"+uid+"']").text();
-  $.get(target.attr('action'), vars, function(data){
-    $(target).block();
-    $("#content").html(data);
-    mk_history_links($("#content"));
-    mk_corners($("#content"));
-    var a = "<a href='" + target.attr("action") + "?" + vars + "' title='" + $(target).find(".hist_msg").attr("value") + " " + text + "'>Benutzer Editieren</a>";
-    if(history)
-      history_append($(a));
-
-    load_sidebar(target.attr("href"));
-    $(target).unblock();
-  });
+  var url = target.attr('action') + "?" + vars;
+  fill_content(url);
 }
 
 function ue_form_srlz(frm, clear){
