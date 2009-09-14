@@ -85,14 +85,13 @@ function common_setup_for(ele){
 });
   }
 }
-// history
-function mk_history_link() {
-  var target = $(this);
+
+function fill_content(url, target) {
   $.ajax({
-    url: target.attr("href"),
+    url: url,
     success: function(result) {
       $("#content").html(result);
-      if(target.attr("class").substring(0, 6) != "nohist")
+      if(target && target.attr("class").substring(0, 6) != "nohist")
         history_append(target);
       common_setup_for("#content");
       if($("#userlookup").length > 0){
@@ -101,13 +100,19 @@ function mk_history_link() {
           fill_ubox_content($("#lookup_uid").attr("value"));
         fill_ubox($("#userlookup"));
       }
-
-
-      load_sidebar(target.attr("href"));
+      load_sidebar(url);
       return false;
     }
   });
 
+}
+
+
+// history
+function mk_history_link() {
+  var target = $(this);
+  document.location.hash = "#" + target.attr("href");
+  fill_content(target.attr("href"), target);
   return false;
 }
 
@@ -228,9 +233,13 @@ var profiles =
   };
 
 google.setOnLoadCallback(function() {
+  $("body").hide();
+  if (document.location.hash != '') {
+    fill_content(document.location.hash.substr(1), false);
+  }
   load_sidebar("/dashboard");
   mk_history_links($("#top"));
   $("#sidebar").corner();
   $(".popupwindow").popupwindow(profiles);
-
+  $("body").slideDown();
 });
