@@ -17,6 +17,15 @@ class MessageController < AMSController
     end
   end
 
+  if id
+    @user = User[id.to_i]
+  end
+
+  def reply(mid)
+    @msg = Message[mid.to_i]
+    @user = @msg.from
+  end
+  
   def sent
     @messages = Message.filter(:from_id => session_user.id)
     @messages.reverse! if @messages
@@ -37,7 +46,7 @@ class MessageController < AMSController
 
   def create
     msg = request.params["msg"]
-    session_user.send_msg(session_user, msg["to"], msg["topic"], msg['body'])
+    session_user.send_msg(session_user, msg["to"], msg["topic"], msg['body'], msg["reply_to_id"])
     redirect MessageController.r(:messages_for, session_user.id)
   end
   

@@ -29,6 +29,10 @@ module Rams
       def to
         User[user_id]
       end
+
+      def reply_topic
+        "Re: %s" % topic
+      end
       
       def after_create
         update(:created_at => Time.now)

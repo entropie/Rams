@@ -79,9 +79,11 @@ module Rams
         "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>" % [id, (img ? ia : name)]
       end
       
-      def send_msg(suser, to, topic, body)
+      def send_msg(suser, to, topic, body, reply_to_id = nil)
         to = User.find(:email => to)
-        to.add_message(Message.create(:from_id => suser.id, :body => body, :topic => topic))
+        msghash = {:from_id => suser.id, :body => body, :topic => topic}
+        msghash.merge!(:in_respond_to => reply_to_id.to_i) if reply_to_id
+        to.add_message(Message.create(msghash))
         to.save
         "k"
       end

@@ -7,8 +7,10 @@
       .dark_text{}= " " + @msg.from.name_link + ", " + @msg.created_at.to_s
     %div{:class => "column width2 first"}
       %hr
-      %label{:class => "first multilinex2 width2"}
-        %textarea{:style => ""}
+      %div{:class => "first width2"}
+        %label{:class => "first multilinex2 width2"}
+          %textarea{:style => "", :onfocus => "message_answer($(this), #{@msg.id});"}
+          
   %div{:class => "column width1"}
     - if @messages.size > 0
       = render_view :inbox, :messages => @messages

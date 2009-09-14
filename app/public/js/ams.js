@@ -1,3 +1,16 @@
+function message_answer(ele, mid){
+  //$(ele).fadeOut();
+  var target = $(ele).parent().parent();
+  target.find("textarea").fadeOut(function(){
+    target.hide();
+    target.load( "/messages/reply/" + mid, function(){
+      target.slideDown();
+    });
+  });
+}
+
+
+
 function ub_click(){
   $(this).unbind("click");
   $(this).bind("click", ub_uclick);
