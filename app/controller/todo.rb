@@ -20,14 +20,19 @@ class TodoController < AMSController
     name = request[:name]
     name = request[:nname] if name and name.size == 0 and request[:nname].size > 0
     mid = request[:mid].to_i
-    @todo = session_user.todo.find{|t| t.id == mid }
+    todo = session_user.todo.find{|t| t.id == mid }
     if request[:get] == "1"
       @categories = Todo.all.map{|t| t.category}.compact.uniq
+      @todo = todo
     else
       uhash = {:modified_at => Time.now}
       uhash.merge!(name.to_sym => request[:value])
-      @todo.update(uhash)
-      @value = request[:value]
+      todo.update(uhash)
+      if name.to_sym == :category
+        @todo = todo
+      else
+        @value = request[:value]
+      end
     end
   end
 
