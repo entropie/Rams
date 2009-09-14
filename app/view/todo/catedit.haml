@@ -1,0 +1,9 @@
+- if request[:get]
+  %form{:action => TodoController.r(:catedit, :mid => @todo.id) }
+    %select{:name => :categorie, :onchange => "todo_cat_edit_onchange($(this)); return false"}
+      %option{:value => ""} -- Kategorien --
+      %option{:value => "__new__"} Neu
+      - @categories.sort.each do |cat|
+        %option{:value => cat}= cat 
+- else
+  = @todo.cat 
