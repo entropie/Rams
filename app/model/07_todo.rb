@@ -40,9 +40,9 @@ module Rams
       
       def icon
         if done == 1
-          "<img class='starred' rel='/starred/mark/undone/#{id}' src='/img/starred-small.png' />"
+          "<img class='starred' rel='/todo/mark/undone/#{id}' src='/img/starred-small.png' />"
         else
-          "<img class='unstarred' rel='/starred/mark/done/#{id}' src='/img/starred-small-g.png' />"
+          "<img class='unstarred' rel='/todo/mark/done/#{id}' src='/img/starred-small-g.png' />"
         end
       end
       

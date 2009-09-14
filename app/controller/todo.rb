@@ -36,6 +36,18 @@ class TodoController < AMSController
     end
   end
 
+  def mark(what, id)
+    id = id.to_i
+    @todo = Todo[id]
+    case what
+    when "undone"
+      @todo.update(:done => 0)
+    when "done"
+      @todo.update(:done => 1)      
+    end
+    @todo.icon
+  end
+  
   def create
     todo = Todo.create(:body => request[:body])
     session_user.add_todo(todo)

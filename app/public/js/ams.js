@@ -64,16 +64,27 @@ function userpic_upload(){
   });
 }
 
-function setup_starred(){
-  $("img.starred").hover(function(){
+function setup_starred(ele, callback){
+  $("img.starred", ele).hover(function(){
     $(this).attr("src", "/img/starred-small-g.png");
   }, function(){
     $(this).attr("src", "/img/starred-small.png");
   });
-  $("img.unstarred").hover(function(){
+  $("img.unstarred", ele).hover(function(){
     $(this).attr("src", "/img/starred-small.png");
   }, function(){
     $(this).attr("src", "/img/starred-small-g.png");
+  });
+
+  $("img.starred, img.unstarred", ele).click(function(){
+    var img = ($(this));
+    $(this).parent().load($(this).attr("rel"), function(){
+      setup_starred($(this).parent(), function(){
+        if(img.attr("class") == "starred")
+          $(img).parent().hide();
+      });
+      if(callback) callback.call();
+    });
   });
 }
 
@@ -89,7 +100,6 @@ function todo_cat_edit_onchange(ele){
     } else {
       value = $(this).attr("value");
     }
-    console.log(value);
     url = form.attr("action") + ";name=category;value="+escape(value);
     form.parent().load(url, function(){
       todo_catedit_setup($(this).parent());
@@ -134,7 +144,7 @@ function common_setup_for(ele){
     todo_catedit_setup(false);
 
   if($("img.starred").length || $("img.unstarred").length)
-    setup_starred();
+    setup_starred(false);
 
   if((".treeview").length){
     $(".treeview").treeview({
