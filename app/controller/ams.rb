@@ -49,6 +49,10 @@ class AMSController < Ramaze::Controller
     file = "/img/ics/#{name}_#{color}_#{size}.png"
     "<img src='%s' title='%s' alt='%s' height='%s' width='%s'/>" % [file, title, title, size, size]
   end
+  def Mcon(name, title, size = 32)
+    file = "/img/mics/#{name}.png"
+    "<img src='%s' title='%s' alt='%s' height='%s' width='%s'/>" % [file, title, title, size, size]
+  end
 
   def logged_in?
     check_auth(session[:username].to_s, session[:password].to_s)
