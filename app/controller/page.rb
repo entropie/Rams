@@ -15,7 +15,7 @@ class PageController < AMSController
   end
   
   def index
-    p @todos = session_user.todo
+    @todos = session_user.todo
   end
 
   def dashboard
@@ -24,8 +24,6 @@ class PageController < AMSController
 
   def gsidebar(*args)
     cls = self.class.controller_at("/#{args.first}")
-    p args
-    p cls
     cm = if cls.kind_of?(Array) #or cls == PageController
            "/sidebar"
          else
