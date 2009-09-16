@@ -5,5 +5,4 @@
       %b Alle
   - @cats.each do |cat| 
     %li
-      - acls = cat ==
       %a{:class => "alink", :href => TodoController.r(:index, :category, cat), :title => "Aufgaben der Kategorie: #{cat}"}= cat
