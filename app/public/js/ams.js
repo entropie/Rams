@@ -64,6 +64,14 @@ function userpic_upload(){
   });
 }
 
+// function setup_search(){
+//   $("#search_simg").hover(function(){
+//     $(this).attr("src", "/img/search3-o.gif");
+//   }, function(){
+//     $(this).attr("src", "/img/search3.gif");
+//   });
+// }
+
 function setup_starred(ele, callback){
   $("img.starred", ele).hover(function(){
     $(this).attr("src", "/img/starred-small-g.png");
@@ -152,6 +160,7 @@ function inplace_edit_setup(){
   });
 }
 function common_setup_for(ele){
+
   mk_history_links($(ele));
   mk_corners($(ele));
   setup_userbox($(ele));
@@ -167,7 +176,6 @@ function common_setup_for(ele){
     todo_catedit_setup(false);
 
   if($(".todo_head").length){
-    console.log(1);
     todo_headline_setup();
   }
 
@@ -350,6 +358,5 @@ google.setOnLoadCallback(function() {
   $("#sidebar").corner();
   $(".popupwindow").popupwindow(profiles);
   $("body").slideDown();
-
 
 });

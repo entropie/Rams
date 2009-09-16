@@ -27,7 +27,33 @@
 #userlist
   .userbox
     :margin-bottom 30px
-  
+#search
+  :position absolute
+  :top 16px
+  :right 5%
+#searchform
+  div
+    :background url(/img/search1.gif) no-repeat left top
+    :padding 0 10px
+    :margin 0px
+    :line-height 1px
+  .searchthingy
+    :border-top 2px solid #999
+    :border-bottom 2px solid #999
+    :border-left 0
+    :border-right 0
+    :background url(/img/search2.gif) repeat-x top
+    :padding 3px 2px 2px 0
+    :height 15px
+  input
+    :vertical-align top
+    :margin 0
+    :line-height 1
+    :outline 0
+    :display inline
+  label
+    :display inline
+    
 #addtodo
   :background-color = !clr_mint
   :margin-top 20px
@@ -126,13 +152,6 @@ input[type="submit"]
   :text-align center
   :width 50%
   :margin 0px
-#search
-  :margin-top 23px
-  :text-align center
-  label
-    :color = !clr_dark_grey + 100
-  input
-    :margin-left 40%
 
 span.opt
   :color = !clr_dark_grey
@@ -232,7 +251,9 @@ legend
   .desc
     :color = !clr_straight_orange
 #footer
-
+#mid
+  :margin-top 30px
+  
 .tasks
   :background-color = !clr_mint
   :color = !clr_mint
@@ -280,8 +301,9 @@ legend
         :color = !clr_my_black1
       
 #history_inc
-  :margin-top 15px
-  :margin-left -5px
+  :background-color silver
+  :margin-top 40px
+  :margin-left 150px
   :font-size 0.8em
   :padding 0px
   :border-color black
@@ -294,6 +316,7 @@ legend
     :margin 0px
     :background-color = !clr_light_silver
     :padding 3px 10px 3px 10px
+    //:margin-right 10px
     &:first-child
       :border-left 1px solid
       :border-color = !clr_light_silver - 50
@@ -325,14 +348,15 @@ body
 
 #top
   :background-color = !clr_dirty_white
-  :height 45px
+  :height 30px
   :font-size 1.2em
-  :margin-bottom 20px
 
 #toplinks
   :margin-left 20px
   :margin-top 3px
   ul
+    :margin 0px
+    :margin-top 5px
     li
       :display block
       :float left
@@ -343,7 +367,7 @@ body
     :margin-right 5px
   a
     :background-color = !clr_dirty_white + 17
-    :margin-top 10px
+    :margin-top 0px
     :padding 15px
     :list-style-type none
     :text-align right

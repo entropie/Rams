@@ -31,6 +31,12 @@
   %body
     %div{:id => :spinner}
       %img{:src => "/img/spinner.gif"}
+
+    %div{:id => "search", :class => ""}
+      %form{:id => :searchform}
+        %div
+          == <input type="text" name="s" class="searchthingy" /><input id="search_simg" type="image" name="s" title="Suche" src="/img/search3.gif" />
+        
     %div{:id => :top, :class => "width8"}
       %div{:class => "column width4 first"}
         %div{:id => :toplinks}
@@ -51,11 +57,7 @@
               %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
                 = Icon(:radio, "foo", 32, :green)
                 Orte
-    %div{:class => "column width1 first"}
-      %div{:id => "search"}
-        %input{:type => :text, :name => :s}
-            
-    %div{:class => "column width4", :style => "height:44px"}
+    %div{:class => "column width5 first", :style => "height:44px"}
       %ul{:id => :history_inc}
               
     %div{:id => :mid, :class => "column first width6"}
