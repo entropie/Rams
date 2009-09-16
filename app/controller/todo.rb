@@ -8,12 +8,17 @@ class TodoController < AMSController
 
   helper :partial
   
-  def index
+  def index(what = :category, which = nil)
     @todos = session_user.todo.reverse
+    @which = which
+    if @which
+     @todos.reject!{|t| t.category != @which} 
+    end
   end
 
   def sidebar
-    redirect UserController.r(:sidebar)
+    @todos =  session_user.todo.reverse
+    @cats = @todos.map{|t| t.category || "" }.uniq.sort.select{|t| t.size > 0}
   end
 
   def catedit
@@ -47,11 +52,30 @@ class TodoController < AMSController
     end
     @todo.icon
   end
+
   
   def create
-    todo = Todo.create(:body => request[:body])
+    phash = {:body => request[:body]}
+    cat = request[:category]
+    if cat
+      phash.merge!(:category => cat)
+    end
+    todo = Todo.create(phash)
     session_user.add_todo(todo)
-    redirect TodoController.r
+    r = if cat
+      TodoController.r(:index, :category, cat)
+    else
+      TodoController.r
+    end
+    redirect r
+  end
+
+  def delete(id)
+    todo = Todo[id.to_i]
+    if todo
+      session_user.remove_todo(todo)
+    end
+    "Gelöscht"
   end
   
 end

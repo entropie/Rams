@@ -36,9 +36,16 @@
   :padding 10px
 #todos
   .todo_head
+    :position relative
     :padding-bottom 30px
     :padding-top 10px
     :clear both
+    .todo_hidden
+      :display none
+      :position absolute
+      :z-index 100
+      :bottom 0px
+      :left 0px
   .cat
     :text-align center
     > div

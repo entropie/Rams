@@ -105,9 +105,31 @@ function todo_cat_edit_onchange(ele){
       todo_catedit_setup($(this).parent());
       $.growl("AMS", "Gespeichert");
       $(this).highlightFade();
+      // MAYBE: ?
+      // FIXME: url
+      load_sidebar("/todo/");
     });
   });
 
+}
+
+function todo_headline_setup(ele){
+  $(".todo_head").each(function(){
+    var cele = $(this);
+    $(this).find(".dlink img").click(function(){
+      $.get($(this).parent().attr("ref"), {}, function(data){
+        $.growl("Aufgaben", data);
+        cele.fadeOut(function(){$(this).remove()});
+        load_sidebar(document.location.hash.substr(1));
+      });
+    });
+  });
+
+  $(".todo_head").mouseover(function(){
+    $(this).find(".todo_hidden").show();
+  }).mouseout(function(){
+    $(this).find(".todo_hidden").hide();
+  });
 }
 
 function todo_catedit_setup(ele){
@@ -140,8 +162,14 @@ function common_setup_for(ele){
 
   if($(".inplaceedit").length)
     inplace_edit_setup();
+
   if($(".todo_catedit").length)
     todo_catedit_setup(false);
+
+  if($(".todo_head").length){
+    console.log(1);
+    todo_headline_setup();
+  }
 
   if($("img.starred").length || $("img.unstarred").length)
     setup_starred(false);
