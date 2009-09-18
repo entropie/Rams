@@ -7,7 +7,7 @@ class ProductsController < AMSController
   map "/products"
 
   def index
-    "products"
+    "<p>products</p> " * 100
   end
 
   def sidebar

@@ -16,10 +16,15 @@ class TodoController < AMSController
     end
   end
 
+  def todo(id)
+    @todo = session_user.todo.find{|t| t.od == id}
+  end
+
   def sidebar
     @todos =  session_user.todo.reverse
     @cats = @todos.map{|t| t.category || "" }.uniq.sort.select{|t| t.size > 0}
   end
+  
 
   def catedit
     name = request[:name]
@@ -40,6 +45,7 @@ class TodoController < AMSController
       end
     end
   end
+  
 
   def mark(what, id)
     id = id.to_i
@@ -69,6 +75,7 @@ class TodoController < AMSController
     end
     redirect r
   end
+
 
   def delete(id)
     todo = Todo[id.to_i]

@@ -2,7 +2,7 @@
   %h2 Aufgaben
 %div{:class => "column width2", :style => "text-align:right"}  
   %form{:id => "addtodo", :class => "corner", :action => TodoController.r(:create), :method => :post, :onsubmit => "form_srlz($(this), false); return false;"}
-    %input{:type => :submit, :name => :body, :value => "Neu!", :class => "", :style => "width:60px;float:right"}
+    %input{:type => :submit, :name => :body, :value => "Neu!", :class => "submit"}
     %input{:type => :text, :name => :body, :value => "", :class => "unitx3"}
     - if @which
       %input{:type => :hidden, :name => :category, :value => @which}

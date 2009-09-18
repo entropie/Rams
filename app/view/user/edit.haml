@@ -82,7 +82,7 @@
       %input{:type => :hidden, :name => :hist_msg, :value => "Aktualisieren:", :class => :hist_msg}
       %select{:name => :id, :style => "margin-left:auto; margin-right:auto", :onchange => "form_srlz($('#usform'), true); return false", :id => :uid}
         - @user.each do |user|
-          - sm = @current_user.id == user.id ? " selected='selected'" : ""
+          - sm = (@current_user and @current_user.id == user.id ? " selected='selected'" : "")
           = "<option value='#{user.id}'#{sm}>#{user.email}</option>"
     
   %div{:class => :hints}

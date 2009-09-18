@@ -127,17 +127,17 @@ function todo_headline_setup(ele){
     $(this).find(".dlink img").click(function(){
       $.get($(this).parent().attr("ref"), {}, function(data){
         $.growl("Aufgaben", data);
-        cele.fadeOut(function(){$(this).remove()});
+        cele.slideUp(function(){$(this).remove()});
         load_sidebar(document.location.hash.substr(1));
       });
     });
   });
 
-  $(".todo_head").mouseover(function(){
-    $(this).find(".todo_hidden").show();
-  }).mouseout(function(){
-    $(this).find(".todo_hidden").hide();
-  });
+  // $(".todo_head").mouseover(function(){
+  //   $(this).find(".todo_hidden").show();
+  // }).mouseout(function(){
+  //   $(this).find(".todo_hidden").hide();
+  // });
 }
 
 function todo_catedit_setup(ele){
@@ -274,6 +274,9 @@ function clearForm(form) {
 function form_srlz(frm, history){
   var target = $(frm);
   var vars = target.serialize();
+  var sb = target.find("input[type='submit']");
+  sb.attr("disabled", "true");
+  sb.attr("value", "Speichere...");
   var uid = $(target).find("#uid").attr("value");
   var text = $(target).find("option[value='"+uid+"']").text();
   var url = target.attr('action') + "?" + vars;
@@ -357,6 +360,6 @@ google.setOnLoadCallback(function() {
   mk_history_links($("#top"));
   $("#sidebar").corner();
   $(".popupwindow").popupwindow(profiles);
-  $("body").slideDown();
+$("body").fadeIn("slow");
 
 });

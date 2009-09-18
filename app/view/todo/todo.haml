@@ -5,8 +5,9 @@
   %div{:class => "column width2"}
     %span.icon= @todo.icon  
     %div{:class => "body"}
+      %div{:class => "at", :title => @todo.created_at.to_s(false)}= "vor " + @todo.created_at.to_s      
       %div{:class => "inplaceedit", :name => :body, :rel => TodoController.r(:catedit, :mid => @todo.id, :nname => :body)}=@todo.body_markup
-      %div{:class => "at"}=@todo.created_at.to_s
+
       %div{:class => "todo_hidden"}
         %a{:ref => TodoController.r(:delete, @todo.id), :class => "dlink", :title => "Löschen"}
           = Mcon("sub_black_delete", "Löschen")

@@ -46,7 +46,7 @@ module Rams
     str = "Ramp-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]
   end
-
+  
 end
 
 

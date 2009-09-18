@@ -60,6 +60,9 @@
   :margin-right -50px
   :margin-left 20px
   :padding 10px
+  .submit
+    :float right
+    :width 100px
 #todos
   .todo_head
     :position relative
@@ -94,10 +97,10 @@
     &:hover
       :background-color = !clr_dirty_white
     .at
-      :position absolute
-      :top 0px
-      :right -50px
-      :color = !clr_dark_green
+      :color #919191
+      :float right
+      :padding 3px
+      :z-index 1000
   
 #message_reply
   fieldset
@@ -246,13 +249,20 @@ legend
 .tright
   :text-align right
 
+
+  
 #content
   :margin-top 38px
   .desc
     :color = !clr_straight_orange
-#footer
+
+html>body> #mid
+  :height auto
+
+
 #mid
   :margin-top 30px
+  :position relative
   
 .tasks
   :background-color = !clr_mint
@@ -342,7 +352,7 @@ h1
 body
   :color #000
   :font-size 0.9em
-
+  
 .silver
   :background-color = !clr_light_silver
 
