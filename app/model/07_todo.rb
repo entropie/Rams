@@ -31,10 +31,10 @@ module Rams
       end
 
       def cat
-        if category
+        if category and not category.strip.size == 0
           "<span id='category' rel='/todo/catedit?mid=#{id};get=1' class='todo_catedit acat'>#{category}</span>"
         else
-          "<span id='category' rel='/todo/catedit?mid=#{id};get=1' class='todo_catedit ncat'>none</span>"
+          "<span id='category' rel='/todo/catedit?mid=#{id};get=1' class='todo_catedit ncat'>(none)</span>"
         end
       end
       

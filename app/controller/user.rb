@@ -9,7 +9,7 @@ class UserController < AMSController
 
   include Remarkably::Common
   
-  UserListingLength = 8
+  UserListingLength = 10 # should be even
   
   map "/user"
 

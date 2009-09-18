@@ -54,7 +54,7 @@ a.add_address(Address.create(
                              ))
 
 
-0.upto(10) do |i|
+0.upto(32) do |i|
 
   a=User.create(
                 :email => "foo#{i}@baz.com",

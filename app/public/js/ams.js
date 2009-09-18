@@ -41,6 +41,7 @@ function fill_ubox_content(id) {
     });
 }
 
+
 function fill_ubox(target){
   $(target).autocomplete("/user/lookup", {
     width: 260,
@@ -121,6 +122,33 @@ function todo_cat_edit_onchange(ele){
 
 }
 
+function odometer(){
+  var top = (document.documentElement.scrollTop ?
+             document.documentElement.scrollTop :
+             document.body.scrollTop);
+  fadeBottom(top);
+
+}
+
+
+// shameless stolen from http://www.webmynd.com/html/index.html
+function fadeBottom(top) {
+  var height = $('#mid').height();
+  var diff = height - top;
+  var windowheight = $(window).height() - 200;
+  var browser=navigator.appName;
+  if (diff < windowheight) {
+    var opacity = (windowheight - diff)/400;
+    var percent = opacity * 100;
+    $("#bottom").css("opacity", opacity);
+    $("#bottom").css("z-index",10);
+  } else {
+    $("#bottom").css("opacity",0);
+    $("#bottom").css("z-index",-1);
+  }
+}
+
+
 function todo_headline_setup(ele){
   $(".todo_head").each(function(){
     var cele = $(this);
@@ -160,6 +188,8 @@ function inplace_edit_setup(){
   });
 }
 function common_setup_for(ele){
+  var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+  fadeBottom(top);
 
   mk_history_links($(ele));
   mk_corners($(ele));
@@ -354,12 +384,14 @@ function pageload(hash) {
 
 
 google.setOnLoadCallback(function() {
-  $("body").hide();
+  //$("body").hide();
   $.historyInit(pageload, "jquery_history.html");
   load_sidebar("/dashboard");
   mk_history_links($("#top"));
   $("#sidebar").corner();
   $(".popupwindow").popupwindow(profiles);
-$("body").fadeIn("slow");
-
+  //$("body").fadeIn("slow");
+  var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
+  fadeBottom(top);
+  window.onscroll = odometer;
 });
