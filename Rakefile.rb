@@ -8,9 +8,9 @@ require "lib/ams"
 
 include Rams::Database::Tables
 task :a do
-  u = User[1]
-  p u
-  p u.agency.admins
+  u = User.all.each{|u|
+    p u.is_admin?
+  }
 end
 
 

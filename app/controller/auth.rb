@@ -8,19 +8,21 @@ class AuthController < AMSController
   map "/auth"
   
   def login
-    return false unless request.post?
-    @title = "Authentifizierung"
-    username = request[:login].strip
-    password = request[:password].strip
-    p check_auth(username, password)
-    if check_auth(username, password)
-      session[:logged_in] = true
-      session[:username] = username
-      redirect PageController.r(:/)
+    unless request.post?
+
     else
-      flash[:error] = "Benutzerkennung falsch."
+      @title = "Authentifizierung"
+      username = request[:username].strip
+      password = request[:password].strip
+      if check_auth(username, password)
+        session[:logged_in] = true
+        session[:username] = username
+        redirect PageController.r(:/)
+      else
+        flash[:error] = "Unbekannter Benutzer oder falsches Passwort."
+      end
+      redirect AuthController.r(:login)
     end
-    redirect AuthController.r(:login)
   end
   
   def logout

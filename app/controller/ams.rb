@@ -12,9 +12,9 @@ class AMSController < Ramaze::Controller
 
   include Rams::Database::Tables
   
-  # before(:index, :id){
-  #   login_required
-  # }
+  before(){
+    login_required
+  }
 
   ControllerList = []
   
@@ -34,8 +34,8 @@ class AMSController < Ramaze::Controller
   end
 
   def session_user
-    #session[:username]
-    User.find(:email => "mictro@gmail.com")
+    
+    User.find(:email => session[:username]) if session
   end
   
   def login_required
@@ -59,19 +59,18 @@ class AMSController < Ramaze::Controller
   end
 
   def check_auth(email, pass)
-    # return false if (not email or email.empty?) and (not pass or pass.empty?)
-    # if pass.size == 32
-    #   pw = pass
-    # else
-    #   pw = User.pwcrypt(pass)
-    # end
-    # if User[:email => email, :passwd => pw].nil?
-    #   flash[:error] = 'Falscher Benutzername und/oder Passwort.'
-    #   false
-    # else
-    #   true
-    # end
-    true if email == "entropie" && pass == "test"
+    return false if (not email or email.empty?) and (not pass or pass.empty?)
+    if pass.size == 32
+      pw = pass
+    else
+      pw = User.pwcrypt(pass)
+    end
+    if usr = User[:email => email, :passwd => pw]
+      true
+    else
+      flash[:error] = 'Falscher Benutzername und/oder Passwort.'      
+      false
+    end
   end  
 end
 

@@ -5,6 +5,9 @@
 
 class ProductsController < AMSController
   map "/products"
+  helper :auth
+
+  before_all { login_required }
 
   def index
     "<p>products</p> " * 100

@@ -8,8 +8,25 @@ class PageController < AMSController
 
   set_layout("layout" => [:index]) {|path, wish| not request.xhr? }
   helper :partial
+  helper :auth
 
+  before_all { login_required }
 
+  USERS = {
+    'demo' => Digest::SHA1.hexdigest('demo'),
+    'entropie' => Digest::SHA1.hexdigest('lala'),
+  }
+
+  trait :auth_table => PageController::USERS
+
+  def login
+    redirect r(:auth, :login)
+  end
+
+  def logout
+    redirect r(:auth, :logout)
+  end
+  
   def todo
     "asd"
   end

@@ -12,8 +12,8 @@
     %script{:type => "text/javascript", :src => "/js/jquery.curvycorners.min.js"}=""  
     %script{:type => "text/javascript"}
       google.setOnLoadCallback(function() {
-      
       $('#login').corner();
+      $('.ferror').highlightFade();
       });
   %body
     = @content

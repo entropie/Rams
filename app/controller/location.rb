@@ -5,6 +5,9 @@
 
 class LocationController < AMSController
   map "/location"
+  helper :auth
+
+  before_all { login_required }
 
   def index
     "location"

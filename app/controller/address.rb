@@ -5,6 +5,9 @@
 
 class AddressController < AMSController
   map "/address"
+  helper :auth
+
+  before_all { login_required }
 
   def index
     "add"

@@ -7,6 +7,9 @@ class TodoController < AMSController
   map "/todo"
 
   helper :partial
+  helper :auth
+
+  before_all { login_required }
   
   def index(what = :category, which = nil)
     @todos = session_user.todo.reverse
@@ -17,6 +20,7 @@ class TodoController < AMSController
   end
 
   def todo(id)
+    p session_user
     @todo = session_user.todo.find{|t| t.od == id}
   end
 

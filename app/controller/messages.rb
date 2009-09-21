@@ -7,7 +7,10 @@ class MessageController < AMSController
   map "/messages"
 
   helper :partial
-  
+  helper :auth
+
+  before_all { login_required }
+
   def index(id = nil)
     @messages = session_user.messages.select{|msg| msg.read == 0}
     @read_messages = session_user.messages.select{|msg| msg.read == 1}        

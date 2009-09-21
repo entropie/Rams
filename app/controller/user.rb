@@ -12,10 +12,14 @@ class UserController < AMSController
   UserListingLength = 10 # should be even
   
   map "/user"
+  helper :auth
+
+  before_all { login_required }
 
   
   def profile(id = nil)
-    @user = User[id] || User[1] # FIXME: For Testing
+    @user = session_user
+    @address = @user.addresses.first
   end
   
 
@@ -166,7 +170,8 @@ class UserController < AMSController
   end
 
   def search
-    "search"
+    pp session_user
+    "a"
   end
 
   def me
