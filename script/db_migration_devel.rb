@@ -17,7 +17,8 @@ a=User.create(
               )
 a.agency = agency
 a.save
-
+agency.add_admin(a)
+agency.save
 
 a.add_address(Address.create(
                              :name => "Michael",

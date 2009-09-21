@@ -14,12 +14,13 @@ module Rams
       one_to_many :messages
       one_to_many :todo
       many_to_one :agency
+      many_to_one :admin      
       
       Shema = proc{
         DB.create_table :user do
           primary_key :id
 
-          foreign_key :admin_id
+          foreign_key :admin_user_id
           foreign_key :agency_id
           
           varchar     :email, :unique => true, :size => 255

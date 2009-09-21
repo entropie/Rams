@@ -6,9 +6,11 @@
 
 require "lib/ams"
 
-
+include Rams::Database::Tables
 task :a do
-  p Rams::Database::tables
+  u = User[1]
+  p u
+  p u.agency.admins
 end
 
 
