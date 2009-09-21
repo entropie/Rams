@@ -29,6 +29,10 @@ module Rams
         end
       }
 
+      def is_admin?
+        not admin_user_id.nil?
+      end
+      
       def public_dir
         ud = Rams::Opts[:data_dir] + "/user/#{id}/"
         FileUtils.mkdir_p(ud)
@@ -82,8 +86,9 @@ module Rams
 
       def name_link(xhr = true, img = true, w = 14, h = 14)
         add = xhr ? " alink" : ''
+        admin_add = is_admin? ? " <img src='/img/mics/star_full.png' width='#{w}' height='#{h}' title='Admin' />" : ""
         ia = "<img src='#{userpic}' width='#{w}' height='#{h}' alt='Benutzerbild' /> %s" % [name]
-        "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>" % [id, (img ? ia : name)]
+        "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>#{admin_add}" % [id, (img ? ia : name)]
       end
       
       def send_msg(suser, to, topic, body, reply_to_id = nil)
