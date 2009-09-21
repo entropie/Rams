@@ -8,11 +8,17 @@ require "lib/ams"
 include Rams::Database::Tables
 
 
+agency = Agency.create(:name => "Ackro Inc")
+
 # User
 a=User.create(
               :email => "mictro@gmail.com",
               :passwd => User.pwcrypt("test")
               )
+a.agency = agency
+a.save
+
+
 a.add_address(Address.create(
                              :name => "Michael",
                              :surename => "Ende",
@@ -38,6 +44,9 @@ a.add_address(Address.create(
                              :tel_mobile => "0666",
                              :tel_priv   => "0666 1"
                              ))
+a.agency = agency
+a.save
+
 
 a=User.create(
               :email => "bar@foo.com",
@@ -53,6 +62,8 @@ a.add_address(Address.create(
                              :tel_priv   => "0666 1"
                              ))
 
+a.agency = agency
+a.save
 
 0.upto(32) do |i|
 
@@ -69,7 +80,10 @@ a.add_address(Address.create(
                                :tel_mobile => "0666",
                                :tel_priv   => "0666 #{i*100}"
                                ))
+  a.agency = agency
+  a.save
 end
+
 
 =begin
 Local Variables:
