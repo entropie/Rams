@@ -3,6 +3,11 @@
     %h2 Kontaktdaten
     %div{:class => "column width2 first"}
       %p{:class => "column width1 first desc"}
+        Agentur
+      %p{:class => "column width1 no-indent"}
+        %a{:href => AgencyController.r(@user.agency.name.escape(:uri)), :class => "alink", :title => "Agentur: #{@user.agency.name}"}
+          =@user.agency.name
+      %p{:class => "column width1 first desc no-indent"}
         Vollständiger Name
       %p{:class => "column width1 no-indent"}
         = @user.name

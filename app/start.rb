@@ -21,7 +21,7 @@ end
 extend GLog
 
 
-controller = %w"ams page css user address messages auth location products todo".map{ |lib|
+controller = %w"ams page css user address messages auth location products todo agency".map{ |lib|
   File.join("controller", lib)
 }
 #libs = %w"lib".map{|lib| lib }

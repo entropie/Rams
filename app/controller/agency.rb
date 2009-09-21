@@ -9,7 +9,17 @@ class AgencyController < AMSController
 
   before_all { login_required }
 
-  def index
+  def index(agency_string_or_id = nil)
+    if agency_string_or_id
+      @agency =
+        if agency_string_or_id.scan(/[A-Za-z ]/).size == agency_string_or_id.size
+          Agency[:name => agency_string_or_id ]
+        elsif agency_string_or_id.scan(/[0-9]/).size == agency_string_or_id.size
+          Agency[agency_string_or_id.to_i]
+        else
+        end
+    end
+    p @agency
     "add"
   end
 
