@@ -37,7 +37,7 @@ end
 #p AMSController.controller_at "/"
 # p AMSController.controller_at "/"
 
-Ramaze.start(:host => "localhost",
+Ramaze.start(:host => "10.0.187.12",
              :port => 8080,
              :adapter => :mongrel
               )

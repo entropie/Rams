@@ -3,7 +3,6 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
-
 require "lib/ams"
 
 include Rams::Database::Tables
