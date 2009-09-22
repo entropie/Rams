@@ -18,7 +18,12 @@ class UserController < AMSController
 
   
   def profile(id = nil)
-    @user = session_user
+    @user =
+      if id
+        User[id.to_i]
+      else
+        session_user
+      end
     @address = @user.addresses.first
   end
   
