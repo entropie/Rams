@@ -1,0 +1,9 @@
+%h1 Agenturen
+%div{:id => :agency_list}
+  - @agencies.sort_by{|a,b| a}.each do |letter, agencies|
+    %div{:class => "column width1 first letter"}
+      = letter
+    %div{:class => "column width1 content"}
+      %ul{:style => "margin:0px;:padding:0px"}    
+        - agencies.each do |agency|
+          %li= agency.name_link(true)
