@@ -4,7 +4,7 @@
       %h3{:class => :cheader}= @msg.topic
     %div{:class => "column width2 first textbody"}
       %div{:class => :textbody}= @msg.body_markup
-      .dark_text{}= " " + @msg.from.name_link + ", " + @msg.created_at.to_s
+      .dark_text{}= " " + @msg.from.name_link + ", vor " + @msg.created_at.to_s
     %div{:class => "column width2 first"}
       %hr
       %div{:class => "first width2"}

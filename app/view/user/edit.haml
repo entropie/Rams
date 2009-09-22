@@ -10,7 +10,10 @@
           %option Benutzer
       %label{:class => "width1"}
         E-Mail
-        %input{:type => :text, :value => value_for(:user, :email), :name => "user[email]", :class => :text}
+        - if request.params["is_edit"] == "1"
+          %input{:disabled => :disabled, :type => :text, :value => value_for(:user, :email), :name => "user[email]", :class => :text}
+        - else
+          %input{:type => :text, :value => value_for(:user, :email), :name => "user[email]", :class => :text}
       %label{:class => "width1 first"}
       %label{:class => "width1"}
         Benutzer ID
