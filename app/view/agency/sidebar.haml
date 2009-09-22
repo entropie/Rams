@@ -1,4 +1,17 @@
 - if @agency
-  %div{:class => "column width1 center"}
-    %div{:class => "center", :style => "padding:20px; padding-top:20px"}
-      = @agency.logo 
+  %h2= @agency.name
+  %ul
+    %li Dashboard
+    %li Kontakte
+    %li Produkte
+    %li Orte
+  %ul
+    %li Benutzer Verwalten
+    %li Rechte
+%h2{:class => :boxchild} Alle Agenturen
+%ul
+  - unless @agency
+    %li
+      %a{:class => "alink", :href => AgencyController.r(session_user.agency.name.escape(:uri))}= session_user.agency.name_link
+  %li
+    %a{:class => "alink", :href => AgencyController.r()} Übersicht

@@ -14,25 +14,50 @@
 !clr_magenta = #a300d9
 !clr_silver = #aaaaaa
 
+.topicfriend
+  :float right
+  :z-index 1000
+  :margin-top -20px
+  span
+    &:hover
+      :color red
 .right
   :text-align right
 .right
   :text-align center
 
 #agency_list
+  .even
+    :padding 10px
+    :height 100%
+    :margin-bottom 20px
+    :background-color = !clr_light_silver + 10
+  .odd
+    :padding 10px    
+    :height 100%
+    :margin-bottom 20px    
+    :background-color = !clr_light_silver
   .letter
-    :font-size 2em
-    :text-align right
+    :font-size 3em
     :margin-right 20px
-    :margin-top 20px
+    :text-align right
+    :color = !clr_light_silver
   .content
     :color red
     ul
       :margin-bottom 20px
       li
         :list-style-type none
+        :float left
+        :width 45%
+        :margin 10px
+        :border-bottom 1px solid silver
+        :background-color #fff
+        :padding 3px
+        &:hover
+          :background-color = !clr_smoof_orange
         &:first-child
-          :margin-top 20px
+          :clear both
   
 a.agency_name_link
   :color = !clr_my_black1

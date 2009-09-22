@@ -202,6 +202,16 @@ function inplace_edit_setup(){
 function setup_tabs(){
   $("#tabcontainer > ul").tabs();
 }
+
+function scrollto(ele){
+  var target = $("#"+ele);
+  $.scrollTo(target, 800, {
+    offset: {top: -30},
+    onAfter:function(){
+    target.next().find(".cont").highlightFade();
+  }});
+}
+
 function common_setup_for(ele){
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
   fadeBottom(top);
@@ -218,7 +228,6 @@ function common_setup_for(ele){
     agencypic_upload();
 
   if($(".inplaceedit").length){
-    alert(1);
     inplace_edit_setup();
   }
 

@@ -1,9 +1,16 @@
-%h1 Agenturen
 %div{:id => :agency_list}
+  %div{:class => :topicfriend}
+    - ('A'..'Z').each do |l|
+      %span{:onclick => "scrollto('l#{l}'); return false;"}=l
+  %h1{:style => "max-width:150px"} Agenturen
+  - i = 0
   - @agencies.sort_by{|a,b| a}.each do |letter, agencies|
-    %div{:class => "column width1 first letter"}
+    - add = (i+=1) % 2 == 0 ? "even" : "odd"
+    %div{:class => "column width1 first letter", :style => "width:20px", :id => "l#{letter}"}
       = letter
-    %div{:class => "column width1 content"}
-      %ul{:style => "margin:0px;:padding:0px"}    
-        - agencies.each do |agency|
-          %li= agency.name_link(true)
+    %div{:class => "column width2 content", :style => "width:680px"}
+      %div{:class => "cont #{add}"}
+        %ul{:style => "margin:0px;:padding:0px"}
+          - agencies.each do |agency|
+            %li= agency.name_link(true)
+        %div{:style => "clear:both"} 

@@ -9,11 +9,13 @@
       %div{:class => "column width1 #{users.index(user) == 0 ? ' first' : ''}", :id => "userlist"}
         - user.each do |usr| 
           %li= usr.name_link
-%div{:class => "column width1 boxchild"}
+%div{:class => "column width1"}
   %div{:class => "corner silver", :style => "padding:20px; padding-top:0px"}
     %h2 Verwalter
     - if @agency.admins.first
       %p= @agency.admins.first.name_link
     - else
       %p{:class => "notice corner"}= "Kein Admin"
-
+%div{:class => "column width1 boxchild"}
+  %div{:style => "padding:20px; padding-top:0px", :class => :center}
+    = @agency.logo 
