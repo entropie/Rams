@@ -67,11 +67,13 @@ function userpic_upload(){
 function agencypic_upload(){
   //$('.noagencypic').corner();
   //console.log('/agency/upload/' + $('.noagencypic').attr("rel"));
-  new AjaxUpload('#noagencypic', {
-  action: '/agency/upload/' + $('#noagencypic').attr("rel"),
-    onSubmit: function() {
-      location.reload();
-    }
+  $(".noagencypic").each(function(){
+    new AjaxUpload($(this), {
+    action: '/agency/upload/' + $(this).attr("rel"),
+      onSubmit: function() {
+        location.reload();
+      }
+    });
   });
 }
 
@@ -224,7 +226,7 @@ function common_setup_for(ele){
   if($("#userpic").length)
     userpic_upload();
 
-  if($("#noagencypic").length)
+  if($(".noagencypic").length)
     agencypic_upload();
 
   if($(".inplaceedit").length){

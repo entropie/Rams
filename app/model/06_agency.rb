@@ -30,7 +30,7 @@ module Rams
           if File.exist?(File.join(public_dir, "logo.jpg"))
             "<img class='agencypic' title='#{name}' rel='#{id}' src='/data/agency/#{id}/logo.jpg' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
           else
-            "<img id='noagencypic' rel='#{id}' src='/img/nopic.png' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
+            "<img class='noagencypic' rel='#{id}' src='/img/nopic.png' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
           end
       end
 
