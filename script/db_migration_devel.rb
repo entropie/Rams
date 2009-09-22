@@ -93,6 +93,8 @@ a.save
 end
 
 
+require "script/todo" 
+
 =begin
 Local Variables:
   mode:ruby

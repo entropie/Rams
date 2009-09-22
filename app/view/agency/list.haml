@@ -7,7 +7,7 @@
     %span= "(<mark>#{@all_agencies.size}</mark>)"
   - i = 0
   - @agencies.sort_by{|a,b| a}.each do |letter, agencies|
-    - add = (i+=1) % 2 == 0 ? "even" : "odd"
+    - add = (i+=1) % 2 == 1 ? "even" : "odd"
     %div{:class => "column width1 first letter", :style => "width:20px", :id => "l#{letter}"}
       = letter
     %div{:class => "column width2 content", :style => "width:680px"}
