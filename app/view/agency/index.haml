@@ -1,9 +1,19 @@
-%h1= @agency.name
-%p= "Admin: #{@agency.admins.first.name_link}"
-%h2 Benutzer
-%ul
-  - users = (@agency.users - @agency.admins).partition{|u| u.id % 2 == 0 }
-  - users.each do |user|
-    %div{:class => "column width1 #{users.index(user) == 0 ? ' first' : ''}", :id => "userlist"}
-      - user.each do |usr| 
-        %li= usr.name_link
+%div{:class => "column width2 first"}
+  // %div{:style => "float:right"}
+  //   = @agency.logo 
+  %h1= @agency.name
+  %h2 Benutzer
+  %ul
+    - users = (@agency.users - @agency.admins).partition{|u| u.id % 2 == 0 }
+    - users.each do |user|
+      %div{:class => "column width1 #{users.index(user) == 0 ? ' first' : ''}", :id => "userlist"}
+        - user.each do |usr| 
+          %li= usr.name_link
+%div{:class => "column width1 boxchild"}
+  %div{:class => "corner silver", :style => "padding:20px; padding-top:0px"}
+    %h2 Verwalter
+    - if @agency.admins.first
+      %p= @agency.admins.first.name_link
+    - else
+      %p{:class => "notice corner"}= "Kein Admin"
+

@@ -20,11 +20,10 @@ class TodoController < AMSController
   end
 
   def todo(id)
-    p session_user
     @todo = session_user.todo.find{|t| t.od == id}
   end
 
-  def sidebar
+  def sidebar(*args)
     @todos =  session_user.todo.reverse
     @cats = @todos.map{|t| t.category || "" }.uniq.sort.select{|t| t.size > 0}
   end

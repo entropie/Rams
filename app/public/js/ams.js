@@ -60,7 +60,17 @@ function userpic_upload(){
   new AjaxUpload('#userpic', {
     action: '/user/upload/' + $('#userpic').attr("rel"),
     onSubmit: function() {
-//      this.disable();
+      location.reload();
+    }
+  });
+}
+function agencypic_upload(){
+  //$('.noagencypic').corner();
+  //console.log('/agency/upload/' + $('.noagencypic').attr("rel"));
+  new AjaxUpload('#noagencypic', {
+  action: '/agency/upload/' + $('#noagencypic').attr("rel"),
+    onSubmit: function() {
+      location.reload();
     }
   });
 }
@@ -116,6 +126,7 @@ function todo_cat_edit_onchange(ele){
       $(this).highlightFade();
       // MAYBE: ?
       // FIXME: url
+
       load_sidebar("/todo/");
     });
   });
@@ -187,6 +198,10 @@ function inplace_edit_setup(){
     });
   });
 }
+
+function setup_tabs(){
+  $("#tabcontainer > ul").tabs();
+}
 function common_setup_for(ele){
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
   fadeBottom(top);
@@ -199,8 +214,13 @@ function common_setup_for(ele){
   if($("#userpic").length)
     userpic_upload();
 
-  if($(".inplaceedit").length)
+  if($("#noagencypic").length)
+    agencypic_upload();
+
+  if($(".inplaceedit").length){
+    alert(1);
     inplace_edit_setup();
+  }
 
   if($(".todo_catedit").length)
     todo_catedit_setup(false);
@@ -235,6 +255,12 @@ function fill_content(url, target) {
       if(target && target.attr("class").substring(0, 6) != "nohist")
         history_append(target);
       common_setup_for("#content");
+      if($("#tabcontainer").length){
+        console.log(23);
+        setup_tabs();
+}
+
+
       if($("#userlookup").length > 0){
         var ucontent = $("#userlookup").attr("value");
         if(ucontent.length > 0)
@@ -350,6 +376,7 @@ function load_sidebar(href){
     url: "/gsidebar" + href,
     success: function(result) {
       $("#sidebar_content").html(result);
+      common_setup_for("#sidebar_content");
       mk_history_links($("#sidebar_content"));
       return false;
     }
@@ -388,7 +415,6 @@ google.setOnLoadCallback(function() {
   $.historyInit(pageload, "jquery_history.html");
   load_sidebar("/dashboard");
   mk_history_links($("#top"));
-  $("#sidebar").corner();
   $(".popupwindow").popupwindow(profiles);
   //$("body").fadeIn("slow");
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);

@@ -183,7 +183,7 @@ class UserController < AMSController
   def tasks
   end
 
-  def sidebar
+  def sidebar(*args)
   end
 
   private

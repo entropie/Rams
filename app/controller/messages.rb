@@ -11,6 +11,9 @@ class MessageController < AMSController
 
   before_all { login_required }
 
+  def sidebar(*args)
+  end
+  
   def index(id = nil)
     @messages = session_user.messages.select{|msg| msg.read == 0}
     @read_messages = session_user.messages.select{|msg| msg.read == 1}        

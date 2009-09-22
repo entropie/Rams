@@ -9,6 +9,12 @@ include Rams::Database::Tables
 
 
 agency = Agency.create(:name => "Ackro Inc")
+agency1 = Agency.create(:name => "FooFirma")
+
+
+letters = "abcdefghijklmnopqrstuvwxyz".scan(/./)
+
+0.upto(100){|i| Agency.create(:name => "#{letters.sort_by{rand}.first.capitalize}est Agentur #{i}")}
 
 # User
 a=User.create(
@@ -26,7 +32,7 @@ a.add_address(Address.create(
                              :street   => "Nightmare On Elm Street",
                              :plz      => "00666",
                              :loc      => "Hell",
-                             :tel_mobile => "0666",
+                             :tel_mobile => "0666 666 666",
                              :tel_priv   => "0666 1"
                              ))
 a.send_msg(User.first, "mictro@gmail.com", "Betreff Bla", "Body Bla")
@@ -42,7 +48,7 @@ a.add_address(Address.create(
                              :street   => "Nightmare On Elm Street",
                              :plz      => "00666",
                              :loc      => "Hell",
-                             :tel_mobile => "0666",
+                             :tel_mobile => "0666 123 431",
                              :tel_priv   => "0666 1"
                              ))
 a.agency = agency
@@ -79,10 +85,11 @@ a.save
                                :plz      => "00666",
                                :loc      => "Hell",
                                :tel_mobile => "0666",
-                               :tel_priv   => "0666 #{i*100}"
+                               :tel_priv   => "0666 123 #{i*100}"
                                ))
-  a.agency = agency
+  a.agency = (i % 2 == 0) ? agency : agency1
   a.save
+  
 end
 
 

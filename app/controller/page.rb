@@ -44,12 +44,12 @@ class PageController < AMSController
     cm = if cls.kind_of?(Array) #or cls == PageController
            "/sidebar"
          else
-           "#{cls.mapping}/sidebar"
+           "#{cls.mapping}/sidebar/" + args[1..-1].map{|a| a.escape(:uri)}.join("/")
          end
     redirect cm
   end
 
-  def sidebar
+  def sidebar(*args)
     "dashboard sb"
   end
 

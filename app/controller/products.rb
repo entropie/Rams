@@ -13,7 +13,7 @@ class ProductsController < AMSController
     "<p>products</p> " * 100
   end
 
-  def sidebar
+  def sidebar(*args)
     "produts sb"
   end
   

@@ -3,5 +3,6 @@
     %img{:src => "#{@user.userpic}", :height=> 48, :width => 48, :class => "uimg"}
     %ul{:style => "margin:0px"}
       %li= @user.name_link(true, false)
+      %li= @user.agency.name_link
     %div{:class => :sub, :style=> "clear:both"}
       sub

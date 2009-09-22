@@ -11,23 +11,44 @@ class AgencyController < AMSController
 
   def index(agency_string_or_id = nil)
     if agency_string_or_id
-      @agency =
-        if agency_string_or_id.scan(/[A-Za-z ]/).size == agency_string_or_id.size
-          Agency[:name => agency_string_or_id ]
-        elsif agency_string_or_id.scan(/[0-9]/).size == agency_string_or_id.size
-          Agency[agency_string_or_id.to_i]
-        else
-        end
+      @agency = agency_from_argument(agency_string_or_id)
     else
-      @agency = Agency.first
+      call(r(:list))
     end
     
   end
 
-  def sidebar
-    "add sb"
+  def upload(uid)
+    tempfile = request.params["userfile"][:tempfile]
+    name = request.params["userfile"][:filename]    
+    @agency = Agency[uid.to_i]
+    FileUtils.mkdir_p(@agency.public_dir)
+    FileUtils.copy(tempfile.path, @agency.public_dir+"logo.jpg")
   end
 
+  def list
+    @agencies = {}
+    agencies = Agency.all
+    agencies.map{|a|
+      @agencies[ a.name[0..0] ] ||= []
+      @agencies[ a.name[0..0] ] << a
+    }
+  end
+
+  def sidebar(*args)
+    @agency = agency_from_argument(args.first)
+  end
+
+  private
+
+  def agency_from_argument(arg)
+    if arg.scan(/[0-9]/).size == arg.size
+      Agency[arg.to_i]
+    elsif arg.scan(/[A-Za-z0-9 ]/).size == arg.size
+      Agency[:name => arg ]      
+    else
+    end
+  end
 end
 
 

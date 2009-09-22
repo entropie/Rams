@@ -5,8 +5,7 @@
       %p{:class => "column width1 first desc"}
         Agentur
       %p{:class => "column width1 no-indent"}
-        %a{:href => AgencyController.r(@user.agency.name.escape(:uri)), :class => "alink", :title => "Agentur: #{@user.agency.name}"}
-          =@user.agency.name
+        =@user.agency.name_link
       %p{:class => "column width1 first desc no-indent"}
         Vollständiger Name
       %p{:class => "column width1 no-indent"}

@@ -13,7 +13,7 @@ class LocationController < AMSController
     "location"
   end
 
-  def sidebar
+  def sidebar(*args)
     "location sb"
   end
 end

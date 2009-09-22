@@ -24,6 +24,20 @@ module Rams
         FileUtils.mkdir_p(ud)
         ud
       end
+
+      def logo(w = 128, h = 128)
+        imgurl =
+          if File.exist?(File.join(public_dir, "logo.jpg"))
+            "<img class='agencypic' title='#{name}' rel='#{id}' src='/data/agency/#{id}/logo.jpg' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
+          else
+            "<img id='noagencypic' rel='#{id}' src='/img/nopic.png' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
+          end
+      end
+
+      def name_link(img = false)
+        img = img ? logo(24, 24) : ''
+        "#{img} <a class='agency_name_link alink' href='/agency/#{name.escape(:uri)}' title='#{name}'>#{name}</a> "
+      end
       
       
     end
