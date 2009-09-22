@@ -142,10 +142,10 @@ class UserController < AMSController
 
   # FIXME: Add Page-Counter to view
   def list(garbage, start)
-    au = User.all
+    @all_user = User.all
     @start  = start.to_i || 0
     @limit = request.params["limit"] || UserListingLength
-    @user = au[@start .. (@start+@limit)-1] # FIXME: Do it with sequel!
+    @user = @all_user[@start .. (@start+@limit)-1] # FIXME: Do it with sequel!
     @uparted = @user.partition{|u| u.id % 2 == 0 }
   end
 

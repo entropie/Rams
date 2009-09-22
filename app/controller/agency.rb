@@ -28,8 +28,8 @@ class AgencyController < AMSController
 
   def list
     @agencies = {}
-    agencies = Agency.all
-    agencies.map{|a|
+    @all_agencies = Agency.all
+    @all_agencies.map{|a|
       @agencies[ a.name[0..0] ] ||= []
       @agencies[ a.name[0..0] ] << a
     }

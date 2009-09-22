@@ -1,8 +1,10 @@
 %div{:id => :agency_list}
   %div{:class => :topicfriend}
     - ('A'..'Z').each do |l|
-      %span{:onclick => "scrollto('l#{l}'); return false;"}=l
-  %h1{:style => "max-width:150px"} Agenturen
+      %span{:title => "Zum Buchstaben #{l} Springen", :onclick => "scrollto('l#{l}'); return false;"}=l
+  %h1{}
+    Agenturen
+    %span= "(<mark>#{@all_agencies.size}</mark>)"
   - i = 0
   - @agencies.sort_by{|a,b| a}.each do |letter, agencies|
     - add = (i+=1) % 2 == 0 ? "even" : "odd"

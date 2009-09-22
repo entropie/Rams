@@ -1,3 +1,6 @@
+%h1
+  Kontakte
+  %span= "(<mark><mark>#{UserController::UserListingLength}</mark>/#{@all_user.size}</mark>)"
 - @uparted.each do |user|
   %div{:class => "column width1 #{@uparted.index(user) == 0 ? ' first' : ''}", :id => "userlist"}
     - user.each do |user| 

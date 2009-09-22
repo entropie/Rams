@@ -51,11 +51,23 @@
         :float left
         :width 45%
         :margin 10px
-        :border-bottom 1px solid silver
+        :border 1px solid
+        :border-color = !clr_silver + 10
         :background-color #fff
-        :padding 3px
+        :padding 5px
+        img
+          :margin-top 3px
+        a
+          :width 90%
+          :margin-top 10px
+          :display block
+          :float right
+          //:background-color red
+          :font-size 1.1em
         &:hover
-          :background-color = !clr_smoof_orange
+          //:background-color = !clr_smoof_orange
+          :border-bottom 1px solid
+          :border-color = !clr_silver - 30
         &:first-child
           :clear both
   
@@ -433,6 +445,13 @@ html>body> #mid
 
 h1
   :color = !clr_straight_orange
+  :margin-bottom 50px
+  span
+    :font-size 0.7em
+    :color = !clr_light_silver
+  mark
+    :background-color transparent
+    :color = !clr_light_silver - 50
 
 .ferror
   :padding 20px
