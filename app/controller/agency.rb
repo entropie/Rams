@@ -18,9 +18,10 @@ class AgencyController < AMSController
           Agency[agency_string_or_id.to_i]
         else
         end
+    else
+      @agency = Agency.first
     end
-    p @agency
-    "add"
+    
   end
 
   def sidebar

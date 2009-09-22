@@ -142,7 +142,6 @@ class UserController < AMSController
     au = User.all
     @start  = start.to_i || 0
     @limit = request.params["limit"] || UserListingLength
-    p start, limit
     @user = au[@start .. (@start+@limit)-1] # FIXME: Do it with sequel!
     @uparted = @user.partition{|u| u.id % 2 == 0 }
   end
