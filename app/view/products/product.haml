@@ -2,8 +2,11 @@
   %div{:id => :pgroup}
     %ul
       %li
-        %a{:class => ""}
+        %a{:class => "active"}
           = @pgroup.name
+      %li
+        %a{:href => ProductsController.r(:index, :productgroup, @pgroup.id), :class => :alink, :title => "Produkte"}
+          Zurück zu den Produktgruppen
 %div{:class => "column width2", :style => "", :id => :product_border}
   %div{:id => "product_container"}
     %h2= @product.name
