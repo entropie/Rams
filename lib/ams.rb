@@ -25,6 +25,7 @@ module Rams
 
   gem 'haml'
 
+  require "image_science"
   require 'sass'  
   
   require "contrib"

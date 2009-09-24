@@ -23,7 +23,8 @@ class AgencyController < AMSController
     name = request.params["userfile"][:filename]    
     @agency = Agency[uid.to_i]
     FileUtils.mkdir_p(@agency.public_dir)
-    FileUtils.copy(tempfile.path, @agency.public_dir+"logo.jpg")
+    FileUtils.copy(tempfile.path, file = @agency.public_dir+"logo.jpg")
+    Thumbnail(file, 48)
   end
 
   def list

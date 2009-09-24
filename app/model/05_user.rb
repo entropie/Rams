@@ -69,12 +69,13 @@ module Rams
       end
       
       def has_userpic?
-        fname = public_dir + "avatar.jpg"
-        File.exists?(fname)
+        base = public_dir + "avatar.jpg"
+        thumb = public_dir + "thumb_avatar.jpg"        
+        File.exists?(base) and File.exists?(thumb)
       end
 
       def userpic
-        fname = "/data/user/#{id}/"+"avatar.jpg"
+        fname = "/data/user/#{id}/"+"thumb_avatar.jpg"
         return "/img/uuser.gif" unless has_userpic?
         fname
       end

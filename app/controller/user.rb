@@ -93,7 +93,8 @@ class UserController < AMSController
     name = request.params["userfile"][:filename]    
     @user = User[uid.to_i]
     FileUtils.mkdir_p(@user.public_dir)
-    FileUtils.copy(tempfile.path, @user.public_dir+"avatar.jpg")
+    FileUtils.copy(tempfile.path, file = @user.public_dir+"avatar.jpg")
+    Thumbnail(file, 48)
   end
 
 

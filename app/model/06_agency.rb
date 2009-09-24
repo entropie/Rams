@@ -26,9 +26,10 @@ module Rams
       end
 
       def logo(w = 128, h = 128)
+        file = w > 64 ? "logo.jpg" : "thumb_logo.jpg"
         imgurl =
           if File.exist?(File.join(public_dir, "logo.jpg"))
-            "<img class='agencypic' title='#{name}' rel='#{id}' src='/data/agency/#{id}/logo.jpg' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
+            "<img class='agencypic' title='#{name}' rel='#{id}' src='/data/agency/#{id}/#{file}' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
           else
             "<img class='noagencypic' rel='#{id}' src='/img/nopic.png' alt='#{name} Logo' width='#{w}' height='#{h}' /> "
           end

@@ -72,6 +72,17 @@ class AMSController < Ramaze::Controller
       false
     end
   end  
+
+  def Thumbnail(file, x, y = nil)
+    ImageScience.with_image(file) do |img|
+      img.thumbnail(x) do |thumb|
+        dir, fname = File.dirname(file), "thumb_" + File.basename(file).to_s
+        thumb.save(nfile = File.join(dir, fname))
+        log "Thumbnail: #{nfile}"
+      end
+    end
+  end
+
 end
 
 
