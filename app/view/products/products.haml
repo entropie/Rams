@@ -1,0 +1,8 @@
+%div{:class => "column width2", :style => "", :id => :product_border}
+  %div{:id => "product_container"}
+    %div
+      %ul{:class => "nomargin"}
+        - @products.sort_by{|p| p.name}.each do |product|
+          %li
+            %a{:class => :alink, :href => ProductsController.r(:index, :product, product.id), :title => "Produktgruppe: #{product.name}"}= product.name
+  
