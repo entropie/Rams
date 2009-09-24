@@ -15,12 +15,73 @@
 !clr_silver = #aaaaaa
 !clr_iedit = !clr_light_silver
 
-
+a.active
+  :font-weight bolder
 .inplaceedit
   :border-bottom 5px solid
   :padding-bottom 5px
   :border-color = !clr_iedit
-  
+
+#pgroup
+  ul
+    :list-style-type none
+    li
+      :margin-bottom 5px
+      a
+        :width 100%
+        :display block
+        :padding 5px
+        :background-image url(/img/todo_cat_bg.png)
+        :text-decoration none
+        :text-align right
+        :padding-right 5px
+        :color = !clr_dark_green - 50
+        &:hover
+          :background-color transparent
+          :color = !clr_dark_green - 100
+        &.active
+          :color = !clr_dark_green - 100
+
+#product_border
+  :position relative
+  :border 1px solid
+  :border 5px solid
+  :border-color = !clr_light_green
+  :margin-top 22px
+  :width 470px
+  :padding-bottom 20px
+
+#ptoggle
+  :border-right 15px solid silver
+  :position absolute
+  :top -5px
+  :right -15px
+  :height 30%
+  :border-color = !clr_light_green
+  :z-index 1100
+  &:hover
+    :border-color = !clr_dark_green
+  .pcontent
+    :height 100%
+    :display none
+    :width 100%
+    :background-color = !clr_light_green
+#product_container
+  :padding-left 15px
+  :padding-bottom 20px
+  ul
+    :list-style-type none
+    li
+      :margin 5px
+      :float left
+      :width 212px
+      :background-color = !clr_light_silver              
+      a
+        :display block
+        :padding 5px
+        :text-decoration none
+.nomargin
+  :margin 0px
 
 .topicfriend
   :float right

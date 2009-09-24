@@ -9,8 +9,13 @@ class ProductsController < AMSController
 
   before_all { login_required }
 
-  def index
-    "<p>products</p> " * 100
+  def index(*args)
+    @product_groups = session_user.agency.product_groups
+    if args.size == 2 and args.first == "productgroup"
+      @target_id = args.last.to_i
+      @products = @product_groups.map{|pg| pg.id == @target_id ? pg : nil }.
+        compact.map{|pg| pg.products}.flatten
+    end
   end
 
   def sidebar(*args)

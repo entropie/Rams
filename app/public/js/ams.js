@@ -218,6 +218,28 @@ function scrollto(ele){
   }});
 }
 
+function product_toggle_unclick(){
+  $(this).highlightFade();
+  $(this).unbind("click");
+  $(this).bind("click", product_toggle_click);
+  $(this).find(".pcontent").animate({
+    width: 'hide',
+    opacity: 'hide'
+  });
+}
+function product_toggle_click(){
+  $(this).highlightFade();
+  $(this).bind("click", product_toggle_unclick);
+  $(this).find(".pcontent").animate({
+    width: 'show',
+    opacity: 'show'
+  });
+}
+function product_toggle_setup(){
+  target = $('#ptoggle');
+  $(target).bind("click", product_toggle_click);
+}
+
 function common_setup_for(ele){
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
   fadeBottom(top);
@@ -236,6 +258,9 @@ function common_setup_for(ele){
   if($(".inplaceedit").length){
     inplace_edit_setup();
   }
+
+  if($("#ptoggle").length)
+    product_toggle_setup();
 
   if($(".todo_catedit").length)
     todo_catedit_setup(false);

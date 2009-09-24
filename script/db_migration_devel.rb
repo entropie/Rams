@@ -93,7 +93,8 @@ a.save
 end
 
 
-require "script/todo" 
+require "script/todo"
+require "script/products" 
 
 =begin
 Local Variables:

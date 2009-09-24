@@ -7,10 +7,9 @@ require "lib/ams"
 
 include Rams::Database::Tables
 task :a do
-  u = User.all.each{|u|
-    p u.name
-    p u.agency.name
-  }
+
+  
+  
 end
 
 

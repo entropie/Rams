@@ -1,9 +1,11 @@
 %div{:class => "column width1 first"}
-  //%h1 Produkte und Produktgruppen
-  %div{:id => :pgroup, :class => ""}
+  %div{:id => :pgroup}
     %ul
       - @product_groups.sort_by{|p| p.name}.each do |pgroup|
         %li
-          %a{:title => "Produktg.: #{pgroup.name}", :class => "alink#{@target_id == pgroup.id ? ' active' : ''}", :href => ProductsController.r(:index, :product, pgroup.id)}= pgroup.name
+          %a{:title => "Produktg.: #{pgroup.name}", :class => "alink#{@target_id == pgroup.id ? ' active' : ''}", :href => ProductsController.r(:index, :productgroup, pgroup.id)}= pgroup.name
 - if @products
   = render_view :products, :products => @products
+- else
+  %div{:class => "column width2", :style => "", :id => :product_border}
+    %p.notice Bitte wählen Sie eine Produktgruppe.

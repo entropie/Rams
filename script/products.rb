@@ -7,10 +7,13 @@
 
 1.upto(10) do |ai|
   a = Agency[ai]
-   0.upto(20) do |i|
-    pgroup = ProductGroup.create(:name => "Produktruppe Foo #{i}")
-    0.upto(20) do |pi|
-      product = Product.create(:name => "Produkt Bar #{pi}")
+  letters = ('A'..'Z').to_a
+  pick_letter = proc{ letters.sort_by{rand}.first}
+  0.upto(5+rand(20)) do |i|
+    
+    pgroup = ProductGroup.create(:name => "#{pick_letter.call}roduktruppe Foo #{i}")
+    0.upto(20+rand(20)) do |pi|
+      product = Product.create(:name => "#{pick_letter.call}rodukt Bar #{pi}")
       pgroup.add_product(product)
     end
     pgroup.save
