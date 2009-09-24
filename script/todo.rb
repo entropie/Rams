@@ -7,6 +7,7 @@ usr = User.first
 
 Todos = [
          ["Bilder uploads skallieren", false],
+         ["Position der history leiste", false],
          ]
 
 Todos.each {|str, val|

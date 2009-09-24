@@ -26,6 +26,9 @@ class TodoController < AMSController
   def sidebar(*args)
     @todos =  session_user.todo.reverse
     @cats = @todos.map{|t| t.category || "" }.uniq.sort.select{|t| t.size > 0}
+    if args.size == 3
+      @cat = @cats.select{|c| c == args.last}.join
+    end
   end
   
 
