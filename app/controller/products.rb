@@ -13,13 +13,13 @@ class ProductsController < AMSController
     @product_groups = session_user.agency.product_groups
     if args.size == 2 and args.first == "productgroup"
       @target_id = args.last.to_i
+      @pgroup = ProductGroup[@target_id]
       @products = @product_groups.map{|pg| pg.id == @target_id ? pg : nil }.
         compact.map{|pg| pg.products}.flatten
     end
   end
 
   def sidebar(*args)
-    "produts sb"
   end
   
 end

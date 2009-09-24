@@ -219,21 +219,15 @@ function scrollto(ele){
 }
 
 function product_toggle_unclick(){
-  $(this).highlightFade();
   $(this).unbind("click");
   $(this).bind("click", product_toggle_click);
-  $(this).find(".pcontent").animate({
-    width: 'hide',
-    opacity: 'hide'
-  });
+  $(this).removeClass("active");
+  $(this).parent().find(".pcontent").slideUp();
 }
 function product_toggle_click(){
-  $(this).highlightFade();
   $(this).bind("click", product_toggle_unclick);
-  $(this).find(".pcontent").animate({
-    width: 'show',
-    opacity: 'show'
-  });
+  $(this).addClass("active");
+  $(this).parent().find(".pcontent").slideDown();
 }
 function product_toggle_setup(){
   target = $('#ptoggle');

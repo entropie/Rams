@@ -1,0 +1,14 @@
+%div{:class => "column first"}
+  %div{:style => "width:470px"}
+    %form{:action => ProductsController.r(:add, @group.id)}
+      %fieldset
+        %legend= "Produkt für <mark>#{@group.name}</mark>"
+        %label{:class => "width1 first"}
+          Name
+          %input{:type => :text, :value => '', :name => "name", :class => :text, :style => "width:360px"}
+        %label{:class => "width1 first"}
+          Abschicken
+          %input{:type => :submit, :value => 'Speichern', :name => "name", :class => :text}
+      
+
+    
