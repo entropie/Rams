@@ -13,6 +13,14 @@
 !clr_funky_red = red
 !clr_magenta = #a300d9
 !clr_silver = #aaaaaa
+!clr_iedit = !clr_light_silver
+
+
+.inplaceedit
+  :border-bottom 5px solid
+  :padding-bottom 5px
+  :border-color = !clr_iedit
+  
 
 .topicfriend
   :float right
@@ -199,17 +207,14 @@ a.agency_name_link
     :margin-left 20px
     :padding-left 5px
     form
-      :position absolute
-      :top 0px
-      :right 0px
+      // :position absolute
+      // :top 0px
+      // :right 0px
       :width 500px
-      :height 300px
       textarea
-        :background-color red
         :height 200px
-        :width 10px
-    &:hover
-      :background-color = !clr_dirty_white
+        :z-index 1000
+        :background-color silver
     .at
       :color #919191
       :float right
