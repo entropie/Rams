@@ -229,9 +229,26 @@ function product_toggle_click(){
   $(this).addClass("active");
   $(this).parent().find(".pcontent").slideDown();
 }
+function product_sidebar_toggle_click(){
+  $(this).bind("click", product_sidebar_toggle_unclick);
+  $('.pcontent').slideDown();
+  console.log(1);
+}
+function product_sidebar_toggle_unclick(){
+  $(this).unbind("click");
+  $(this).bind("click", product_sidebar_toggle_click);
+  $(".pcontent").slideUp();
+}
 function product_toggle_setup(){
-  target = $('#ptoggle');
+  target = $("#ptoggle");
+  target.highlightFade();
   $(target).bind("click", product_toggle_click);
+}
+
+function product_sidebar_toggle_setup(){
+  target = $("#sidebar_ptoggle");
+  $(target).bind("click", product_sidebar_toggle_click);
+  return false;
 }
 
 function common_setup_for(ele){
@@ -255,6 +272,9 @@ function common_setup_for(ele){
 
   if($("#ptoggle").length)
     product_toggle_setup();
+  if($("#sidebar_ptoggle").length){
+    product_sidebar_toggle_setup();
+}
 
   if($(".todo_catedit").length)
     todo_catedit_setup(false);

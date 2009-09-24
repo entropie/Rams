@@ -5,7 +5,6 @@
   %div{:class => "column width1 #{@uparted.index(user) == 0 ? ' first' : ''}", :id => "userlist"}
     - user.each do |user| 
       = render_view :box, :user => user
-        
 %div{:class => "column width1"}
   %div
     %table

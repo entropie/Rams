@@ -1,7 +1,6 @@
 - if @agency
   %h2= @agency.name
   %ul
-    %li Dashboard
     %li Kontakte
     %li Produkte
     %li Orte
@@ -14,4 +13,4 @@
     %li
       %a{:class => "alink", :href => AgencyController.r(session_user.agency.name.escape(:uri))}= session_user.agency.name_link
   %li
-    %a{:class => "alink", :href => AgencyController.r(:index), :title => "Agenturen"} Übersicht
+    %a{:class => "alink", :href => AgencyController.r(:index), :title => "Agenturen"} Alle Agenturen

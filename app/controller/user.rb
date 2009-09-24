@@ -143,11 +143,11 @@ class UserController < AMSController
 
   # FIXME: Add Page-Counter to view
   def list(garbage, start)
-    @all_user = User.all
+    @all_user = session_user.agency.users
     @start  = start.to_i || 0
     @limit = request.params["limit"] || UserListingLength
     @user = @all_user[@start .. (@start+@limit)-1] # FIXME: Do it with sequel!
-    @uparted = @user.partition{|u| u.id % 2 == 0 }
+    @uparted = @user.partition{|u| @user.index(u) % 2 == 0 }
   end
 
   
@@ -195,7 +195,6 @@ class UserController < AMSController
     uc = User.count
     str = (w == :+) ? "Vorwärts" : "Zurück"
     if start < 0 or start >= uc
-
       "<span class='dark_text'>%s</span>" % str
     else
       "<a href='%s' title='Blättern: Start: #{start} ' class='alink plink'>%s</a>" % [UserController.r(:list, :start, start), str]

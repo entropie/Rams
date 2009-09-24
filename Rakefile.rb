@@ -7,9 +7,7 @@ require "lib/ams"
 
 include Rams::Database::Tables
 task :a do
-  pr = Product[1]
-  p pr
-  p pr.product_group
+  p User.first.agency.users
 end
 
 

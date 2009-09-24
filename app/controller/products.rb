@@ -30,6 +30,10 @@ class ProductsController < AMSController
   end
   
   def sidebar(*args)
+    @pgroup =
+      if args.size == 3
+        ProductGroup[args.last.to_i]
+      end
   end
   
 end

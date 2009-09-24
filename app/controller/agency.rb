@@ -18,6 +18,7 @@ class AgencyController < AMSController
   end
 
   def stats(id)
+    p id
   end
   
 

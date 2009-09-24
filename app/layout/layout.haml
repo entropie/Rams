@@ -58,9 +58,9 @@
                 = Icon(:atomic, "foo", 32, :green) 
                 Produkte
             %li
-              %a{:href => "#{AgencyController.r(:index)}", :rel => :history, :title => "Agenturen", :class => "alink"}
+              %a{:href => "#{AgencyController.r(:index, session_user.agency.name.escape(:uri))}", :rel => :history, :title => "Agentur", :class => "alink"}
                 = Icon(:coffee, "foo", 32, :green)
-                Agenturen
+                Agentur
             %li
               %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
                 = Icon(:radio, "foo", 32, :green)
