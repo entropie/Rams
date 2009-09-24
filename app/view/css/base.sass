@@ -32,6 +32,7 @@ a.active
         :display block
         :padding 5px
         :background-image url(/img/todo_cat_bg.png)
+        :background-repeat no-repeat
         :text-decoration none
         :text-align right
         :padding-right 5px
@@ -40,6 +41,7 @@ a.active
           :background-color transparent
           :color = !clr_dark_green - 100
         &.active
+          :background-image none
           :color = !clr_dark_green - 100
 
 #product_border
@@ -47,32 +49,36 @@ a.active
   :border 1px solid
   :border 5px solid
   :border-color = !clr_light_green
-  :margin-top 22px
+  :margin-top 23px
   :width 470px
   :padding-bottom 20px
+  :margin-left 10px
   
 #ptoggle
   &.active
-    :border-color = !clr_light_green
+    :border-color = !clr_dark_green
     &:hover
-      :border-color = !clr_dark_green
+      :border-color = !clr_light_green
   :position absolute
   :top -5px
-  :right -15px
-  :height 300px
-  :border-right 15px solid
-  :border-color = !clr_dark_green
+  :right 0px
+  :width 100%
+  :border-top 10px solid
+  :border-color = !clr_light_green
   :z-index 1100
   &:hover
-    :border-color = !clr_light_green
+    :border-color = !clr_dark_green
 .pcontent
   :display none
-  :width 470px
-  :height 295px  
-  :background-color = !clr_light_green
+  :text-align right
+  :height 150px  
+  :background-color #fff
   :border-right none
-  form
-    :background-color = !clr_light_green
+  :margin-left 10px
+  :margin-right 15px
+  :padding 20px
+  :border-bottom 5px solid
+  :border-bottom-color = !clr_dark_green
 #product_container
   :padding-left 15px
   :padding-bottom 20px
