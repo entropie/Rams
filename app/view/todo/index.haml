@@ -5,7 +5,7 @@
     %input{:type => :submit, :name => :body, :value => "Neu!", :class => "submit"}
     %input{:type => :text, :name => :body, :value => "", :class => "unitx3"}
     - if @which
-      %input{:type => :hidden, :name => :category, :value => @which}
+      %input{:type => :hidden, :name => :category, :value => @which, :class => :cat}
 %div{:class => "column width3 first boxchild"}
   %div{:id => :todos}
     - @todos.each do |todo|

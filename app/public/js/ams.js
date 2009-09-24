@@ -257,7 +257,7 @@ function common_setup_for(ele){
   }
 }
 
-function fill_content(url, target) {
+function fill_content(url, target, wsidebar) {
   $("#spinner").show();
   $.ajax({
     url: url,
@@ -269,16 +269,13 @@ function fill_content(url, target) {
       if($("#tabcontainer").length){
         console.log(23);
         setup_tabs();
-}
-
-
+      }
       if($("#userlookup").length > 0){
         var ucontent = $("#userlookup").attr("value");
         if(ucontent.length > 0)
           fill_ubox_content($("#lookup_uid").attr("value"));
         fill_ubox($("#userlookup"));
       }
-      load_sidebar(url);
       $("#spinner").hide();
       return false;
     }
@@ -346,8 +343,10 @@ function form_srlz(frm, history){
   sb.attr("value", "Speichere...");
   var uid = $(target).find("#uid").attr("value");
   var text = $(target).find("option[value='"+uid+"']").text();
+  var cat = $(target).find(".cat").attr("value");
   var url = target.attr('action') + "?" + vars;
   fill_content(url);
+  //load_sidebar("/todo/index/category/" + cat );
 }
 
 function ue_form_srlz(frm, clear){
@@ -413,7 +412,10 @@ function pageload(hash) {
       hash = encodeURIComponent(hash);
     }
     var ele = History[document.location.hash.substr(1)];
-    fill_content(document.location.hash.substr(1), false);
+    var url = document.location.hash.substr(1);
+    fill_content(url, false);
+    load_sidebar(url);
+
     if(ele) history_append(ele);
   } else {
     $("#content").empty();
@@ -424,7 +426,6 @@ function pageload(hash) {
 google.setOnLoadCallback(function() {
   //$("body").hide();
   $.historyInit(pageload, "jquery_history.html");
-  load_sidebar("/dashboard");
   mk_history_links($("#top"));
   $(".popupwindow").popupwindow(profiles);
   //$("body").fadeIn("slow");

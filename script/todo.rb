@@ -6,7 +6,7 @@
 usr = User.first
 
 Todos = [
-         ["Bilder uploads skallieren", false],
+         ["Bilder uploads skallieren", true],
          ["Position der history leiste", false],
          ]
 
