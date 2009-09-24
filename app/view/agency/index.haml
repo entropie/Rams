@@ -1,12 +1,8 @@
 %div{:class => "column width2 first"}
-  %h1= @agency.name
-  %h2 Benutzer
-  %ul
-    - users = (@agency.users - @agency.admins).partition{|u| u.id % 2 == 0 }
-    - users.each do |user|
-      %div{:class => "column width1 #{users.index(user) == 0 ? ' first' : ''}", :id => "userlist"}
-        - user.each do |usr| 
-          %li= usr.name_link
+  %div{:class => :relative, :id => :agency_body}
+    %h1= @agency.name
+    %div{:id => :agency_logo_overlay}= @agency.logo
+  = render_view :stats, :agency => @agency 
 %div{:class => "column width1"}
   %div{:class => "corner silver", :style => "padding:20px; padding-top:0px"}
     %h2 Verwalter
@@ -14,6 +10,3 @@
       %p= @agency.admins.first.name_link
     - else
       %p{:class => "notice corner"}= "Kein Admin"
-%div{:class => "column width1 boxchild"}
-  %div{:style => "padding:20px; padding-top:0px", :class => :center}
-    = @agency.logo 

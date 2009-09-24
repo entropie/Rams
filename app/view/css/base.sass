@@ -81,6 +81,20 @@ a.agency_name_link
     :color = !clr_my_black1
     :text-decoration none
 
+.relative
+  :position relative
+#agency_body
+  h1
+    :margin-left 108px
+    :margin-top 0px
+    :z-index 100
+#agency_logo_overlay
+  :position absolute
+  :top -20px
+  :left 0px
+  img
+    :opacity .5
+    
     
 .agencypic
 
@@ -139,7 +153,7 @@ a.agency_name_link
     :display inline
     
 #addtodo
-  :background-color = !clr_mint
+  :background-color = !clr_dark_green
   :margin-top 20px
   :margin-right -50px
   :margin-left 20px
@@ -171,14 +185,29 @@ a.agency_name_link
     :margin-top 10px
     :font-size 1.2em
     :color = !clr_dark_green
+    form
+      :width 100%
+      select
+        :width 100%
   .icon
-    :margin-top 5px
+    :margin-top 15px
     :float left
   .body
+    :margin-top 10px
     :position relative
     :padding-bottom 5px
     :margin-left 20px
     :padding-left 5px
+    form
+      :position absolute
+      :top 0px
+      :right 0px
+      :width 500px
+      :height 300px
+      textarea
+        :background-color red
+        :height 200px
+        :width 10px
     &:hover
       :background-color = !clr_dirty_white
     .at

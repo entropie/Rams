@@ -191,8 +191,12 @@ function todo_catedit_setup(ele){
 function inplace_edit_setup(){
   $(".inplaceedit").each(function(){
     var target = $(this).attr("rel");
-    $(this).editable(target, {
+     $(this).editable(target, {
       id : "name",
+      loadurl: target + ";wo_markup=1",
+      type: "textarea",
+      submit: "ok",
+      inherhit: true,
       callback : function(){
         $.growl("AMS", "Gespeichert");
         $(this).highlightFade();

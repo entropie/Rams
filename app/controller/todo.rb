@@ -15,7 +15,7 @@ class TodoController < AMSController
     @todos = session_user.todo.reverse
     @which = which
     if @which
-     @todos.reject!{|t| t.category != @which} 
+      @todos.reject!{|t| t.category != @which} 
     end
   end
 
@@ -41,13 +41,17 @@ class TodoController < AMSController
       @categories = Todo.all.map{|t| t.category}.compact.uniq
       @todo = todo
     else
-      uhash = {:modified_at => Time.now}
-      uhash.merge!(name.to_sym => request[:value])
-      todo.update(uhash)
-      if name.to_sym == :category
-        @todo = todo
+      if request[:wo_markup] == "1"
+        @value = todo.body
       else
-        @value = request[:value]
+        uhash = {:modified_at => Time.now}
+        uhash.merge!(name.to_sym => request[:value])
+        todo.update(uhash)
+        if name.to_sym == :category
+          @todo = todo
+        else
+          @value = todo.body_markup
+        end
       end
     end
   end
@@ -75,10 +79,10 @@ class TodoController < AMSController
     todo = Todo.create(phash)
     session_user.add_todo(todo)
     r = if cat
-      TodoController.r(:index, :category, cat)
-    else
-      TodoController.r
-    end
+          TodoController.r(:index, :category, cat)
+        else
+          TodoController.r
+        end
     redirect r
   end
 

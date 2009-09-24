@@ -15,8 +15,11 @@ class AgencyController < AMSController
     else
       call(r(:list))
     end
-    
   end
+
+  def stats(id)
+  end
+  
 
   def upload(uid)
     tempfile = request.params["userfile"][:tempfile]

@@ -28,6 +28,8 @@ module Rams
 
       def body_markup
         RedCloth.new(body).to_html
+      rescue
+        "(klick)"
       end
 
       def cat
