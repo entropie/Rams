@@ -40,7 +40,7 @@ module Rams
   DB = Sequel.mysql('rams_devel',
                     :user => 'root',
                     :password => '',
-                    :logger => Logger.new( STDOUT ),
+                    #:logger => Logger.new( STDOUT ),
                     :host => "localhost",
                     :socket => "/tmp/mysql.sock")
   def self.version

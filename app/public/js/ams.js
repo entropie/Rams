@@ -232,7 +232,6 @@ function product_toggle_click(){
 function product_sidebar_toggle_click(){
   $(this).bind("click", product_sidebar_toggle_unclick);
   $('.pcontent').slideDown();
-  console.log(1);
 }
 function product_sidebar_toggle_unclick(){
   $(this).unbind("click");
