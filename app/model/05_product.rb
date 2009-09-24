@@ -9,7 +9,7 @@ module Rams
 
     class Product < Table(:product)
 
-      one_to_many :product_groups
+      many_to_one :product_group
 
       Shema = proc{
         DB.create_table :product do
