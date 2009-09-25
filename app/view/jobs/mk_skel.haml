@@ -1,0 +1,34 @@
+%form{:class => :width3, :style => "padding:0px;"}
+  %div{:id => :j_step2}  
+  %div{:id => :j_step1}
+    %h1 Neue Auftragsart Modellieren
+    %fieldset{:class => "column width2 first"}
+      %legend Allgemeine Angaben
+      %label{:class => "unitx3 first"}
+        Bezeichung
+        %input{:type => :text, :value => "",:name => "user[pw1]", :class => :text}
+      %label{:class => "unitx3 multilinex5 first"}
+        Beschreibung
+        %textarea{:value => "",:name => "user[pw1]", :class => :text}
+    %fieldset{:class => "column width1"}
+      %legend Module
+      %input{:id => :w_products, :type => :checkbox, :class => :checkbox}
+      %label{:for => :w_products, :class => "checkbox-label"}
+        %span Produkte/Kontingente
+        %span{:class => "hidden hint"} lala
+      %input{:id => :w_times, :type => :checkbox, :class => :checkbox}
+      %label{:for => :w_times, :class => "checkbox-label"}
+        %span Zeiträume
+        %span{:class => "hidden hint"} lulu      
+      %input{:id => :w_stats, :type => :checkbox, :class => :checkbox}
+      %label{:for => :w_statts, :class => "checkbox-label"}
+        %span Statistiken
+        %span{:class => "hidden hint"} stats      
+      %input{:id => :w_public, :type => :checkbox, :class => :checkbox}
+      %label{:for => :w_private, :class => "checkbox-label"}
+        %span Öffentlich
+        %span{:class => "hidden hint"} lala      
+    %div{:class => "column width3 first boxchild align-right"}
+      %fieldset{:div => "width2 first"}
+      %fieldset{:class => "width1 align-right"}
+        %input{:type => :submit, :value => "Weiter", :class => "align-left unitx2 boxchild"}

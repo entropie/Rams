@@ -5,4 +5,10 @@
       %li= @user.name_link(true, false)
       %li= @user.agency.name_link
     %div{:class => :sub, :style=> "clear:both"}
-      sub
+      %ul
+        %li
+          %a{:class => "alink", :href => MessageController.r(:new, @user.id), :title => "Nachricht an #{@user.name}"} Nachricht Schreiben
+        %li
+          %a{:class => "alink", :href => UserController.r(:data, @user.id), :title => "Dateien von #{@user.name}"} Dateien
+        %li
+          %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "Aktualisieren: #{@user.name}"} Benutzer Editieren

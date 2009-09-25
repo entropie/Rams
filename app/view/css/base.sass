@@ -75,11 +75,16 @@ a.active
   :height 150px  
   :background-color #fff
   :border-right none
-  :margin-left 10px
-  :margin-right 15px
+  // :margin-left 10px
+  // :margin-right 15px
   :padding 20px
   :border-bottom 5px solid
   :border-bottom-color = !clr_dark_green
+  :position absolute
+  :top 0px
+  :left 0px
+  :z-index 1000
+  :right 0px
 #product_container
   :padding-left 15px
   :padding-bottom 20px
@@ -194,11 +199,12 @@ a.agency_name_link
   :padding 10px
   :color #000
   :font-size 1.1em
-  
+.hidden
+  :display none
 #spinner
   :position absolute
-  :top 28px
-  :left 800px
+  :top 75px
+  :left 70px
   :display none
   
 #udbrowser
@@ -414,6 +420,11 @@ span.opt
     :display none
     :margin-top 50px
     :margin-left 5px
+    ul
+      :margin 0px
+      li
+        :padding-left 30px 
+        
   ul
     :margin 0px
     :padding-top 5px
@@ -623,6 +634,13 @@ body
     &:hover
       :background-color = !clr_dirty_white - 7
 
+#userdata_browser
+  ul
+    :margin 0px
+    :padding 0px
+    li
+      :margin-top -0px
+      
 #userlookup
   :border-bottom-width 1px
   :border-bottom-style dashed

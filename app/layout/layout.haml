@@ -50,6 +50,10 @@
                 = Icon(:clipboard, "foo", 32, :green)            
                 Dashboard 
             %li
+              %a{:href => "#{JobController.r(:index)}", :rel => :history, :title => "Aufträge", :class => "alink"}
+                = Icon(:folder, "foo", 32, :green)            
+                Aufträge 
+            %li
               %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
                 = Icon(:hers, "foo", 32, :green)
                 Kontakte
