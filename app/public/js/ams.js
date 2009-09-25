@@ -250,6 +250,34 @@ function product_sidebar_toggle_setup(){
   return false;
 }
 
+function go_to_step(step) {
+    var ostep = (step == "1" ? "2" : "1");
+    $("#j_step" + ostep).slideUp(function(){
+        $("#j_step" + step).slideDown();
+    });
+}
+function job_submit(ele){
+    var target = $(ele);
+    console.log(target.serialize());
+    var step = target.find(".step").attr("value");
+    target.find("#j_step" + step).slideUp(function(){
+        var step2 = target.find("#j_step" + (step == "1" ? "2" : "1"));
+        var url = "/jobs/step" + step + "?" + target.serialize();
+        $.ajax({
+            url: url,
+            success: function(result) {
+                step2.html(result);
+                common_setup_for(target);
+                go_to_step("2");
+            },
+            error: function(result){
+                console.log("errror" + result);
+            }
+        });
+    });
+}
+
+
 function common_setup_for(ele){
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
   fadeBottom(top);

@@ -1,33 +1,38 @@
-%form{:class => :width3, :style => "padding:0px;"}
-  %div{:id => :j_step2}  
+%div{:id => "j_steps"}
+  %a{:onclick => "go_to_step('1'); return false;"} Schritt 1
+  %a{:onclick => "go_to_step('2'); return false;"} Schritt 1  
+
+%form{:class => :width3, :style => "padding:0px;", :onsubmit => "job_submit($(this)); return false;" }
+  %div{:id => :j_step2, :class => :hidden}
   %div{:id => :j_step1}
+    %input{:type => :hidden, :name => "step", :value => 1, :class => "step"}
     %h1 Neue Auftragsart Modellieren
     %fieldset{:class => "column width2 first"}
       %legend Allgemeine Angaben
       %label{:class => "unitx3 first"}
         Bezeichung
-        %input{:type => :text, :value => "",:name => "user[pw1]", :class => :text}
+        %input{:type => :text, :value => "",:name => "ja[name]", :class => :text}
       %label{:class => "unitx3 multilinex5 first"}
         Beschreibung
-        %textarea{:value => "",:name => "user[pw1]", :class => :text}
+        %textarea{:value => "",:name => "ja[description]", :class => :text}
     %fieldset{:class => "column width1"}
       %legend Module
-      %input{:id => :w_products, :type => :checkbox, :class => :checkbox}
+      %input{:value => "y", :id => :w_products, :type => :checkbox, :class => :checkbox}
       %label{:for => :w_products, :class => "checkbox-label"}
         %span Produkte/Kontingente
         %span{:class => "hidden hint"} lala
-      %input{:id => :w_times, :type => :checkbox, :class => :checkbox}
+      %input{:value => "y", :id => :w_times, :type => :checkbox, :class => :checkbox, :name => "mods[w_times]"}
       %label{:for => :w_times, :class => "checkbox-label"}
         %span Zeiträume
         %span{:class => "hidden hint"} lulu      
-      %input{:id => :w_stats, :type => :checkbox, :class => :checkbox}
-      %label{:for => :w_statts, :class => "checkbox-label"}
+      %input{:value => "y", :id => :w_stats, :type => :checkbox, :class => :checkbox, :name => "mods[w_stats]"}
+      %label{:for => :w_stats, :class => "checkbox-label"}
         %span Statistiken
         %span{:class => "hidden hint"} stats      
-      %input{:id => :w_public, :type => :checkbox, :class => :checkbox}
-      %label{:for => :w_private, :class => "checkbox-label"}
+      %input{:value => "y", :id => :w_public, :type => :checkbox, :class => :checkbox, :name => "mods[w_public]"}
+      %label{:for => :w_public, :class => "checkbox-label"}
         %span Öffentlich
-        %span{:class => "hidden hint"} lala      
+        %span{:class => "hidden hint"} lala
     %div{:class => "column width3 first boxchild align-right"}
       %fieldset{:div => "width2 first"}
       %fieldset{:class => "width1 align-right"}

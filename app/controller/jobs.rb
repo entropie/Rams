@@ -26,6 +26,17 @@ class JobController < AMSController
 
   def mk_skel
   end
+
+  def step1
+    @form_data = request[:ja]
+    @name = @form_data["name"]
+    @description = @form_data["description"]
+  end
+
+  def step2
+    p request.params
+    "step2"
+  end
   
 end
 
