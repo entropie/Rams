@@ -1,0 +1,17 @@
+%fieldset{:class => "column width1"}
+  %legend Orte
+
+  %input{:value => "y", :id => :w_loc_fixed, :type => :checkbox, :class => :checkbox, :name => "loc[fixed]"}
+  %label{:for => :w_loc_fixed, :class => "checkbox-label"}
+    %span Fester Umkreis
+  %label{:class => "column width1 hidden", :id => "w_loc_fixed_add"}
+    %span Standard Umkreis (km)
+    %input{:value => "", :id => 'times_start', :type => :text, :class => :checkbox, :name => "times[start]"}
+
+%fieldset{:class => "column width2 unitx4"}
+  %input{:value => "y", :id => :w_loc_locs, :type => :checkbox, :class => :checkbox, :name => "loc[locations]"}
+  %label{:for => :w_loc_locs, :class => "checkbox-label"}
+    %span Verknüpfungen zu Orten
+
+        
+

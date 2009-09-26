@@ -1,0 +1,19 @@
+%fieldset{:class => "column width1 first"}
+  %legend Produkte / Kontingente
+
+  %input{:value => "y", :id => :w_products_fixed, :type => :checkbox, :class => :checkbox, :name => "products[fixed]"}
+  %label{:for => :w_products_fixed, :class => "checkbox-label"}
+    %span Feste Produktgruppe(n)
+  %div{:class => "column width1 first hidden", :id => "w_products_fixed_add"}
+    %label{:class => "width1 first"}
+      %span
+        Produktgruppe
+        %span{:class => "duplicate_and_add"} +
+      %select{:class => "select", :name => "fixed_product_groups[]", :id => :fixed_product_group, :style => "width:100%"}
+        %option
+        %option bar
+      %div{:class => :dupbox}
+%fieldset{:class => "column width1 silver"}
+  frei
+%fieldset{:class => "column width1 silver"}
+  frei

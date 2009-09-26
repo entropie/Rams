@@ -1,11 +1,11 @@
-%div{:class => "column width2 first"}
-  %div{:class => "column width2 first"}
-    %h2= @name
-  %div{:class => "column width1 first"}
-    %div= @description
-  %div{:class => "column width1"}
-    %div= @description
-%div{:class => "column width1"}
-  %div{:class => "silver"}
-    %h2 Beschreibung
-    %div= @description
+%div{:class => "colum width3 first"}
+  %h1{:style => "margin:0px"}= @name
+  %p= @description
+  %hr
+= render_view :_mk_times
+- if @mods["w_locations"]
+  = render_view :_mk_locations
+%div{:class => "colum width3 first"}
+  %hr  
+  - if @mods["w_products"]
+    = render_view :_mk_products
