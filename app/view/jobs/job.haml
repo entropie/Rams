@@ -1,7 +1,12 @@
 %div{:class => "column width2 unitx5 job", :id => :job_border}
   %div{:class => "right"}
     .mods= @job.modules.keys.map{|k| k.to_s}.sort.reverse.join(",")
+    %h1= @job.name
     %p= @job.description
+
+    %h2 Module
+    - @job.render_module_paths("info").each do |m|
+      = render_file m, :job => @job
   %div{:class => "column width3 first"}
     %div{:class => "bottom hidden"}
       %div= @job.modules.keys.map{|k| k.to_s}.sort.reverse.join(",")

@@ -51,6 +51,10 @@ module Rams
         end
       }
 
+      def render_module_paths(ext = nil)
+        modules.keys.map{|k| "view/modules/jobs/#{k}#{ext.nil? ? '' : "_#{ext}"}.haml"}
+      end
+
       def modules
         Hash[*Rams::Database::Tables::job_modules.map{|mod|
                nname = mod.table_name.to_s.split("_").last
