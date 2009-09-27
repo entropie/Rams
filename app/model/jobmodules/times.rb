@@ -8,6 +8,8 @@ module Rams
     module Tables
 
       class JobTime < Table(:jmod_time)
+
+        many_to_one      :job
         
         Shema = proc{
           DB.create_table(:jmod_time) do

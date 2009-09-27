@@ -5,7 +5,7 @@
 
 
 
-1.upto(10) do |ai|
+1.upto(2) do |ai|
   a = Agency[ai]
   letters = ('A'..'Z').to_a
   pick_letter = proc{ letters.sort_by{rand}.first}

@@ -93,8 +93,9 @@ a.save
 end
 
 
-# require "script/todo"
-# require "script/products"
+require "script/todo"
+require "script/products"
+require "script/locations"
 require "script/jobs" 
 
 =begin

@@ -17,31 +17,30 @@ puts
 puts
 
 u = User.first
-location = Location.create(:name => "foo")
+
+location = u.agency.locations.first
 
 mods = []
+
 mtimes = Rams::Database::Tables::job_modules(:time)
-mlocs = Rams::Database::Tables::job_modules(:location)
 mods << mtimes.create(gtimes)
 
+mlocs =  Rams::Database::Tables::job_modules(:location)
 mlocs = mlocs.create(:fixed => 1)
 mlocs.add_location(location)
-
 mods << mlocs
 
+mpgs =  Rams::Database::Tables::job_modules(:products)
+mpgs = mpgs.create
+pg = u.agency.product_groups.first
+mpgs.add_product_group(pg)
+mods << mpgs
 
 job = u.setup_job(jobhash, mods)
-
-p job.modules[:location].locations
-
-p job.modules
-
-#u.setup_job(jobhash)
-
-puts
-puts
-puts
-
+# pp job
+pp job.modules[:products].job
+# puts
+#pp job.modules[:location].job
 
 #p u.jobs.size
 #p Agency.first.jobs.first.orderer

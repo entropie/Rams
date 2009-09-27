@@ -7,20 +7,21 @@ module Rams
   module Database
     module Tables
 
-      class JobLocation < Table(:jmod_location)
+      class JobProducts < Table(:jmod_products)
 
-        one_to_many      :locations
+        one_to_many      :product_groups
         many_to_one      :job
         
         Shema = proc{
-          DB.create_table(:jmod_location) do
+          DB.create_table(:jmod_products) do
             primary_key  :id
             foreign_key  :job_id
-            bool         :fixed, :default => 0
           end
         }
+      end
 
-        
+      def products
+        product_groups.map{|p| p.products}.flatten
       end
       
     end

@@ -10,12 +10,14 @@ module Rams
 
       many_to_one :agency
       one_to_many :products
+      many_to_one :jobproducts
       
       Shema = proc{
         DB.create_table :product_group do
           primary_key  :id
           foreign_key  :agency_id
-
+          foreign_key  :job_products_id
+          
           varchar  :name
         end
       }
