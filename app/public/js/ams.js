@@ -250,6 +250,32 @@ function product_sidebar_toggle_setup(){
   return false;
 }
 
+function setup_job_submit_form(ele){
+    setup_job_submit_checkboxes(ele);
+    $('.duplicate_and_add', ele).each(function(){
+        $(this).click(function(){
+            var nele = $(this).parent().parent().parent();
+            var dup = $(this).parent().parent().html();
+            nele.find(".dupbox").append("<div class='width1 first'>"+dup+"</div>");
+            $(nele).find("span:last").parent().remove();
+        });
+    });
+}
+function setup_job_submit_checkboxes(ele){
+  $('input:checkbox', ele).click(function() {
+      var eid = $(this).attr("id");
+      var tele = $("#"+eid+"_add");
+      // console.log("#"+eid+"_add");
+      // console.log(tele);
+      if(tele.length){
+          if($(this).attr("checked")){
+              tele.slideDown(function(){$(this).highlightFade();});
+          }else{
+              tele.slideUp();
+          }
+      }
+  });
+}
 function go_to_step(step) {
     var ostep = (step == "1" ? "2" : "1");
     $("#j_step" + ostep).slideUp(function(){
@@ -258,7 +284,7 @@ function go_to_step(step) {
 }
 function job_submit(ele){
     var target = $(ele);
-    console.log(target.serialize());
+    window.console && console.log(target.serialize());
     var step = target.find(".step").attr("value");
     target.find("#j_step" + step).slideUp(function(){
         var step2 = target.find("#j_step" + (step == "1" ? "2" : "1"));
@@ -268,10 +294,10 @@ function job_submit(ele){
             success: function(result) {
                 step2.html(result);
                 common_setup_for(target);
+                setup_job_submit_form(target);
                 go_to_step("2");
             },
             error: function(result){
-                console.log("errror" + result);
             }
         });
     });
