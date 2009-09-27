@@ -1,0 +1,12 @@
+%div{:class => "column width3 job"}
+  %div{}
+    %div{:class => "column width1 first"}
+      %div{:class => :left}
+        %h3= @job.name
+    %div{:class => "column width2"}
+      %div{:class => "right "}
+        %div= @job.modules.keys.map{|k| k.to_s}.sort.reverse.join(",")
+        %p= @job.description
+    %div{:class => "column width3 first"}
+      %div{:class => "bottom hidden"}
+        %div= @job.modules.keys.map{|k| k.to_s}.sort.reverse.join(",")

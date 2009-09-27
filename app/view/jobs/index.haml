@@ -1,0 +1,4 @@
+%div{:id => :jobs}
+  %div{:class => "column width3 first"}
+    - @jobs.each do |job|
+      = render_view :job, :job => job
