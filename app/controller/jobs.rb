@@ -9,8 +9,13 @@ class JobController < AMSController
 
   before_all { login_required }
 
-  def index
-    "jobs"
+  def index(jobid = nil)
+    @jobs = session_user.agency.jobs
+    if jobid
+      jid = jobid.to_i
+      @job = @jobs.select{|j| j.id == jid}.first
+      @target_id = @job.id
+    end
   end
 
   def create(kind = "job")
@@ -21,7 +26,10 @@ class JobController < AMSController
   end
   
   def sidebar(*args)
-    "add sb"
+    @job =
+      if args.size == 2
+        Job[args.last.to_i]
+      end
   end
 
   def mk_skel

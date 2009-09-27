@@ -12,38 +12,33 @@ def gtimes
   }
 end
 
-puts
-puts
-puts
-
 u = User.first
-
 location = u.agency.locations.first
 
-mods = []
+1.upto(15) do |i|
+  
+  mods = []
 
-mtimes = Rams::Database::Tables::job_modules(:time)
-mods << mtimes.create(gtimes)
+  mtimes = Rams::Database::Tables::job_modules(:time)
+  mods << mtimes.create(gtimes)
 
-mlocs =  Rams::Database::Tables::job_modules(:location)
-mlocs = mlocs.create(:fixed => 1)
-mlocs.add_location(location)
-mods << mlocs
+  if i % 2 == 0
+    mlocs =  Rams::Database::Tables::job_modules(:location)
+    mlocs = mlocs.create(:fixed => 1)
+    mlocs.add_location(location)
+    mods << mlocs
+  end
 
-mpgs =  Rams::Database::Tables::job_modules(:products)
-mpgs = mpgs.create
-pg = u.agency.product_groups.first
-mpgs.add_product_group(pg)
-mods << mpgs
+  if rand(2) == 1
+    mpgs =  Rams::Database::Tables::job_modules(:products)
+    mpgs = mpgs.create
+    pg = u.agency.product_groups.first
+    mpgs.add_product_group(pg)
+    mods << mpgs
+  end
 
-job = u.setup_job(jobhash, mods)
-# pp job
-pp job.modules[:products].job
-# puts
-#pp job.modules[:location].job
-
-#p u.jobs.size
-#p Agency.first.jobs.first.orderer
+  job = u.setup_job(jobhash.dup.update(:name => "#{jobhash[:name]} #{i}"), mods)
+end
 =begin
 Local Variables:
   mode:ruby

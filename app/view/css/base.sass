@@ -24,6 +24,7 @@ a.active
 
 #pgroup
   ul
+    :margin-top 0px
     :list-style-type none
     li
       :margin-bottom 5px
@@ -49,7 +50,7 @@ a.active
   :border 1px solid
   :border 5px solid
   :border-color = !clr_light_green
-  :margin-top 23px
+  :margin-top 5px
   :width 470px
   :padding-bottom 20px
   :margin-left 10px
@@ -210,6 +211,76 @@ a.agency_name_link
 #udbrowser
 
 .todo_catedit, .inplaceedit
+
+#job_border
+  :position relative
+  :width 470px
+#jobgroup
+  ul
+    :margin-top 0px
+    :list-style-type none
+    li
+      :margin 0px
+      :margin-bottom 5px
+      a
+        :width 100%
+        :display block
+        :padding 5px
+        :background-image url(/img/todo_cat_bg.png)
+        :background-repeat no-repeat
+        :text-decoration none
+        :text-align right
+        :padding-right 5px
+        :color = !clr_dark_green - 50
+        &:hover
+          :background-color transparent
+          :color = !clr_dark_green - 100
+        &.active
+          :background-image url(/img/todo_cat_bg.png)
+          :background-image none
+          :color = !clr_dark_green - 100
+          :margin-right -10px
+  
+  
+#jobs
+  .job
+    :position relative
+    :margin 0px
+    :margin-top 5px
+    :margin-left 10px
+    :border-bottom 2px solid transparent
+    &:hover
+      //:border-bottom 2px solid silver
+    .expander
+      :border-bottom 10px solid silver
+      :position absolute
+      :width 100%
+      :bottom -15px
+      :right 0px
+      :z-index 1000
+    .mods
+      :position absolute
+      :right 0px
+      :top 0px
+      :background-color = !clr_light_silver
+      //:display none
+      :z-index 100
+    .right
+      :position absolute
+      :border 5px solid
+      :border-color = !clr_light_green
+      p
+        :clear both
+        :padding 5px
+        :padding-bottom 20px
+        :margin 20px
+    .collapsed
+      :max-height 20px
+      :padding-left 10px
+      :overflow hidden
+      p
+        :padding 0px
+
 
 #userlist
   .userbox

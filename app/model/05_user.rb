@@ -33,6 +33,7 @@ module Rams
       }
 
       def setup_job(jobhash, modules = [])
+
         jh = { }.merge(jobhash)
         job = Job.create(jh)
         self.agency.add_job(job)
@@ -40,6 +41,8 @@ module Rams
         modules.each do |mod|
           mod.update(:job_id => job.id)
         end
+        log "Job: uid: #{id}; modules: #{modules.size}; create: #{jh[:name]}"
+
         job
       end
 

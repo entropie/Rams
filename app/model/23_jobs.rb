@@ -45,6 +45,7 @@ module Rams
           text        :description
 
           bool        :public, :default => 1
+          bool        :finished, :default => 1          
 
           datetime    :created_at
         end
