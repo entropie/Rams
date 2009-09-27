@@ -7,13 +7,17 @@ module Rams
   module Database::Tables
 
     class Message < Table(:messages)
+
       many_to_one :users
+      many_to_one :jobs
 
       Shema = proc{
         DB.create_table :messages do
           primary_key :id
+
           foreign_key :user_id
           foreign_key :from_id
+          foreign_key :job_id
           
           datetime    :created_at
           varchar     :topic, :size => 255
@@ -26,6 +30,7 @@ module Rams
       def from
         User[from_id]
       end
+
       def to
         User[user_id]
       end

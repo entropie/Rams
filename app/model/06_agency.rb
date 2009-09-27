@@ -12,6 +12,7 @@ module Rams
       one_to_many :users
       one_to_many :admins, :class => User, :key => :admin_user_id
       one_to_many :product_groups
+      one_to_many :jobs
       
       Shema = proc{
         DB.create_table :agency do

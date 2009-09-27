@@ -7,13 +7,13 @@ module Rams
   module Database
     module Tables
 
-      class Times < Table(:jmod_times)
+      class JobTime < Table(:jmod_time)
         
         Shema = proc{
-          DB.create_table(:jmod_times) do
+          DB.create_table(:jmod_time) do
             primary_key  :id
             foreign_key  :job_id
-            datetime     :start_time
+
             datetime     :end_time
             datetime     :start_time
           end
@@ -37,9 +37,6 @@ module Rams
     end
   end
 end
-
-
-
 
 =begin
 Local Variables:

@@ -13,6 +13,9 @@ module Rams
       one_to_many :addresses
       one_to_many :messages
       one_to_many :todo
+
+      one_to_many :jobs, :class => :Job, :key => :orderer_id
+      
       many_to_one :agency
       many_to_one :admin      
       
@@ -29,6 +32,18 @@ module Rams
         end
       }
 
+      def setup_job(jobhash, modules = [])
+        jh = { }.merge(jobhash)
+        job = Job.create(jh)
+        self.agency.add_job(job)
+        self.add_job(job)
+        modules.each do |mod|
+          mod.update(:job_id => job.id)
+        end
+        job
+      end
+
+      
       def is_admin?
         not admin_user_id.nil?
       end
@@ -64,10 +79,6 @@ module Rams
       end
 
 
-      def public_dir
-        fname = "public/data/user/#{id}/"
-      end
-      
       def has_userpic?
         base = public_dir + "avatar.jpg"
         thumb = public_dir + "thumb_avatar.jpg"        

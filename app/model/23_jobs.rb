@@ -52,9 +52,10 @@ module Rams
 
       def modules
         Hash[*Rams::Database::Tables::job_modules.map{|mod|
-          nname = mod.table_name.to_s.split("_").last
-          [nname.to_sym, mod.find(:job_id => id)]
-        }.flatten]
+               nname = mod.table_name.to_s.split("_").last
+               var = mod.find(:job_id => id)
+               [nname.to_sym, var] if var
+        }.flatten.compact]
       end
       
       def before_create

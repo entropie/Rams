@@ -17,13 +17,22 @@ puts
 puts
 
 u = User.first
-
+location = Location.create(:name => "foo")
 
 mods = []
-mtimes = Rams::Database::Tables::job_modules(:times)
+mtimes = Rams::Database::Tables::job_modules(:time)
+mlocs = Rams::Database::Tables::job_modules(:location)
 mods << mtimes.create(gtimes)
 
+mlocs = mlocs.create(:fixed => 1)
+mlocs.add_location(location)
+
+mods << mlocs
+
+
 job = u.setup_job(jobhash, mods)
+
+p job.modules[:location].locations
 
 p job.modules
 

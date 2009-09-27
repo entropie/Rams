@@ -9,11 +9,13 @@ module Rams
     class Address < Table(:address)
 
       many_to_one :users
-
+      many_to_one :locations
+      
       Shema = proc{
         DB.create_table :address do
           primary_key  :id
           foreign_key  :user_id
+          foreign_key  :location_id
           varchar  :name
           varchar  :surename
           varchar  :street

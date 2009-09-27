@@ -8,11 +8,20 @@ module Rams
   module Database
 
     LoadedDefintions = []
+
+    module Table
+      def self.jobmodule?
+        true
+        #instance_variable_get("@simple_table")[1..-2]
+      end
+    end
+
     module Tables
 
-
+      
       def self.Table(*a)
         ret = ::Sequel::Model(a.first)
+        ret.extend(Rams::Database::Table)
         #ret.extend(TableName)
         #ret.name = a.first
         ret
@@ -22,14 +31,26 @@ module Rams
         self.constants.map{|c| self.const_get(c)}
       end
 
+      def self.job_modules(name = nil)
+        ret = tables.select{|t|
+          t.table_name.to_s[0..3] == "jmod"
+        }
+        if name
+          name = name.to_s
+          ret.reject!{|t| name != t.table_name.to_s[5..-1] }
+          return ret.first
+        end
+        ret
+      end
+
     end
 
     def self.tables
       Tables.tables
     end
     
-    def self.migrate(w = :up)
-      definitions.each do |defi|
+    def self.migrate(w = :up, defs = nil)
+      (defs || definitions).each do |defi|
         name = defi.instance_variable_get("@simple_table")[1..-2]
         log "migrating: #{w}  %s" % name
         begin
@@ -61,10 +82,11 @@ module Rams
       end
     end
     
-    def self.load_definitions(force = false)
+    def self.load_definitions(force = false, dir = "")
+      dira = "#{Rams::Source.to_s}/app/model/#{dir}"
       LoadedDefintions.clear if force
-      return nil unless LoadedDefintions.empty?
-      Dir["#{Rams::Source.to_s}/app/model/*.rb"].sort.each do |l|
+      #return nil unless LoadedDefintions.empty?
+      Dir["#{dira}*.rb"].sort.each do |l|
         log "model load: #{File.basename(l)}"
         LoadedDefintions << l
         require l
@@ -80,7 +102,7 @@ module Rams
         @model ||= :sequel
       end
     end
-    
+
   end
 end
 
