@@ -33,7 +33,6 @@ function fill_ubox_content(id) {
       url: "/user/box/" + id,
       success: function(result){
         $("#ub").html(result);
-        $("#ub .userbox").corner();
         mk_history_links(('#ub'));
         $("#ub .userbox").highlightFade();
         setup_userbox($('#ub .userbox'));
