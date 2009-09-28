@@ -82,7 +82,6 @@ class UserController < AMSController
   end
   private :dir_listing
 
-
   def browse
     @tree = filetree
   end

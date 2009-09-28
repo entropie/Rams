@@ -5,10 +5,23 @@
 
 usr = User.first
 
+conts = File.readlines('FIXMES').map{|line|
+  case line
+  when /^[\s]/
+    "<code>%s</code>\n\n" % line.strip
+  else
+    "<p><mark>#{line}</mark></p>\n\n"
+  end
+}
+
 Todos = [
          ["Bilder uploads skallieren", true],
          ["Position der history leiste", false],
-         ]
+         ["h3. FixMes\n\n"+conts.to_s, false]
+        ]
+
+
+
 
 Todos.each {|str, val|
   tdhash = {:category => "DEVEL", :body => str}
@@ -18,7 +31,7 @@ Todos.each {|str, val|
 }
 
          
-
+puts File.readlines('FIXMES').map{|l| "  #{l}\n"}.to_s
 
 =begin
 Local Variables:

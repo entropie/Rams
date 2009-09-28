@@ -46,7 +46,7 @@ class JobController < AMSController
   
   def step1
     @form_data = request[:ja]
-    @mods = request[:mods]
+    @mods = request[:mods] || {:w_times => "y"}
     @name = @form_data["name"]
     @description = @form_data["description"]
   end

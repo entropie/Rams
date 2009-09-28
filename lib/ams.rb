@@ -43,6 +43,8 @@ module Rams
                     #:logger => Logger.new( STDOUT ),
                     :host => "localhost",
                     :socket => "/tmp/mysql.sock")
+  # FIXME: test
+  # FIXME: test  
   def self.version
     str = "Ramp-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]

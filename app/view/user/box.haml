@@ -1,5 +1,7 @@
 %div{:class => "column width1"}
-  .userbox{:class => :corner}
+  %div{:style => "margin-bottom:-8px"}  
+    %img{:src => "/img/user_corner_top.png"}
+  .userbox{}
     %img{:src => "#{@user.userpic}", :height=> 48, :width => 48, :class => "uimg"}
     %ul{:style => "margin:0px"}
       %li= @user.name_link(true, false)
@@ -12,3 +14,5 @@
           %a{:class => "alink", :href => UserController.r(:data, @user.id), :title => "Dateien von #{@user.name}"} Dateien
         %li
           %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "Aktualisieren: #{@user.name}"} Benutzer Editieren
+  %div{:style => "margin-top:-8px"}
+    %img{:src => "/img/user_corner_bottom.png"}

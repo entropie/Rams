@@ -307,7 +307,6 @@ a.agency_name_link
 
 #userlist
   .userbox
-    :margin-bottom 30px
 #search
   :position absolute
   :top 16px
@@ -507,17 +506,24 @@ span.opt
     
 .userbox
   :position relative
-  :background-color = !clr_light_silver
-  :padding-bottom 20px
-  :min-height 67px
+  //:background-color = !clr_light_silver
+  :border-left 3px solid
+  :border-right 3px solid  
+  :border-color = !clr_light_silver
+  :min-height 80px
   .sub
+    :padding-bottom 10px
     :display none
-    :margin-top 50px
+    :margin-top 30px
     :margin-left 5px
     ul
       :margin 0px
+      :margin-bottom 0px
       li
-        :padding-left 30px 
+        :padding-left 15px 
+        a
+          :color = !clr_dark_grey
+          :text-decoration none
         
   ul
     :margin 0px
@@ -569,6 +575,8 @@ legend
 
   
 #content
+  p+p
+    :text-indent 0px
   h1
     :margin-bottom 20px
   :margin-top 38px
