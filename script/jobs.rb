@@ -9,6 +9,7 @@ def gtimes
   {
     :start_time => (a=Time.now)-mod,
     :end_time   => a+mod,
+    :kind       => jid_type = rand(3)
   }
 end
 
@@ -32,8 +33,14 @@ location = u.agency.locations.first
   if rand(2) == 1
     mpgs =  Rams::Database::Tables::job_modules(:products)
     mpgs = mpgs.create
-    pg = u.agency.product_groups.first
-    mpgs.add_product_group(pg)
+    0.upto(rand(20)+1) do |j|
+      begin
+        pg = u.agency.product_groups.select{|k| k.id == j}.first
+        mpgs.add_product_group(pg) if pg
+      rescue
+        p $!
+      end
+    end
     mods << mpgs
   end
 

@@ -16,22 +16,21 @@ module Rams
             primary_key  :id
             foreign_key  :job_id
 
+            int          :kind, :default => 0
+            
             datetime     :end_time
             datetime     :start_time
           end
         }
 
 
-        def fixed_duration?
-          not end_time.nil? and not start_time.nil?
-        end
-
-        def inifinte?
-          not start_time.nil? and end_time.nil?
-        end
-        
-        def everywhere?
-          end_time.nil? and start_time.nil?
+        def time_type
+          case kind
+          when 0: :from_to
+          when 1: :fixed
+          else
+            :without
+          end
         end
         
       end

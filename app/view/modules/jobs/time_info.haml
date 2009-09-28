@@ -1,1 +1,9 @@
-%div zeit info
+%h3 Zeiten
+%div
+  - case @job.modules[:time].time_type
+    - when :without
+      %p Dauerauftrag
+    - when :from_to
+      %p Zeitraum muss Festgelegt werden
+    - when :fixed
+      %p Nur Startzeitraum
