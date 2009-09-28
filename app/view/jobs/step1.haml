@@ -2,10 +2,10 @@
   %h1{:style => "margin:0px"}= @name
   %p= @description
   %hr
-= render_view :_mk_times
+= render_file module_template_path(:time)
 - if @mods["w_locations"]
-  = render_view :_mk_locations
+  = render_file module_template_path(:location)
 %div{:class => "colum width3 first"}
   %hr  
   - if @mods["w_products"]
-    = render_view :_mk_products
+    = render_file module_template_path(:products)

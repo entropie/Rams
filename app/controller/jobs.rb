@@ -39,6 +39,11 @@ class JobController < AMSController
   def mk_skel
   end
 
+  def module_template_path(mod)
+    "view/modules/jobs/#{mod}_create.haml"
+  end
+  private :module_template_path
+  
   def step1
     @form_data = request[:ja]
     @mods = request[:mods]
