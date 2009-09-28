@@ -9,7 +9,11 @@ class JobController < AMSController
 
   before_all { login_required }
 
-  def index(jobid = nil)
+  def index
+    redirect r(:jobs)
+  end
+  
+  def jobs(jobid = nil)
     @jobs = session_user.agency.jobs
     if jobid
       jid = jobid.to_i

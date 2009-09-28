@@ -1,0 +1,15 @@
+%div{:class => "column width1 first"}
+  %div{:id => :jobgroup}
+    %ul
+      - @jobs.sort_by{|p| p.name}.each do |job|
+        %li
+          %a{:title => "Produktg.: #{job.name}", :class => "alink#{@target_id == job.id ? ' active' : ''}", :href => JobController.r(:jobs, job.id)}= job.name
+- if @job
+  %div{:id => :jobs}
+    %div{:class => :mod}
+      = render_view :job, :job => @job
+- else
+  %div{:id => :jobs}
+    %div{:class => "column unitx5 job", :id => :job_border}
+      .right
+        %p{:class => "notice center", :style => "widht:100%"} Bitte wählen Sie eine Jobart.
