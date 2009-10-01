@@ -11,6 +11,7 @@ class AgencyController < AMSController
 
   def index(agency_string_or_id = nil)
     if agency_string_or_id
+      p agency_string_or_id
       @agency = agency_from_argument(agency_string_or_id)
     else
       call(r(:list))

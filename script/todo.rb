@@ -15,12 +15,11 @@ conts = File.readlines('FIXMES').map{|line|
 }
 
 Todos = [
+         ["Use \"Faker\":http://faker.rubyforge.org/ gem for development data", false],
+         ["h3. FixMes\n\n"+conts.to_s, false],
          ["Bilder uploads skallieren", true],
          ["Position der history leiste", false],
-         ["h3. FixMes\n\n"+conts.to_s, false]
-        ]
-
-
+        ].reverse
 
 
 Todos.each {|str, val|

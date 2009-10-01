@@ -1,6 +1,8 @@
 %div{:class => "colum width3 first"}
   %h1{:style => "margin:0px"}= @name
-  %p= @description
+  
+  %div{:class => "rounded boxchild"}
+    %p= @description
   %hr
 = render_file module_template_path(:time)
 - if @mods["w_locations"]
