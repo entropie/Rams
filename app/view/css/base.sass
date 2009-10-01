@@ -542,21 +542,26 @@ span.opt
   :position relative
   //:background-color = !clr_light_silver
   :border-left 3px solid
-  :border-right 3px solid  
+  :border-right 3px solid
   :border-color = !clr_light_silver
   :min-height 80px
   .sub
-    :background-color silver
+    :border-top 2px solid
+    :border-color = !clr_light_silver
+    :background-color = !clr_light_silver + 13
     :padding-bottom 10px
     :display none
-    :margin-top 30px
-    :margin-left 5px
+    :margin-top 35px
+    :margin-bottom 0px
     ul
       :margin 0px
       :margin-bottom 0px
       li
-        :padding-left 15px 
+        :padding-left 20px
+        &:hover
+          :background-color = !clr_light_silver - 20
         a
+          :background-color transparent
           :color = !clr_dark_grey
           :text-decoration none
         
