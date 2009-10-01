@@ -33,7 +33,7 @@
     %script{:type => "text/javascript", :src => "/js/ajaxupload.js"}=""
     %script{:type => "text/javascript", :src => "/js/ams.js"}=""    
   %body
-    %div{:id => :spinner}
+    %div{:id => :spinner, :style => "display:none"}
       %img{:src => "/img/spinner.gif"}
 
     // %div{:id => "search", :class => ""}
@@ -41,34 +41,33 @@
     //     %div
     //       == <input type="text" name="s" class="searchthingy" /><input id="search_simg" type="image" name="s" title="Suche" src="/img/search3.gif" />
         
-    %div{:id => :top, :class => "width8"}
-      %div{:class => "column width4 first"}
-        %div{:id => :toplinks}
-          %ul
-            %li
-              %a{:href => "#{PageController.r(:dashboard)}", :rel => :history, :title => "Dashboard", :class => "alink"}
-                = Icon(:clipboard, "foo", 32, :green)            
-                Dashboard 
-            %li
-              %a{:href => "#{JobController.r(:index)}", :rel => :history, :title => "Aufträge", :class => "alink"}
-                = Icon(:folder, "foo", 32, :green)            
-                Aufträge 
-            %li
-              %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
-                = Icon(:hers, "foo", 32, :green)
-                Kontakte
-            %li
-              %a{:href => "#{ProductsController.r(:index)}", :rel => :history, :title => "Produkte", :class => "alink"}
-                = Icon(:atomic, "foo", 32, :green) 
-                Produkte
-            %li
-              %a{:href => "#{AgencyController.r(:index, session_user.agency.name.escape(:uri))}", :rel => :history, :title => "Agentur", :class => "alink"}
-                = Icon(:coffee, "foo", 32, :green)
-                Agentur
-            %li
-              %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
-                = Icon(:radio, "foo", 32, :green)
-                Orte
+    %div{:id => :top}
+      %div{:id => :toplinks}
+        %ul
+          %li
+            %a{:href => "#{PageController.r(:dashboard)}", :rel => :history, :title => "Dashboard", :class => "alink"}
+              = Icon(:clipboard, "foo", 32, :green)            
+              Dashboard 
+          %li
+            %a{:href => "#{JobController.r(:index)}", :rel => :history, :title => "Aufträge", :class => "alink"}
+              = Icon(:folder, "foo", 32, :green)            
+              Aufträge 
+          %li
+            %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
+              = Icon(:hers, "foo", 32, :green)
+              Kontakte
+          %li
+            %a{:href => "#{ProductsController.r(:index)}", :rel => :history, :title => "Produkte", :class => "alink"}
+              = Icon(:atomic, "foo", 32, :green) 
+              Produkte
+          %li
+            %a{:href => "#{AgencyController.r(:index, session_user.agency.name.escape(:uri))}", :rel => :history, :title => "Agentur", :class => "alink"}
+              = Icon(:coffee, "foo", 32, :green)
+              Agentur
+          %li
+            %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
+              = Icon(:radio, "foo", 32, :green)
+              Orte
     %div{:class => "column width5 first", :style => "height:44px"}
       %ul{:id => :history_inc}
               
