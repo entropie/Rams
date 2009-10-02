@@ -1,19 +1,9 @@
-%div{:id => :messages}
-  %div{:class => "column width2 first"}
-    %div{:class => "column width2 first"}
-      %h3{:class => :cheader}= @msg.topic
-    %div{:class => "column width2 first textbody"}
+%div{:class => "column width2"}
+  %div{:id => :message_border}
+    %div{:class => "right"}
+      %h3{:class => :header}= @msg.topic
       %div{:class => :textbody}= @msg.body_markup
       .dark_text{}= " " + @msg.from.name_link + ", vor " + @msg.created_at.to_s
-    %div{:class => "column width2 first"}
       %hr
-      %div{:class => "first width2"}
-        %label{:class => "first multilinex2 width2"}
-          %textarea{:style => "", :onfocus => "message_answer($(this), #{@msg.id});"}
-          
-  %div{:class => "column width1"}
-    - if @messages.size > 0
-      = render_view :inbox, :messages => @messages
-  %div{:class => "column width1#{@messages.size > 0 ? ' boxchild' : ''}"}
-    - if @read_messages.size > 0
-      = render_view :inbox, :messages => @read_messages
+      %fieldset{:style => "text-align:center"}
+        %textarea{:rows => 20, :onfocus => "message_answer($(this), #{@msg.id});"}

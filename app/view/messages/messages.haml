@@ -5,11 +5,11 @@
     %ul
       - @all_messages.each do |msg|
         %li
-          %a{:title => "Nachricht.: #{msg.topic}", :class => "alink#{@target_id == msg.id ? ' active' : ''}", :href => MessageController.r(:message, msg.id)}= msg.topic
+          %a{:title => "Nachricht.: #{msg.topic}", :class => "alink#{@target_id == msg.id ? ' active' : ''}", :href => MessageController.r(:messages, msg.id)}= msg.topic
 - if @message
   %div{:id => :jobs}
     %div{:class => :mod}
-      = render_view :message, :message => @message
+      = render_view :index, :msg => @message
 - else
   %div{:id => :message_group}
     %div{:class => "column unitx5", :id => :message_border}

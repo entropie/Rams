@@ -1,6 +1,6 @@
 function message_answer(ele, mid){
   //$(ele).fadeOut();
-  var target = $(ele).parent().parent();
+  var target = $(ele).parent();
   target.find("textarea").fadeOut(function(){
     target.hide();
     target.load( "/messages/reply/" + mid, function(){

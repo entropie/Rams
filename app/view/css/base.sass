@@ -442,8 +442,10 @@ a.agency_name_link
   :padding-right 10%
   :color = !clr_my_black1
 #message_reply
-  fieldset
-  
+  label
+    :margin-left 20px
+  legend
+    :padding-left 20px
 #userlist
   tr
     td
@@ -512,10 +514,11 @@ span.opt
 
 #message_border
   :position relative
-  :width 470px
-  :margin-bottom 20px
+  :width 570px
+  :margin-bottom 10px
   :margin-top 5px
-  :margin-left 10px
+  :margin-left -10px
+  
   .right
     :width 100%
     :position absolute
@@ -524,6 +527,34 @@ span.opt
     :border-color = !clr_light_green
     p
       :margin-bottom 30px
+    &.right
+      .author
+        :text-align right
+      .header
+        :margin 20px
+      .textbody
+        :margin 10px
+        :padding 10px
+        :background-color = !clr_dirty_white
+        
+      .dark_text
+        :text-align right
+        :padding-right 20px
+      fieldset
+        :width 100%
+        > textarea
+          :margin-left 25px
+          :margin-right 25px          
+          :padding 0px
+          :width 90%
+          :height 30px
+    fieldset
+      :margin 0px
+      :color red
+      :width 100%
+      :margin-bottom 0px
+      textarea, label
+        :width 445px
 
 #message_group
   ul

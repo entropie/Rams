@@ -45,11 +45,15 @@ class MessageController < AMSController
     @target_id = @message.id
   end
   
-  def messages
+  def messages(id = nil)
     @messages = session_user.messages.select{|msg| msg.read == 0} #.first 5
     @sent_messages = Message.filter(:from_id => session_user.id).reverse_order(:id).limit 5
     @read_messages = session_user.messages.select{|msg| msg.read == 1}.first 5
     @all_messages = (@messages + @read_messages)
+    if id and id=id.to_i
+      @message = @all_messages.select{|msg| msg.id == id}.first
+      @target_id = @message.id
+    end
   end
   
   def new(id = nil)
@@ -61,7 +65,7 @@ class MessageController < AMSController
   def create
     msg = request.params["msg"]
     session_user.send_msg(session_user, msg["to"], msg["topic"], msg['body'], msg["reply_to_id"])
-    redirect MessageController.r(:messages_for, session_user.id)
+    redirect MessageController.r(:messages)
   end
   
 end
