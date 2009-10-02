@@ -36,7 +36,9 @@ class PageController < AMSController
   end
 
   def dashboard
-    "dashboard"
+    @messages = session_user.messages.select{|msg| msg.read == 0} #.first 5
+    @sent_messages = Message.filter(:from_id => session_user.id).reverse_order(:id).limit 5
+    @read_messages = session_user.messages.select{|msg| msg.read == 1}.first 5
   end
 
   def gsidebar(*args)

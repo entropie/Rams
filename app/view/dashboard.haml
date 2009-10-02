@@ -1,2 +1,14 @@
-dashboard
+%div{:id => :messages}
+  %div{:class => "column width2 first"}
+    asd
+    
+  %div{:class => "column width1"}  
+    %div{:class => "column width1 first boxchild"}      
+      = render_file "view/messages/outbox.haml", :messages => @sent_messages
+    %div{:class => "column width1 first boxchild"}
+      - if @messages.size > 0
+        = render_file "view/messages/inbox.haml", :messages => @messages
+    %div{:class => "column width1 first#{@messages.size > 0 ? ' boxchild' : ''}"}      
+      = render_file "view/messages/read.haml", :messages => @read_messages  
+
 
