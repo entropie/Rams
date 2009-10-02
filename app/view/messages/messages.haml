@@ -1,0 +1,17 @@
+%div{:class => "column width3 first"}
+  %h1 Nachrichten
+%div{:class => "column width1 first"}
+  %div{:id => :message_group}
+    %ul
+      - @all_messages.each do |msg|
+        %li
+          %a{:title => "Nachricht.: #{msg.topic}", :class => "alink#{@target_id == msg.id ? ' active' : ''}", :href => MessageController.r(:message, msg.id)}= msg.topic
+- if @message
+  %div{:id => :jobs}
+    %div{:class => :mod}
+      = render_view :message, :message => @message
+- else
+  %div{:id => :message_group}
+    %div{:class => "column unitx5", :id => :message_border}
+      .right
+        %p{:class => "notice center", :style => "widht:100%"} Keine Nachricht ausgewählt.
