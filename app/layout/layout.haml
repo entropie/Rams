@@ -42,34 +42,8 @@
     //   %form{:id => :searchform}
     //     %div
     //       == <input type="text" name="s" class="searchthingy" /><input id="search_simg" type="image" name="s" title="Suche" src="/img/search3.gif" />
-        
-    %div{:id => :top}
-      %div{:id => :toplinks}
-        %ul
-          %li
-            %a{:href => "#{PageController.r(:dashboard)}", :rel => :history, :title => "Dashboard", :class => "alink"}
-              = Icon(:clipboard, "foo", 32, :green)            
-              Dashboard 
-          %li
-            %a{:href => "#{JobController.r(:index)}", :rel => :history, :title => "Aufträge", :class => "alink"}
-              = Icon(:folder, "foo", 32, :green)            
-              Aufträge 
-          %li
-            %a{:href => "#{UserController.r(:index)}", :rel => :history, :title => "Kontakte", :class => "alink"}
-              = Icon(:hers, "foo", 32, :green)
-              Kontakte
-          %li
-            %a{:href => "#{ProductsController.r(:index)}", :rel => :history, :title => "Produkte", :class => "alink"}
-              = Icon(:atomic, "foo", 32, :green) 
-              Produkte
-          %li
-            %a{:href => "#{AgencyController.r(:index, session_user.agency.name.escape(:uri))}", :rel => :history, :title => "Agentur", :class => "alink"}
-              = Icon(:coffee, "foo", 32, :green)
-              Agentur
-          %li
-            %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
-              = Icon(:radio, "foo", 32, :green)
-              Orte
+
+    = render_file "view/toplinks.haml"
     %div{:id => :mid, :class => "column first width6"}
       %div{:class => "column width1 first", :id => :sidebar}
         %div{:class => "", :id => :sidebar_content}
