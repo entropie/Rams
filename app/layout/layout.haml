@@ -33,6 +33,8 @@
     %script{:type => "text/javascript", :src => "/js/ajaxupload.js"}=""
     %script{:type => "text/javascript", :src => "/js/ams.js"}=""    
   %body
+    %div{:id => :history}
+      %ul{:id => :history_inc}
     %div{:id => :spinner, :style => "display:none"}
       %img{:src => "/img/spinner.gif"}
 
@@ -68,9 +70,6 @@
             %a{:href => "#{LocationController.r(:index)}", :rel => :history, :title => "Orte", :class => "alink"}
               = Icon(:radio, "foo", 32, :green)
               Orte
-    %div{:class => "column width5 first", :style => "height:44px"}
-      %ul{:id => :history_inc}
-              
     %div{:id => :mid, :class => "column first width6"}
       %div{:class => "column width1 first", :id => :sidebar}
         %div{:class => "", :id => :sidebar_content}

@@ -388,7 +388,7 @@ function mk_history_link() {
   return false;
 }
 
-historysize = 5;
+historysize = 12;
 function history_append(ele){
     var target = $('#history_inc');
     var href = $(ele).attr("href");
