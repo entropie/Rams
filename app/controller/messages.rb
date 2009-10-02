@@ -52,6 +52,9 @@ class MessageController < AMSController
     @all_messages = (@messages + @read_messages)
     if id and id=id.to_i
       @message = @all_messages.select{|msg| msg.id == id}.first
+      if @message.nil?
+        @message = Message[id.to_i]
+      end
       @target_id = @message.id
     end
   end

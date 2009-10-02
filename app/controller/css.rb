@@ -7,9 +7,10 @@ class CSSController < Ramaze::Controller # def ctrl
   map     "/css"
   provide :css, :Sass
   engine :Sass
-
+  trait :sass_options => {
+    :style => :compressed,
+  } 
   def base
-    "asd"
   end
 end
 

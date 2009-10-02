@@ -510,7 +510,6 @@ function pageload(hash) {
     var url = document.location.hash.substr(1);
     fill_content(url, false);
     load_sidebar(url);
-
     if(ele) history_append(ele);
   } else {
     $("#content").empty();
