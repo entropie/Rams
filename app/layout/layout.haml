@@ -46,6 +46,11 @@
     = render_file "view/toplinks.haml"
     %div{:id => :mid, :class => "column first width6"}
       %div{:class => "column width1 first", :id => :sidebar}
+        %div{:id => :sidebar_top}
+          .name
+            %a{:href => "/user/me", :class => :alink}= session_user.name
+          .emails
+            %a{:href => "/messages/messages", :class => :alink}= Mcon('email', 'foo', 24)
         %div{:class => "", :id => :sidebar_content}
       %div{:class => "column width3"}
         %div{:id => :content}

@@ -6,12 +6,12 @@
       - @all_messages.each do |msg|
         %li
           %a{:title => "Nachricht.: #{msg.topic}", :class => "alink#{@target_id == msg.id ? ' active' : ''}", :href => MessageController.r(:messages, msg.id)}= msg.topic
-- if @message
-  %div{:id => :jobs}
+%div{:id => :messages}          
+  - if @message
     %div{:class => :mod}
       = render_view :index, :msg => @message
-- else
-  %div{:id => :message_group}
-    %div{:class => "column unitx5", :id => :message_border}
-      .right
-        %p{:class => "notice center", :style => "widht:100%"} Keine Nachricht ausgewählt.
+  - else
+    %div{:class => "column widht2 unitx2 mod"}
+      %div{:id => :message_border}
+        %div{:class => "right"}
+          %p.notice.center Keine Nachricht ausgewählt.

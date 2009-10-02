@@ -220,12 +220,6 @@ a.agency_name_link
     
 .agencypic
 
-#sidebar_content
-  .agencypic
-    :border 10px solid
-    :border-color transparent
-    &:hover
-      :border-color = !clr_light_silver
 
   
 .notice
@@ -553,7 +547,6 @@ span.opt
           :height 30px
     fieldset
       :margin 0px
-      :color red
       :width 100%
       :margin-bottom 0px
       textarea, label
@@ -588,8 +581,8 @@ span.opt
   
     
 #messages
+  .notice
   .dark_text
-    :float right
   .sb
     :background-color = !clr_light_green
     :padding-left 10px
@@ -722,14 +715,31 @@ html>body> #mid
   :margin-left auto
   :margin-right auto
 
+#sidebar_top
+  :text-align right
+  :position relative
+  .emails
+    :float right
+  .name, a
+    :font-size 1.1em
+    :padding-right 10px
+    :color = !clr_light_silver - 30
+    :float right
+    :text-decoration none
+    &:hover
+      :background-color transparent
+      
+  :margin-bottom 20px
 #sidebar
-  :margin-left 5px
+  :margin-left -10px
   :padding 10px
   :border-right 3px solid
   :border-color = !clr_dirty_white
   :margin-top 15px
-  
 #sidebar_content
+  :clear both
+  //:background-color silver
+  :margin-left 0px
   h2
     :text-align right
     :font-size 1.4em

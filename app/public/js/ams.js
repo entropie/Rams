@@ -521,6 +521,7 @@ google.setOnLoadCallback(function() {
   //$("body").hide();
   $.historyInit(pageload, "jquery_history.html");
   mk_history_links($("#top"));
+  mk_history_links("#sidebar_top");
   $(".popupwindow").popupwindow(profiles);
   //$("body").fadeIn("slow");
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
