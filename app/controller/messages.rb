@@ -46,7 +46,7 @@ class MessageController < AMSController
   end
   
   def messages(id = nil)
-    @messages = session_user.messages.select{|msg| msg.read == 0} #.first 5
+    @messages = session_user.messages.select{|msg| msg.read == 0}.sort_by{|msg| msg.created_at}.reverse #.first 5
     @sent_messages = Message.filter(:from_id => session_user.id).reverse_order(:id).limit 5
     @read_messages = session_user.messages.select{|msg| msg.read == 1}.first 5
     @all_messages = (@messages + @read_messages)

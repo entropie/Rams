@@ -1,4 +1,7 @@
-= render_file "view/address/address_for.haml", :address => @address, :user => @user
-= render_view :box, :user => @user
+- unless @user
+  asd
+- else
+  = render_file "view/address/address_for.haml", :address => @address, :user => @user
+  = render_view :box, :user => @user
 
 

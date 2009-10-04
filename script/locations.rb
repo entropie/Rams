@@ -3,7 +3,7 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
-u = User[1]
+u = User[2]
 
 (0..20).map{|i| Faker::Address.city}.each do |loc|
   location = Location.create(:name => loc)

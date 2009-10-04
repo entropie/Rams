@@ -11,6 +11,7 @@ require "faker"
 include Rams::Database::Tables
 
 
+systemagency = Agency.create(:name => "AMS")
 agency = Agency.create(:name => "Ackro Inc")
 agency1 = Agency.create(:name => "FooFirma")
 
@@ -18,6 +19,23 @@ agency1 = Agency.create(:name => "FooFirma")
 letters = "abcdefghijklmnopqrstuvwxyz".scan(/./)
 
 0.upto(100){|i| Agency.create(:name => "#{letters.sort_by{rand}.first.capitalize}est Agentur #{i}")}
+
+a=User.create(
+              :email => "system@syst.em",
+              :passwd => User.pwcrypt("system")
+              )
+a.agency = systemagency
+a.save
+a.add_address(Address.create(
+                             :name => "Kein",
+                             :surename => "Name",
+                             :street   => "Nirgends",
+                             :plz      => "666",
+                             :loc      => "Hell",
+                             :tel_mobile => "0",
+                             :tel_priv   => "0"
+                             ))
+
 
 # User
 a=User.create(
@@ -38,7 +56,8 @@ a.add_address(Address.create(
                              :tel_mobile => "0666 666 666",
                              :tel_priv   => "0666 1"
                              ))
-a.send_msg(User.first, "mictro@gmail.com", "Betreff Bla", "Body Bla")
+a.send_msg(User.first, "mictro@gmail.com", Faker::Lorem.words(5).join(" "),
+           Faker::Lorem.paragraph(9))
 
 
 a=User.create(

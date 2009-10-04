@@ -4,7 +4,7 @@
     %div{:id => :agency_logo_overlay}= @agency.logo
   = render_view :stats, :agency => @agency 
 %div{:class => "column width1"}
-  %div{:class => "corner silver", :style => "padding:20px; padding-top:0px"}
+  %div{:class => "rounded silver"}
     %h2 Verwalter
     - if @agency.admins.first
       %p= @agency.admins.first.name_link

@@ -472,7 +472,14 @@ function ue_form_srlz(frm, clear){
 
 function mk_corners(ele){
     $(ele).find('.corner').each(function (){
-        $(this).corner();
+        //$(this).corner();
+                                  $(this).highlightFade();
+      $(this).dcCreate({
+        imgPrefix: "/img/corner/default/",
+        fileType: ".gif",
+        expand: 5,
+        position: "inside"
+      });
     });
 }
 
