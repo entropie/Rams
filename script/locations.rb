@@ -3,11 +3,9 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
-u = User.first
+u = User[1]
 
-locs = ["Foooo", "Foooooo", "Bar", "Baar", "Baaaar", "Batz"]
-
-locs.each do |loc|
+(0..20).map{|i| Faker::Address.city}.each do |loc|
   location = Location.create(:name => loc)
   u.agency.add_location(location)
 end
