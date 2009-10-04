@@ -48,10 +48,7 @@
   
 a.active
   :font-weight bolder
-.inplaceedit
-  :border-bottom 5px solid
-  :padding-bottom 5px
-  :border-color = !clr_iedit
+
 
 #pgroup
   ul
@@ -391,7 +388,6 @@ a.agency_name_link
       :text-align center
     :color silver
     :letter-spacing 5px
-    //:background-color = !clr_light_green
     :background-image url(/img/todo_cat_bg.png)
     :text-align right
     :margin-top 10px
@@ -410,15 +406,18 @@ a.agency_name_link
     :padding-bottom 5px
     :margin-left 20px
     :padding-left 5px
+    :border-bottom 5px solid
+    :padding-bottom 15px
+    :border-color = !clr_light_green
+    :margin-bottom 15px
     form
-      // :position absolute
-      // :top 0px
-      // :right 0px
-      :width 500px
+      :width 450px
+      :min-height 150px
       textarea
-        :height 200px
+        :min-height 100px
+        :max-width 450px
         :z-index 1000
-        :background-color silver
+        :background-color = !clr_dirty_white
     .at
       :color #919191
       :float right
@@ -675,7 +674,8 @@ legend
       :color = !clr_dark_grey
       li
         :list-style-type none
-
+  select
+    :max-width 200px
 .trabant1
   :background-color = !clr_mint
   a, a:visited, a:active

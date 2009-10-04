@@ -32,6 +32,13 @@ module Rams
         "(klick)"
       end
 
+      def done?
+        done == 1
+      end
+      def starred?
+        done?
+      end
+      
       def cat
         if category and not category.strip.size == 0
           "<span id='category' rel='/todo/catedit?mid=#{id};get=1' class='todo_catedit acat'>#{category}</span>"

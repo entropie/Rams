@@ -11,12 +11,20 @@ class TodoController < AMSController
 
   before_all { login_required }
   
-  def index(what = :category, which = nil)
+  def index(what = :category, which = nil, starred = nil)
     @todos = session_user.todo.reverse
     @which = which
     if @which
       @todos.reject!{|t| t.category != @which} 
     end
+    @starred =
+      if starred or (what and what == 'starred')
+        @todos.reject!{|t| not t.starred? }
+        true
+      else
+        @todos.reject!{|t| t.starred? }
+        false
+      end
   end
 
   def todo(id)
@@ -24,10 +32,17 @@ class TodoController < AMSController
   end
 
   def sidebar(*args)
+    @rp = request.env["REQUEST_PATH"].sub("/sidebar", '')
     @todos =  session_user.todo.reverse
     @cats = @todos.map{|t| t.category || "" }.uniq.sort.select{|t| t.size > 0}
-    if args.size == 3
-      @cat = @cats.select{|c| c == args.last}.join
+    if args.size == 1 and starred = args.first
+      @starred = true
+    else
+      @starred = false
+    end
+    if args.size >= 3
+      what = if args.size == 3 then args.last else @starred = true; args[-2]; end
+      @cat = @cats.select{|c| c == what}.join
     end
   end
   

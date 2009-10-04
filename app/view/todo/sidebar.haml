@@ -3,6 +3,15 @@
   %li
     %a{:class => "alink", :href => TodoController.r, :title => "Aufgaben"}
       %b Alle
+  %li
+    - if @starred
+      %a{:class => "alink", :href => @rp.sub("/starred", ''), :title => "Markierte"}
+        Unmarkierte
+        %img{:src => "/img/starred-small-g.png", :title => "Nur Unmarkierte Aufgaben"}        
+    - else 
+      %a{:class => "alink", :href => "#{@rp}/starred", :title => "Unmarkierte"}
+        Markierte
+        %img{:src => "/img/starred-small.png", :title => "Nur Markierte Aufgaben"} 
   - @cats.each do |cat| 
     %li
       %a{:class => "alink#{@cat == cat ? ' imp' : ''}", :href => TodoController.r(:index, :category, cat), :title => "Aufgaben der Kategorie: #{cat}"}= cat
