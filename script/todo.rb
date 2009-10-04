@@ -3,7 +3,7 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
-usr = User.first
+usr = User[2]
 
 conts = File.readlines('FIXMES').map{|line|
   case line

@@ -101,7 +101,7 @@ function setup_starred(ele, callback){
     $(this).parent().load($(this).attr("rel"), function(){
       setup_starred($(this).parent(), function(){
         if(img.attr("class") == "starred")
-          $(img).parent().hide();
+          $(img).parent().parent().highlightFade();
       });
       if(callback) callback.call();
     });
@@ -472,14 +472,6 @@ function ue_form_srlz(frm, clear){
 
 function mk_corners(ele){
     $(ele).find('.corner').each(function (){
-        //$(this).corner();
-                                  $(this).highlightFade();
-      $(this).dcCreate({
-        imgPrefix: "/img/corner/default/",
-        fileType: ".gif",
-        expand: 5,
-        position: "inside"
-      });
     });
 }
 

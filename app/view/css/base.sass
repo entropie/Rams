@@ -367,13 +367,19 @@ a.agency_name_link
     
 #addtodo
   :background-color = !clr_dark_green
+  :background url(/img/new-cat-bg.png) no-repeat left top
   :margin-top 20px
   :margin-right -50px
   :margin-left 20px
   :padding 10px
+  form
+    :margin 0px
+    :padding 0px
+  .text
+    :width 430px
   .submit
+    :margin-top -10px
     :float right
-    :width 100px
 #todos
   .todo_head
     :position relative
@@ -675,7 +681,7 @@ legend
     :padding 5px
   .hints
     :border-top 1px solid
-    :border-color = !clr_mint - 50
+    :border-color = !clr_light_green - 50
     ul
       :font-size 0.8em
       :color = !clr_dark_grey
@@ -684,7 +690,7 @@ legend
   select
     :max-width 200px
 .trabant1
-  :background-color = !clr_mint
+  :background-color = !clr_light_green
   a, a:visited, a:active
     :color = !clr_dark_grey
 .tright
