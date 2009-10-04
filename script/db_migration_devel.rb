@@ -5,6 +5,9 @@
 
 require "lib/ams"
 
+require "faker"
+
+
 include Rams::Database::Tables
 
 
@@ -72,20 +75,20 @@ a.add_address(Address.create(
 a.agency = agency
 a.save
 
-0.upto(32) do |i|
+0.upto(64) do |i|
 
   a=User.create(
-                :email => "foo#{i}@baz.com",
+                :email => Faker::Internet.email,
                 :passwd => User.pwcrypt("test")
                 )
   a.add_address(Address.create(
-                               :name => "Bum the #{i}",
-                               :surename => "End",
-                               :street   => "Nightmare On Elm Street",
-                               :plz      => "00666",
-                               :loc      => "Hell",
-                               :tel_mobile => "0666",
-                               :tel_priv   => "0666 123 #{i*100}"
+                               :name => Faker::Name.name,
+                               :surename => Faker::Name.last_name,
+                               :street   => Faker::Address.street_address,
+                               :plz      => Faker::Address.zip_code,
+                               :loc      => Faker::Address.city,
+                               :tel_mobile => Faker::PhoneNumber.phone_number,
+                               :tel_priv   => Faker::PhoneNumber.phone_number
                                ))
   a.agency = (i % 2 == 0) ? agency : agency1
   a.save
