@@ -491,7 +491,14 @@ a.name_link
   :color #4159aa
   &:hover
     :background-color transparent
-
+a.facebox
+  :border-bottom 1px dotted silver
+  &:hover
+    :background-color transparent
+  &:after
+    :content url(/img/facebox-link.png)
+    :height 18px
+    :width 18px
 a.imp
   :font-weight bolder
   :border-bottom 1px solid
@@ -593,10 +600,6 @@ span.opt
   .notice
   .dark_text
   .sb
-    // :background-color = !clr_light_green
-    // :padding-left 10px
-    // :padding-top 10px
-    // :padding-bottom 30px
     :background-color = !clr_light_silver
     ul
       :padding 20px
@@ -612,7 +615,7 @@ span.opt
     li
       :margin-left 5px
       :list-style-type none
-      :font-size 0.8em
+      :font-size 1em
       :margin 0px
       &:hover
         :background-color = !clr_light_green - 8
@@ -641,6 +644,9 @@ span.opt
       :margin-bottom 0px
       li
         :padding-left 20px
+        :margin-bottom 3px
+        img
+          :margin-bottom -2px
         &:hover
           :background-color = !clr_light_silver - 20
         a
@@ -789,38 +795,26 @@ html>body> #mid
 #history_inc
   :font-size 0.7em
   :padding 0px
-  :border-color black
   :overflow hidden
-  :height 27px
-  :max-height 27px
+  :max-height 17px
   :margin 0px
   :margin-bottom 12px
-  :margin-left 20px
+  :margin-left 5px
   li
-    :border 1px solid
-    :border-left 0px
-    :border-color = !clr_light_silver - 50
-    :margin 0px
     :background-color = !clr_light_silver
-    :padding 3px 10px 3px 10px
-    //:margin-right 10px
     &:first-child
-      :border-left 1px solid
-      :border-color = !clr_light_silver - 50
-      :background-color = !clr_dirty_white
       :font-weight bolder
       :color = !clr_fresh_blue
     &:hover
-      :color = !clr_straight_orange      
-      :background-color = !clr_light_silver + 30
+      :color = !clr_dark_grey
     &:before
       :content "\21E8 \2002"
   a
     :text-decoration none
     &:link, &:visited
-      :color #3F4C6B
+      :color = !clr_my_black1
     &:hover
-      :color = !clr_straight_orange
+      :color = !clr_dark_grey
       :background-color transparent
 
 h1

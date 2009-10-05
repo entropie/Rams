@@ -3,5 +3,16 @@
 - else
   = render_file "view/address/address_for.haml", :address => @address, :user => @user
   = render_view :box, :user => @user
+%div{:class => "column first width3 boxchild folded"}
+  %h3 Benutzerbild
+  %div{:class => "column first width2 boxchild"}
+    %p
+      %img{:src => @user.userpic(true), :width => 280, :height =>280}
+  %div{:class => "column width1"}
+    %ul
+      %li
+        %a{:id => :userpic, :rel => @user.id}
+          Bild Hochladen
+        
 
 

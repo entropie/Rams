@@ -88,8 +88,8 @@ module Rams
         File.exists?(base) and File.exists?(thumb)
       end
 
-      def userpic
-        fname = "/data/user/#{id}/"+"thumb_avatar.jpg"
+      def userpic(big = false)
+        fname = "/data/user/#{id}/"+"#{big ? "" : "thumb_"}avatar.jpg"
         return "/img/uuser.gif" unless has_userpic?
         fname
       end

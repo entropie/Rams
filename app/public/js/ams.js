@@ -60,6 +60,7 @@ function userpic_upload(){
     action: '/user/upload/' + $('#userpic').attr("rel"),
     onSubmit: function() {
       location.reload();
+        return false;
     }
   });
 }
@@ -302,7 +303,6 @@ function job_submit(ele){
     });
 }
 
-
 function common_setup_for(ele){
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
   fadeBottom(top);
@@ -365,6 +365,9 @@ function fill_content(url, target, wsidebar) {
         console.log(23);
         setup_tabs();
       }
+
+      $('a[rel*=facebox]').facebox();
+
       if($("#userlookup").length > 0){
         var ucontent = $("#userlookup").attr("value");
         if(ucontent.length > 0)

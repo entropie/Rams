@@ -9,10 +9,16 @@
     %div{:class => :sub, :style=> "clear:both"}
       %ul
         %li
-          %a{:class => "alink", :href => MessageController.r(:new, @user.id), :title => "Nachricht an #{@user.name}"} Nachricht Schreiben
+          %a{:class => "alink", :href => MessageController.r(:new, @user.id), :title => "Nachricht an #{@user.name}"}
+            = Mcon(:email_compose, "Nachricht Schreiben", 18)
+            Nachricht Schreiben
         %li
-          %a{:class => "alink", :href => UserController.r(:data, @user.id), :title => "Dateien von #{@user.name}"} Dateien
+          %a{:class => "alink", :href => UserController.r(:data, @user.id), :title => "Dateien von #{@user.name}"}
+            = Mcon(:folder, "Daten von #{@user.name}", 18)
+            Dateien
         %li
-          %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "Aktualisieren: #{@user.name}"} Benutzer Editieren
+          %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "Aktualisieren: #{@user.name}"}
+            = Mcon(:tools, "Benutzer Editieren", 18)          
+            Benutzer Editieren
   %div{:style => "margin-top:-8px"}
     %img{:src => "/img/user_corner_bottom.png"}
