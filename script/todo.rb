@@ -15,6 +15,7 @@ conts = File.readlines('FIXMES').map{|line|
 }
 
 Todos = [
+         ["Remove marked/unmarked todos immediately", false],         
          ["Use \"Faker\":http://faker.rubyforge.org/ gem for development data", false],
          ["h3. FixMes\n\n"+conts.to_s, false],
          ["Bilder uploads skallieren", true],
