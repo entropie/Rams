@@ -60,7 +60,6 @@ function userpic_upload(){
     action: '/user/upload/' + $('#userpic').attr("rel"),
     onSubmit: function() {
       location.reload();
-        return false;
     }
   });
 }
@@ -303,6 +302,26 @@ function job_submit(ele){
     });
 }
 
+
+function folded_click(){
+    $(this).find("*:gt(0)").slideDown();
+    $(this).unbind("click");
+    $(this).addClass("unfolded");
+    $(this).bind("click", folded_unclick);
+}
+function folded_unclick(){
+    $(this).find("*:gt(0)").slideUp();
+    $(this).unbind("click");
+    $(this).removeClass("unfolded");
+    $(this).bind("click", folded_click);
+}
+function folded_setup(){
+    $('.folded').each(function(){
+        $(this).find("*:gt(0)").hide();
+        $(this).bind("click", folded_click);
+    });
+}
+
 function common_setup_for(ele){
   var top = (document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop);
   fadeBottom(top);
@@ -320,6 +339,9 @@ function common_setup_for(ele){
 
   if($(".inplaceedit").length){
     inplace_edit_setup();
+  }
+  if($(".folded").length){
+    folded_setup();
   }
 
   if($("#ptoggle").length)

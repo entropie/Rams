@@ -503,7 +503,17 @@ a.imp
   :font-weight bolder
   :border-bottom 1px solid
   :border-color = !clr_dark_green
-  
+
+.folded
+  h1,h2,h3
+    &:after
+      :padding-left 5px
+      :content  url(/img/ics/gem_clip_green_16.png)
+  &.unfolded
+    h1,h2,h3
+      &:after
+        :padding-left 5px
+        :content  url(/img/ics/gem_clip_orange_16.png)
     
 html, body
   :position relative
