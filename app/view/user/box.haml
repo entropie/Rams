@@ -20,5 +20,9 @@
           %a{:class => "alink", :href => UserController.r(:edit, :is_edit => "1", :id => @user.id), :title => "Aktualisieren: #{@user.name}"}
             = Mcon(:tools, "Benutzer Editieren", 18)          
             Benutzer Editieren
+        %li
+          %a{:class => "alink", :href => UserController.r(:profile, @user.id), :title => "Profil von #{@user.name}"}
+            = Mcon(:user, "Daten von #{@user.name}", 18)
+            Profil
   %div{:style => "margin-top:-8px"}
     %img{:src => "/img/user_corner_bottom.png"}
