@@ -105,7 +105,9 @@ module Rams
         ia = "<img src='#{userpic}' width='#{w}' height='#{h}' alt='Benutzerbild' /> %s" % [name]
         "<a class='name_link#{add}' href='/user/profile/%i' title='#{name}'>%s</a>#{admin_add}" % [id, (img ? ia : name)]
       end
-      
+
+
+      # FIXME: make second argument string: email or userobj
       def send_msg(suser, to, topic, body, reply_to_id = nil)
         to = User.find(:email => to)
         msghash = {:from_id => suser.id, :body => body, :topic => topic}
