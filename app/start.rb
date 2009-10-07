@@ -39,7 +39,7 @@ end
 
 
 
-Ramaze.start(:host => Rams::PLATFORM == :darwin ? "10.0.187.12" : "grakunst.de",
+Ramaze.start(:host => Rams::PLATFORM == :darwin ? "10.0.187.12" : "graukunst.de",
              :port => Rams::PLATFORM == :darwin ? 8080 : 23000,
              :adapter => :mongrel)
 

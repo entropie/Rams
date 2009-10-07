@@ -54,10 +54,8 @@ module Rams
     } else
       PLATFORM = :nix
       {
-
       :socket => "/var/run/mysqld/mysqld.sock",
       :host   => "graukunst.de",
-      :port   => 23000,
       :user   => "ams",
       :password => File.readlines(File.join(Source, ".mysql.pw")).join.strip
     } end
