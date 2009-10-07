@@ -8,7 +8,7 @@ require 'rubygems'
 ramaze_path = '../../Extern/ramaze/lib/ramaze'
 if File.exist?(ramaze_path)
   require ramaze_path
-else File.exist?(cappath = '/u/apps/Rams/shared/ramaze')
+else File.exist?(cappath = '/u/apps/ramaze')
   require cappath + "/lib/ramaze"
 end
 
