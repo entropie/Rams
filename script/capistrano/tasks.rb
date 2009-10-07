@@ -20,6 +20,14 @@ after "deploy:symlink" do
 end
 
 
+task :start do
+  run "cd #{current_path} && screen -d -m -S ams -- rake start"
+end
+task :stop do
+  run "screen -r ams -X kill; killall -9 ruby"
+end
+
+
 =begin
 Local Variables:
   mode:ruby
