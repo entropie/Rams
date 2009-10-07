@@ -24,10 +24,14 @@ module Rams
   require "redcloth"
 
   gem 'haml'
-
-  require "image_science"
   require 'sass'  
   
+  begin
+    require "image_science"
+  rescue LoadError
+    $stderr.puts "Failed to load image_science"
+  end
+
   require "contrib"
   require "database"
   require "logger"
@@ -38,20 +42,32 @@ module Rams
   Opts[:data_dir]   = "#{pd}/data"
 
 
-  socket_file = File.exists?("/tmp/mysql.sock") ? "/tmp/mysql.sock" : "/var/run/mysqld/mysqld.sock"
+  DBHash =
+    if `uname` =~ /Darwin/ then
+      PLATFORM = :darwin
+      {
+      :socket => "/tmp/mysql.sock",
+      :host   => "localhost",
+      #:logger => Logger.new( STDOUT ),
+      :user   => "root",
+      :password => ''
+    } else
+      PLATFORM = :nix
+      {
 
-  DB = Sequel.mysql('rams_devel',
-                    :user => 'root',
-                    :password => '',
-                    :logger => Logger.new( STDOUT ),
-                    :host => "localhost",
-                    :socket => socket_file
-                    )
+      :socket => "/var/run/mysqld/mysqld.sock",
+      :host   => "graukunst.de",
+      :port   => 23000,
+      :user   => "ams",
+      :password => File.readlines(File.join(Source, ".mysql.pw")).join.strip
+    } end
+  DB = Sequel.mysql('rams_devel', DBHash)
+
   def self.version
     str = "Ramp-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]
   end
-  
+
 end
 
 
