@@ -30,7 +30,7 @@ namespace :ams do
     run "cd #{current_path} && screen -d -m -S ams -- rake start"
   end
   task :stop do
-    run "screen -r ams -X kill; killall -9 ruby"
+    run "killall -9 ruby; screen -r ams -X kill"
   end
 
 end
