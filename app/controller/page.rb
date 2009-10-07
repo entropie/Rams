@@ -3,6 +3,12 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+module Ramaze::Helper::Auth
+  def login_required
+    redirect AuthController.r(:login) unless session[:logged_in]
+  end
+end
+
 class PageController < AMSController
   map     :/
 
@@ -11,13 +17,6 @@ class PageController < AMSController
   helper :auth
 
   before_all { login_required }
-
-  USERS = {
-    'demo' => Digest::SHA1.hexdigest('demo'),
-    'entropie' => Digest::SHA1.hexdigest('lala'),
-  }
-
-  trait :auth_table => PageController::USERS
 
   def login
     redirect r(:auth, :login)
