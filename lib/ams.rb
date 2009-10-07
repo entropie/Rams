@@ -36,13 +36,17 @@ module Rams
   Opts = {}
   Opts[:public_dir] = pd="public"
   Opts[:data_dir]   = "#{pd}/data"
-  
+
+
+  socket_file = File.exists?("/tmp/mysql.sock") ? "/tmp/mysql.sock" : "/var/run/mysqld/mysqld.sock"
+
   DB = Sequel.mysql('rams_devel',
                     :user => 'root',
                     :password => '',
-                    #:logger => Logger.new( STDOUT ),
+                    :logger => Logger.new( STDOUT ),
                     :host => "localhost",
-                    :socket => "/tmp/mysql.sock")
+                    :socket => socket_file
+                    )
   def self.version
     str = "Ramp-%i.%i" % [Version[:major], Version[:minor]]
     str << "-#{Version[:suffix]}" if Version[:suffix]

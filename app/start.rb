@@ -12,7 +12,7 @@ else File.exist?(cappath = '/u/apps/ramaze')
   require cappath + "/lib/ramaze"
 end
 
-require '../lib/ams'
+require File.exists?('../lib/ams') ? '../lib/ams' : 'lib/ams'
 
 module GLog
   def self.<<(str, type = :debug)
