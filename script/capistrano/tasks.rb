@@ -20,6 +20,10 @@ end
 
 namespace :ams do
 
+  task :deploy do
+    run "cd #{current_path} && rake deploy"
+  end
+  
   task :copy_mysql_pw do
     tf = "#{current_path}/.mysql.pw"
     run "touch  #{tf}"
