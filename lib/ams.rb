@@ -28,7 +28,7 @@ module Rams
   
   begin
     require "image_science"
-  rescue LoadError
+  rescue LoadError, NoMethodError
     $stderr.puts "Failed to load image_science"
   end
 
