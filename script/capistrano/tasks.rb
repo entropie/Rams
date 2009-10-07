@@ -14,17 +14,25 @@ end
 
 
 after "deploy:symlink" do
-  tf = "#{current_path}/.mysql.pw"
-  run "touch  #{tf}"
-  put(File.readlines(File.join(Rams::Source, ".mysql.pw")).join, tf)
+  ams.copy_mysql_pw
 end
 
 
-task :start do
-  run "cd #{current_path} && screen -d -m -S ams -- rake start"
-end
-task :stop do
-  run "screen -r ams -X kill; killall -9 ruby"
+namespace :ams do
+
+  task :copy_mysql_pw do
+    tf = "#{current_path}/.mysql.pw"
+    run "touch  #{tf}"
+    put(File.readlines(File.join(Rams::Source, ".mysql.pw")).join, tf)
+  end
+
+  task :start do
+    run "cd #{current_path} && screen -d -m -S ams -- rake start"
+  end
+  task :stop do
+    run "screen -r ams -X kill; killall -9 ruby"
+  end
+
 end
 
 
