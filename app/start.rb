@@ -5,8 +5,14 @@
 
 require 'rubygems'
 
+ramaze_path = '../../Extern/ramaze/lib/ramaze'
+if File.exist?(ramaze_path)
+  require ramaze_path
+else
+  p 1
+  p File.exist('/u/apps/Rams/shared/ramaze')
+end
 
-require '../../Extern/ramaze/lib/ramaze'
 require '../lib/ams'
 
 module GLog
