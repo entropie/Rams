@@ -8,8 +8,7 @@ class AuthController < AMSController
   map "/auth"
   
   def login
-    unless request.post?
-
+    if not request.post?
     else
       @title = "Authentifizierung"
       username = request[:username].strip
@@ -27,6 +26,7 @@ class AuthController < AMSController
   
   def logout
     session[:username] = nil
+    session[:logged_in] = nil
     redirect AuthController.r(:login)
   end
   

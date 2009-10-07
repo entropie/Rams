@@ -1,4 +1,4 @@
-- if not ua.nil? and @user.id != 1
+- unless @user.system_user?
   %div{:class => "column width2 first"}
     %h1 Kontaktdaten
     %div{:class => "column width2 first"}

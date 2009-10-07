@@ -81,6 +81,9 @@ module Rams
                     )
       end
 
+      def system_user?
+        id == 1
+      end
 
       def has_userpic?
         base = public_dir + "avatar.jpg"

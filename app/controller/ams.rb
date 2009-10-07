@@ -17,7 +17,7 @@ class AMSController < Ramaze::Controller
   }
 
   ControllerList = []
-  
+
   def self.inherited(cls)
     log cls
     ControllerList << cls
@@ -63,10 +63,12 @@ class AMSController < Ramaze::Controller
     if pass.size == 32
       pw = pass
     else
+      p pass
       pw = User.pwcrypt(pass)
+      p pw
     end
     if usr = User[:email => email, :passwd => pw]
-      true
+      return true
     else
       flash[:error] = 'Falscher Benutzername und/oder Passwort.'      
       false
