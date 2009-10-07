@@ -3,12 +3,8 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
-require 'remarkably/engines/html'
-
 class UserController < AMSController
 
-  include Remarkably::Common
-  
   UserListingLength = 10 # should be even
   
   map "/user"
