@@ -3,6 +3,8 @@
 # Author:  Michael 'entropie' Trommer <mictro@gmail.com>
 #
 
+
+# FIXME: Write pid somewhere to get ams gracefully killed by remote
 module Rams
 
   Source = File.dirname(File.dirname(File.expand_path(__FILE__)))
