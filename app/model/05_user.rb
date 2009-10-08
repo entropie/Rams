@@ -88,7 +88,7 @@ module Rams
       def has_userpic?
         base = public_dir + "avatar.jpg"
         thumb = public_dir + "thumb_avatar.jpg"        
-        File.exists?(base) and File.exists?(thumb)
+        File.exists?(base) #and File.exists?(thumb)
       end
 
       def userpic(big = false)
