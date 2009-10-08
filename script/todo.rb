@@ -32,7 +32,7 @@ Todos.each {|str, val|
 }
 
          
-puts File.readlines('FIXMES').map{|l| "  #{l}\n"}.to_s
+#puts File.readlines('FIXMES').map{|l| "  #{l}\n"}.to_s
 
 =begin
 Local Variables:

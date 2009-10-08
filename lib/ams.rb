@@ -28,12 +28,8 @@ module Rams
   gem 'haml'
   require 'sass'  
   
-  begin
-    require "image_science"
-  rescue LoadError, NoMethodError
-    $stderr.puts "Failed to load image_science"
-  end
-
+  require "RMagick"
+  
   require "contrib"
   require "database"
   require "logger"

@@ -76,13 +76,11 @@ class AMSController < Ramaze::Controller
   end  
 
   def Thumbnail(file, x, y = nil)
-    ImageScience.with_image(file) do |img|
-      img.thumbnail(x) do |thumb|
-        dir, fname = File.dirname(file), "thumb_" + File.basename(file).to_s
-        thumb.save(nfile = File.join(dir, fname))
-        log "Thumbnail: #{nfile}"
-      end
-    end
+    dir, fname = File.dirname(file), "thumb_" + File.basename(file).to_s
+    img = Magick::Image.read(file).first
+    img.crop_resized!(x, y||x, Magick::NorthGravity)
+    img.write(nfile = File.join(dir, fname))
+    log "Thumbnail: #{nfile}"
   end
 
 end
